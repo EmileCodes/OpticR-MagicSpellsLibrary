@@ -8,6 +8,7 @@ Quick Explenation
 
 What is a variable ?
 - A variable is quite literally everything that doesn't have a constant value.
+But it's invisible unless you make it visible, in essence it's storage but for all sorts of in-game data instead of items.
 What does that mean ? It's a way to keep track/summon things that.. well.. vary.
 
 In order to add variety to your abilities you can make use of said variables to:
