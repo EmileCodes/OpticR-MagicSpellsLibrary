@@ -1,4 +1,4 @@
-ariables:
+variables:
     SkyParticles:
         type: player
         permanent: false
