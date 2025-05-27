@@ -1,0 +1,465 @@
+ariables:
+    SkyParticles:
+        type: player
+        permanent: false
+        default: 45
+        min: 0
+        max: 100
+magic-items:
+    TCurrent:
+        type: "string"
+        name: "&fTugging Current"
+        lore: "Right click to send out gusts of air that levitate your opponents"
+SMRLevel:
+    spell-class: ".instant.DummySpell"
+    str-cast-self: "&f&l&nLevel&r&f&l: &r&b&l%var:SkyMagicRemnants%" #"Level: %var:playerLevel%"
+AirSClassMulti:
+    spell-class: ".MultiSpell"
+    cast-item: stick
+    name: "&fAir Magic &6- &7Gale Mastery"
+    str-modifier-failed: "&fCollect more &bSky Particles&f to use this."
+    spells:
+        - GaleMasteryElytra
+        - GaleBlastHold
+        - GaleMasteryconjure
+GaleMasteryconjure:
+    spell-class: ".instant.ConjureSpell"
+    add-to-inventory: true
+    offhand: false
+    expiration: 0.5
+    items:
+        - TCurrent 1
+    str-cast-self: You have conjured some potion reagents!
+GaleMasteryElytra:
+    helper-spell: true
+    spell-class: ".buff.ArmorSpell"
+    targeted: true
+    duration: 15
+    replace: false
+    helmet: 
+    chestplate: elytra{name:"&bGale&f Wings"} 
+    leggings: 
+    boots: 
+FallMiles:
+    spell-class: ".PassiveSpell"
+    modifiers: 
+        - falling required
+        - gliding denied
+        - buffactive GaleBlastHold required
+        - variable SkyParticles=100 denied
+        - variable SkyParticles<100 required
+    triggers:
+        - ticks 3
+    spells:
+        - FallMilesCast
+FallMilesCast:
+    spell-class: ".instant.DummySpell"
+    variable-mods-cast:
+        - SkyParticles +0.5
+GlideMiles:
+    spell-class: ".PassiveSpell"
+    modifiers: 
+        - gliding required
+        - buffactive GaleBlastHold required
+        - variable SkyParticles=100 denied
+        - variable SkyParticles<100 required
+    triggers:
+        - ticks 20
+    spells:
+        - GlideMilesCast
+GlideMilesCast:
+    spell-class: ".instant.DummySpell"
+    variable-mods-cast:
+        - SkyParticles +1
+        
+GaleblastflightPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive GaleBlastHold required
+          - gliding required
+     triggers:
+          - stopsneak
+     spells:
+          - Galespeed
+     str-casted-self: "&fStored Air Particles are released to give you a boost"
+Galespeed:
+    spell-class: ".instant.VelocitySpell"
+    speed: 10
+    cancel-damage: false
+    add-velocity-instead: true
+    str-modifier-failed: "&fCollect more &bSky Particles&f to use this."
+    modifiers:
+          - variable SkyParticles<10 denied
+    variable-mods-cast:
+          - "SkyParticles -10"
+    effects:
+        effect1:
+            position: caster
+            effect: fireworks
+            colors: 0cbdf2
+            fade-colors: ffffff
+GaleProjectile:
+    spell-class: ".instant.ParticleProjectileSpell"
+    hit-players: true
+    hit-non-players: true
+    hit-ground: false
+    projectile-velocity: 10
+    spell-interval: 1
+    modifiers:
+          - variable SkyParticles<1 denied
+    spell: GaleblastMultihold
+    stop-on-hit-entity: false
+    max-distance: 15
+    hit-radius: 3
+    projectile-gravity: 0
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: pos1
+            effectlib:
+                class:  VortexEffect
+                particle: REDSTONE
+                color: a19f9f
+                particles: 1
+                radius: 3
+                iterations: 3
+        effect2:
+            position: pos1
+            effect: effectlib
+            effectlib:
+                class: DragonEffect
+                pitch: .3
+                particle: SPELL
+                length: 5
+                arcs: 5
+                particles: 15
+                iterations: 10
+        effect3:
+            position: pos1
+            effect: sound
+            sound: entity.generic.extinguish_fire
+            volume: 0.3
+            pitch: 2
+GaleBlastLevitate:
+    spell-class: ".targeted.LevitateSpell"
+    tick-rate: 5
+    duration: 10
+    distance-change: 0
+    range: 10
+    min-distance: 5
+    cancel-on-item-switch: false
+    cancel-on-spell-cast: false
+    cancel-on-take-damage: false
+GaleblastMultihold:
+    spell-class: ".TargetedMultiSpell"
+    str-modifier-failed: "&fCollect more &bSky Particles&f to use this."
+    modifiers:
+          - variable SkyParticles<1 denied
+    variable-mods-cast:
+          - "SkyParticles -1"
+    spells:
+        - GaleBlastLevitate
+        - GaleProjectilepull
+GaleProjectilepull:
+    spell-class: ".targeted.ForcebombSpell"
+    range: 5
+    radius: 3
+    pushback-force: 5
+    additional-vertical-force: 5
+    max-vertical-force: 10
+    can-target: players,nonplayers
+GaleBlastDummy:
+    spell-class: ".buff.DummySpell"
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 5
+            position: pos1
+            effectlib:
+                class:  VortexEffect 
+                particle: Redstone
+                color: ffffff
+                particleSize: 1.5
+                speed: 0.1
+                orient: true
+                radius: 1
+                grow: 0.3
+                helixes: 4
+                relative-offset: 1.25,1.5,0
+                iterations: 10
+        effect2:
+            position: pos1
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: CLOUD
+                speed: 0.1
+                radius: 0.1
+                particles: 1
+                iterations: 3
+                relative-offset: 1.25,1.5,0
+        effect5:
+            position: pos1
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: CLOUD
+                speed: 2
+                radius: 0.1
+                particles: 10
+                iterations: 3
+                relative-offset: 0,0,0
+        effect3:
+            position: line
+            effect: sound
+            sound: entity.ghast.scream
+            volume: 0.2
+            pitch: 2
+GaleblastShootPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive GaleBlastHold required
+     triggers:
+          - rightclickitem string
+     spells:
+          - GaleBlastDummy
+          - GaleBlastGlow
+          - GaleProjectile
+GaleblastJumpPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 5
+     modifiers:
+          - buffactive GaleBlastHold required
+          - gliding denied
+          - falling denied
+          - sneaking required
+     triggers:
+          - ticks 40
+     spells:
+          - GaleblastJumpLoadMulti
+GaleblastJumpLoadMulti:
+    str-cast-self: "A gust of air pushes you backwards"
+    str-modifier-failed: "&f20 &bSky Particles&f are required to use this."
+    modifiers:
+          - variable SkyParticles<20 denied
+    variable-mods-cast:
+          - "SkyParticles -20"
+    spell-class: ".MultiSpell"
+    require-entity-target: true
+    stop-on-fail: false
+    targeted: true
+    spells:
+        - GaleblastJumpLoad
+        - DELAY 20
+        - GaleblastJumpOthersAOE
+        - GaleblastPreJumpLoad
+        - DELAY 5
+        - GaleblastJump
+GaleblastJumpOthersAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 15
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: monsters,players,animals
+    spells:
+        - GaleblastJumpOthers
+GaleblastJumpOthers:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 6
+    horizontal-force: -35
+    vertical-force: 15
+    target-players: false
+    can-target: monsters,players,animals
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: cloud
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            size: 0.8
+            count: 10
+        eff3:
+            position: line
+            effect: sound
+            sound: entity.player.attack.sweep
+            volume: 0.35
+            pitch: -5
+        effect2:
+            position: line
+            effect: sound
+            sound: block.netherite_block.hit
+            volume: 3
+            pitch: -2
+        effect3:
+            position: line
+            effect: sound
+            sound: block.netherite_block.place
+            volume: 3
+            pitch: 2
+GaleblastPreJumpLoad:
+    spell-class: ".instant.DummySpell"
+    str-cast-self: "Time to jump"
+GaleblastJumpLoad:
+  spell-class: ".buff.DummySpell"
+  duration: 1
+  effects:
+    eff1:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: DUST_COLOR_TRANSITION
+        color: FFFFFF
+        to-color: 87CEEB
+        particles: 10
+        particles2: 9
+        duration: 10
+        iterations: 1
+        orientPitch: false
+        cycle: false
+        xEquation: 0
+        yEquation: 0
+        zEquation: 0
+        x2Equation: (10 * (t/250 - 1)^2 + 0.5) * sin(4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
+        y2Equation: 0
+        z2Equation: (10 * (t/250 - 1)^2 + 0.5) * cos(4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
+    chargesound:
+        position: caster 
+        effect: sound
+        sound: block.beacon.activate
+        volume: 0.5
+        pitch: -3
+    effect2:
+        position: caster
+        effect: sound
+        sound: block.netherite_block.hit
+        volume: 3
+        pitch: -2
+    effect3:
+        position: caster
+        effect: sound
+        sound: block.netherite_block.place
+        volume: 3
+        pitch: 2
+    effect4:
+        position: caster
+        effect: sound
+        sound: entity.player.attack.sweep
+        volume: 3
+        pitch: 2
+GaleblastJump:
+    spell-class: ".instant.LeapSpell"
+    forward-velocity: 0
+    upward-velocity: 25
+    cancel-damage: true
+    effects:
+        effect1:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: CLOUD
+                speed: 0.1
+                radius: 0.1
+                radiusIncrease: 1
+                particles: 50
+                iterations: 20
+                relative-offset: 0,0,0
+        effect2:
+            position: caster
+            effect: sound
+            sound: block.netherite_block.hit
+            volume: 3
+            pitch: -2
+        effect3:
+            position: caster
+            effect: sound
+            sound: block.netherite_block.place
+            volume: 3
+            pitch: 2
+        effect4:
+            position: caster
+            effect: sound
+            sound: entity.player.attack.sweep
+            volume: 3
+            pitch: 2
+GaleBlastHold:
+    spell-class: ".buff.DummySpell"
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 15
+            position: buff
+            effectlib:
+                class:  VortexEffect 
+                particle: Redstone
+                color: ffffff
+                speed: 0.1
+                particleSize: 0.5
+                orient: true
+                radius: 0.75
+                grow: 0
+                helixes: 2
+                circles: 5
+                radials: 0.075
+                relative-offset: -1.25,1.5,0
+                iterations: 15
+        effect2:
+            position: buff
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: SPELL
+                speed: 1
+                radius: 0.1
+                particles: 1
+                iterations: 1
+                relative-offset: -1.25,1.5,0
+        effectx:
+            position: buff
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: ELECTRIC_SPARK
+                speed: 0.1
+                radius: 0.35
+                radiusIncrease: 0.1
+                particles: 1
+                iterations: 5
+                relative-offset: -1.25,1.5,0
+        effect3:
+            position: caster
+            effect: sound
+            sound: item.elytra.flying
+            volume: 0.5
+            pitch: 5
+        effect4:
+            effect: effectlibentity
+            effect-interval: 10
+            position: orbit
+            orbit-radius: 0.1
+            orbit-y-offset: 0
+            orbit-seconds-per-revolution: 10
+            effectlib:
+                class:  SphereEffect
+                particle: SPELL
+                speed: -2
+                particles: 1
+                radius: 0.1
+                relative-offset: 0,0,0
+                iterations: 2
+        effect6:
+            effect-interval: 1
+            position: buff
+            effect: actionbartext
+            message: "&b&lCollected &f&lSky Particles:&9&l %var:SkyParticles%"
+            broadcast: false
