@@ -1,0 +1,142 @@
+Find examples of equation effects below.
+These can be modified to achieve specific results.
+Comments with a hashtag (#)are there to provide context
+
+#Primary Equations (xEquation, yEquation, zEquation)
+#These control the position of “main” particles. The variable t starts at 0 and increases by 1 for each particle (up to particles - 1).
+#X - Left to Right | East to West
+#Y - Up and Down | Vertical axis
+#Z - Front to Back | North to South
+
+
+#Sub-Equations (x2Equation, y2Equation, z2Equation): 
+#These add extra particles around each main particle, using a second variable t2 (from 0 to particles2 - 1).
+
+#Common Functions:
+#sin(t) and cos(t): Create circular or wavy patterns, oscillating between -1 and 1.
+#rand(a, b): Picks a random number between a and b, great for scattered effects.
+#Numbers like "5" or "t * 2": Set fixed positions or scale t for movement.
+
+
+# Example 1: Straight Line of Flames
+line_effect:
+  spell-class: ".buff.DummySpell"
+  duration: 20
+  effects:
+    eff1:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: FLAME
+        particles: 20
+        xEquation: "t"
+        yEquation: "0"
+        zEquation: "0"
+        duration: 20
+        iterations: 1
+
+# Example 2: Circular Ring of End Rods
+circle_effect:
+  spell-class: ".buff.DummySpell"
+  duration: 36
+  effects:
+    eff1:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: END_ROD
+        particles: 36
+        xEquation: "5 * cos(2 * 3.1415 * t / 36)"
+        yEquation: "0"
+        zEquation: "5 * sin(2 * 3.1415 * t / 36)"
+        duration: 36
+        iterations: 1
+
+# Example 3: Spiral of Crit Particles
+spiral_effect:
+  spell-class: ".buff.DummySpell"
+  duration: 100
+  effects:
+    eff1:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: CRIT
+        particles: 100
+        xEquation: "5 * cos(2 * 3.1415 * t / 20)"
+        yEquation: "t / 10"
+        zEquation: "5 * sin(2 * 3.1415 * t / 20)"
+        duration: 100
+        iterations: 1
+
+# Example 4: Random Cloud of Redstone Dust
+cloud_effect:
+  spell-class: ".buff.DummySpell"
+  duration: 50
+  effects:
+    eff1:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: REDSTONE
+        particles: 50
+        xEquation: "rand(-5, 5)"
+        yEquation: "rand(-5, 5)"
+        zEquation: "rand(-5, 5)"
+        duration: 50
+        iterations: 1
+
+GaleblastJumpLoad:
+  spell-class: ".buff.DummySpell"
+  duration: 1
+  effects:
+    eff1:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: DUST_COLOR_TRANSITION #Creates particles that changes color
+        color: FFFFFF #starting color
+        to-color: 87CEEB #final color
+        particles: 10
+        particles2: 9
+        duration: 10
+        iterations: 1
+        orientPitch: false
+        cycle: false
+        xEquation: 0
+        yEquation: 0
+        zEquation: 0
+        x2Equation: (10 * (t/250 - 1)^2 + 0.5) * sin(4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
+        y2Equation: 0
+        z2Equation: (10 * (t/250 - 1)^2 + 0.5) * cos(4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
+
+#In GaleblastJumpLoad:
+#The primary equations are all "0", so all main particles are at the caster’s position.
+
+#The sub-equations create a ring:
+#The radius is (10 * (t/250 - 1)^2 + 0.5), which is about 10.5 blocks.
+#The angle is 4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9, which places particles in a circular pattern.
+
+
+#Creating Your Own Effects
+#To make your own effects, start with the templates provided.
+
+#Change Size: Increase numbers in equations (5 to 10 in the circle example for a larger ring).
+#Add Randomness: Use rand(-1, 1) to scatter particles slightly.
+#Adjust Particle Count: Increase particles or particles2 for denser effects, but be cautious of server lag.
+
+#Visualizing Equations
+#To understand what your effect will look like:
+
+#GeoGebra: Go to GeoGebra 3D, enter your equations (e.g., x = 5 * cos(2 * π * t / 36), y = 0, z = 5 * sin(2 * π * t / 36)), and set t from 0 to your particles value.
+#Desmos: Use Desmos for 2D views (e.g., plot X vs. Z for a circle).
+#These tools show you the shape before you test in Minecraft, saving time.
+#https://www.wolframalpha.com/input?i=plot+3x%5E2-2xy+y%5E2%3D1
+
+
+More Examples:
