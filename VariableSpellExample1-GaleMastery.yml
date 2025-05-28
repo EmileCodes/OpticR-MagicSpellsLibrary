@@ -1,28 +1,44 @@
+#Galemastery is an Air Magic-spell built around resource management.
+#When the spell is active the user is able to collect it's resource called SkyParticles.
+#These skyparticles are required to cast additional spells built into a buff through passives.
+#Resource based spells are more realistic since they lessen the reliance on cooldowns.
+#The use of skyparticles ensures that the user of this ability needs to interact with their element (in this case air) in order to gain the resource needed to cast their spells.
+#In the spell below you will see how to set up a spell as such.
+#The resource for this spell can be gained by gliding (as an air mage should), or falling which happens a lot since air related spells often include leaps.
+
+
 variables:
-    SkyParticles:
-        type: player
-        permanent: false
-        default: 45
-        min: 0
-        max: 100
-magic-items:
-    TCurrent:
-        type: "string"
-        name: "&fTugging Current"
-        lore: "Right click to send out gusts of air that levitate your opponents"
+    SkyParticles: #name of the variable (could be anything)
+        type: player #Variable is bound to a specific player
+        permanent: false #Variable value resets after a server reload/restart
+        default: 45 #default starting value after reload/restart (because for this spell movement is essential to Air Spells the default is deliberately placed at 40 so that players in a particular situation always have some skyparticles available to spend after a reload.
+        min: 0 #Minimum amount of skyparticles a single player can have (basically if they spent all of it.
+        max: 100 #Maximum amount of spyparticles a single player can have.
+#Min,Max and Default value for particles are all dependant on the use case. See this specific variable as a currency. Other spells below require skyparticles in order to activate them. If the max is too low it limits their use case, if it's too high they don't have to really think about managing their particles.
+
+
+magic-items: #allows you define a magic item below
+    TCurrent: #codename for summoning said item in a spell.
+        type: "string" #the item it will be displayed as in the game.
+        name: "&fTugging Current" #the name tag it will have.
+        lore: "Right click to send out gusts of air that levitate your opponents" #Text in the item description of the item.
+
+
 SMRLevel:
     spell-class: ".instant.DummySpell"
-    str-cast-self: "&f&l&nLevel&r&f&l: &r&b&l%var:SkyMagicRemnants%" #"Level: %var:playerLevel%"
+    str-cast-self: "&f&l&nLevel&r&f&l: &r&b&l%var:SkyMagicRemnants%" #"Level: %var:playerLevel%" #don't remember what this is.
+
+
 AirSClassMulti:
     spell-class: ".MultiSpell"
     cast-item: stick
     name: "&fAir Magic &6- &7Gale Mastery"
-    str-modifier-failed: "&fCollect more &bSky Particles&f to use this."
+    str-modifier-failed: "&fCollect more &bSky Particles&f to use this." #message to display to the caster if their modifier condition fails.
     spells:
         - GaleMasteryElytra
         - GaleBlastHold
         - GaleMasteryconjure
-GaleMasteryconjure:
+GaleMasteryconjure: #Summons the magic item defined earlier
     spell-class: ".instant.ConjureSpell"
     add-to-inventory: true
     offhand: false
@@ -39,65 +55,81 @@ GaleMasteryElytra:
     helmet: 
     chestplate: elytra{name:"&bGale&f Wings"} 
     leggings: 
-    boots: 
-FallMiles:
+    boots:
+#Since the elytra is all I wanted the left is left open and therefor won't summon anything.
+
+FallMiles: #Passive way to accumulate Skyparticles while falling!
     spell-class: ".PassiveSpell"
-    modifiers: 
-        - falling required
-        - gliding denied
-        - buffactive GaleBlastHold required
-        - variable SkyParticles=100 denied
-        - variable SkyParticles<100 required
+    modifiers: #the conditions that need to be met for it to work
+        - falling required #obviously
+        - gliding denied #not sure if minecraft considers falling&gliding the same so in order to ensure you don't get double points this wwas added.
+        - buffactive GaleBlastHold required #Fallmiles will not be accumulated if this buff is not active. (this buff auto activates when the spell is cast).
+        - variable SkyParticles=100 denied #Skyparticles already has a limit of 100, but in order to decrease server load we can tell it to not even bother and try add fallmiles as long as it's on 100, instead of trying to add it
+        - variable SkyParticles<100 required #redudancy modifier, basically stating to only work, pm
     triggers:
-        - ticks 3
+        - ticks 3 #this passive will be triggered every 3 ticks or 3/20th of a second.
     spells:
-        - FallMilesCast
-FallMilesCast:
+        - FallMilesCast #the spell to cast when the above passive conditions are met.
+
+FallMilesCast: #just a dummy used as a means to cast variable.
     spell-class: ".instant.DummySpell"
     variable-mods-cast:
-        - SkyParticles +0.5
-GlideMiles:
+        - SkyParticles +0.5 #self-explenatory when falling you will gain 0.5 fall miles every 3 ticks.
+
+#Quick Explenation:
+# 1 tick = 1/20 of a second so it is 0.05 seconds.
+# when falling you gain 0.5 skyparticles every 3 ticks or 0.15 seconds
+# to calculate the amount of times we need to gain 0.5 skyparticles to reach 100 we do 100/0.5 = 200 (we need fallmilescast to trigger 200x for the user to go from 0 to 100 particles)
+# if we multiply this 200 with 3 (amount of time it takes to cast fallmilescast once) we get 600 ticks
+# So the user needs to fall for 600 ticks or 600x0.05seconds = 30 seconds - after half a minute of falling you could ammulate 100 skyparticles
+
+
+GlideMiles: #Same principle but for gliding instead of falling
     spell-class: ".PassiveSpell"
-    modifiers: 
-        - gliding required
-        - buffactive GaleBlastHold required
-        - variable SkyParticles=100 denied
-        - variable SkyParticles<100 required
+    modifiers: #requirements obviously need to be slightly different this time.
+        - gliding required # making sure it only works when gliding
+        - buffactive GaleBlastHold required # it should only trigger if the galemastery spell was cast
+        - variable SkyParticles=100 denied #stop counting if you already have the max amount of particles.
+        - variable SkyParticles<100 required #ensures it's only counting and adding skyparticles when you are not at the maximum amount yet.
     triggers:
-        - ticks 20
+        - ticks 20 #triggers automatically every 20 ticks or 1 second
     spells:
-        - GlideMilesCast
-GlideMilesCast:
+        - GlideMilesCast #spell to cast when conditions are met
+
+GlideMilesCast: #another dummy useda means to cast a variable
     spell-class: ".instant.DummySpell"
     variable-mods-cast:
-        - SkyParticles +1
+        - SkyParticles +1 #self-explenatory when this spell is cast it givesyou 1 skyparticle (compared to 0.5 when you fall)
         
-GaleblastflightPassive:
+GaleblastflightPassive: #A passive built to extend the gliding time of users gliding with the spell active.
      spell-class: ".PassiveSpell"
      modifiers:
-          - buffactive GaleBlastHold required
-          - gliding required
+          - buffactive GaleBlastHold required #makes sure only users with this spell active can use it and not everyone else on the server.
+          - gliding required #Since it's made to extend glide time, it makes sense that gliding is required in order to be able to use this.
      triggers:
-          - stopsneak
+          - stopsneak #only triggers when person releases the shift position.
      spells:
-          - Galespeed
+          - Galespeed # spell to cast when shift is released.
      str-casted-self: "&fStored Air Particles are released to give you a boost"
-Galespeed:
+    
+Galespeed: #This spell modifies the velocity of any unit. (a standing person has a velocity of 0) 
     spell-class: ".instant.VelocitySpell"
-    speed: 10
-    cancel-damage: false
-    add-velocity-instead: true
+    speed: 10 #Amount of velocity
+    cancel-damage: false #won't cancel fall-damage
+    add-velocity-instead: true #if the user was already moving at a certain velocity it will just add 10 velocity to it instead of just changing your velocity to this amount.
+    #This is important because if you were travelling at a velocity above 10 and then would use it, it would've slowed you down. But not it guarantees a speed increase.
     str-modifier-failed: "&fCollect more &bSky Particles&f to use this."
     modifiers:
-          - variable SkyParticles<10 denied
+          - variable SkyParticles<10 denied #at least 10 sky particles are required for this. (10 seconds of flying, or 5 seconds of falling).
     variable-mods-cast:
-          - "SkyParticles -10"
+          - "SkyParticles -10" #deducts 10 Skyparticles if spell is successfully cast
     effects:
         effect1:
             position: caster
             effect: fireworks
             colors: 0cbdf2
             fade-colors: ffffff
+            
 GaleProjectile:
     spell-class: ".instant.ParticleProjectileSpell"
     hit-players: true
@@ -106,7 +138,7 @@ GaleProjectile:
     projectile-velocity: 10
     spell-interval: 1
     modifiers:
-          - variable SkyParticles<1 denied
+          - variable SkyParticles<1 denied # won't work if you have less than 1 skyparticle
     spell: GaleblastMultihold
     stop-on-hit-entity: false
     max-distance: 15
@@ -140,6 +172,7 @@ GaleProjectile:
             sound: entity.generic.extinguish_fire
             volume: 0.3
             pitch: 2
+            
 GaleBlastLevitate:
     spell-class: ".targeted.LevitateSpell"
     tick-rate: 5
@@ -154,9 +187,10 @@ GaleblastMultihold:
     spell-class: ".TargetedMultiSpell"
     str-modifier-failed: "&fCollect more &bSky Particles&f to use this."
     modifiers:
-          - variable SkyParticles<1 denied
+          - variable SkyParticles<1 denied #won't cast the spell if you have less than 1 skyparticle
     variable-mods-cast:
-          - "SkyParticles -1"
+          - "SkyParticles -1" #when succesfully takes 1 skyparticle. (since the spell has 0cd it will drain your particles every single tick)
+#the longer you use itm the more you drain your reserve of skyparticles basically
     spells:
         - GaleBlastLevitate
         - GaleProjectilepull
@@ -222,29 +256,32 @@ GaleblastShootPassive:
      modifiers:
           - buffactive GaleBlastHold required
      triggers:
-          - rightclickitem string
+          - rightclickitem string #when rightclicking the string the spell gives you it allows you to grab another user and levitate them for as long
+#you have skyparticles
      spells:
           - GaleBlastDummy
           - GaleBlastGlow
           - GaleProjectile
-GaleblastJumpPassive:
+
+GaleblastJumpPassive: #passive that allows the user to take off from the ground into the skies
      spell-class: ".PassiveSpell"
      cooldown: 5
-     modifiers:
+     modifiers: #makes sure that the user is not on the ground and is shifting before activation
           - buffactive GaleBlastHold required
           - gliding denied
           - falling denied
           - sneaking required
      triggers:
-          - ticks 40
+          - ticks 40 #they need to be shifting for 40ticks or 2 seconds for it to trigger. (this way it won't trigger every time you sneak)
      spells:
-          - GaleblastJumpLoadMulti
+          - GaleblastJumpLoadMulti #check the spell below to see what it does
+          
 GaleblastJumpLoadMulti:
     str-cast-self: "A gust of air pushes you backwards"
     str-modifier-failed: "&f20 &bSky Particles&f are required to use this."
     modifiers:
           - variable SkyParticles<20 denied
-    variable-mods-cast:
+    variable-mods-cast: #yeh this spell is slightly more pricey than the others
           - "SkyParticles -20"
     spell-class: ".MultiSpell"
     require-entity-target: true
@@ -390,7 +427,7 @@ GaleblastJump:
             sound: entity.player.attack.sweep
             volume: 3
             pitch: 2
-GaleBlastHold:
+GaleBlastHold: #main dummy that shows you that the spell is active. (when it's particles are visible you know that all the other passives related to this one can be used).
     spell-class: ".buff.DummySpell"
     effects:
         effect1:
@@ -457,9 +494,9 @@ GaleBlastHold:
                 radius: 0.1
                 relative-offset: 0,0,0
                 iterations: 2
-        effect6:
+        effect6: #this effect basically visualises the otherwise invisible variable we defined as SkyParticles so you can see how much you've gathered or used.
             effect-interval: 1
             position: buff
             effect: actionbartext
             message: "&b&lCollected &f&lSky Particles:&9&l %var:SkyParticles%"
-            broadcast: false
+            broadcast: false #yeh we don't need everyone to know how many skyparticles you got do we ?
