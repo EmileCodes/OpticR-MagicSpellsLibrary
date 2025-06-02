@@ -1,0 +1,28 @@
+variables:
+     Spirits_Available:
+          type: player # player variable
+          min: 0 # minimum of 0
+          max: 2 # maximum of 0
+          default: 1 #default on login
+
+SpiritIncrease: #only for S class mages
+     spell-class: ".instant.DummySpell"
+     str-cast-self: "&5Max Spirit = &f2"
+     variable-mods-cast:
+          - Spirits_Available=0
+
+ParadiseBird:
+    spell-class: ".MultiSpell"
+    cast-items: ["ApusKey", "KeyRing",]
+    name: "&#c0c0c0Paradise Bird - Apus"
+    cooldown: 55
+    cost:
+        - mana 45
+    spells:
+        - ParadiseBirdMulti(mode=full)
+        - DELAY 200
+        - Spirits_Unavailable
+    variable-mods-cast:
+          - Spirits_Available +1
+    modifiers:
+          - variable Spirits_Available=2 denied
