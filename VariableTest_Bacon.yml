@@ -1,0 +1,26 @@
+variables:
+  Active_Summons:
+    type: player
+    min: 0
+    max: 3
+    default: 0
+
+DismissSummon:
+  spell-class: ".instant.DummySpell"
+  variable-mods-cast:
+    - Active_Summons -1
+
+SummonCreature:
+  spell-class: ".MultiSpell"
+  name: "Summon Creature"
+  cooldown: 60
+  cost:
+    - mana 20
+  modifiers:
+    - variable Active_Summons:3 denied
+  variable-mods-cast:
+    - Active_Summons +1
+  spells:
+    - SummonEffect
+    - DELAY 6000
+    - DismissSummon
