@@ -1,26 +1,70 @@
 variables:
   Active_Summons:
     type: player
-    min: 0
-    max: 3
-    default: 0
+    permanent: false
+    boss-bar: "Active Summons" #displays a bossbar with Active Summons on your screen
+    min: 0 #minimum value of the variable (bossbar empty)
+    max: 3 #Max value of the variable (boss bar = full)
+    default: 2 #starting value of variable after each reload. (2/3 of the bossbar)
 
 DismissSummon:
   spell-class: ".instant.DummySpell"
   variable-mods-cast:
-    - Active_Summons -1
+    - Active_Summons -1 #lowers the value of active_summons by 1
+  str-cast-self: "You've De-activated a Summon"
 
-SummonCreature:
-  spell-class: ".MultiSpell"
-  name: "Summon Creature"
-  cooldown: 60
-  cost:
-    - mana 20
-  modifiers:
-    - variable Active_Summons:3 denied
-  variable-mods-cast:
-    - Active_Summons +1
-  spells:
-    - SummonEffect
-    - DELAY 6000
-    - DismissSummon
+# str-modifier-failed: You've reached the maximum amount of summons already
+# add this to any spell that summons a summon variable Active_Summons:3 denied
+# Active_Summons +1
+
+ActiveSummonIMulti:
+    str-modifier-failed: "&5You can't handle more &fspirits &5simultaneously"
+    modifiers:
+          - variable Active_Summons:3 denied
+    variable-mods-cast:
+          - Active_Summons +1
+    spell-class: ".MultiSpell"
+    require-entity-target: false
+    stop-on-fail: false
+    targeted: true
+    spells:
+        - ActiveSummonIMessage
+        - ActiveSummonI
+        - DELAY 100
+        - DismissSummon
+ActiveSummonI:
+    spell-class: ".buff.DummySpell"
+    duration: 5
+    effects:
+        effect1:
+            effect: effectlibentity
+            special-effect-interval: 5
+            position: pos1
+            effectlib:
+                class:  VortexEffect 
+                particle: Redstone
+                color: ffffff
+                particleSize: 1.5
+                speed: 0.1
+                orient: true
+                radius: 1
+                grow: 0.3
+                helixes: 4
+                relative-offset: 1.25,1.5,0
+                iterations: 5
+        secondeffect:
+            position: buff
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: ELECTRIC_SPARK
+                speed: 0.1
+                radius: 0.35
+                radiusIncrease: 0.1
+                particles: 1
+                iterations: 5
+                relative-offset: -1.25,1.5,0
+ActiveSummonIMessage:
+    spell-class: ".instant.DummySpell"
+    str-cast-self: "You've activated Summon I"
