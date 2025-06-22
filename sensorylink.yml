@@ -1,53 +1,151 @@
 #This spell is going to make use of the data spelltype to capture ingame data and store it as a variable.
 #This variable can than be used passed on to others or recalled at a later date.
-
 variables:
   SensoryDamageTaken:
     type: playerstring
-    permanent: false
+    permanent: true
     default: 0
     min: 0
     max: 1000 
-#The above spells basically defines maximum and minimum value of the damage storing variable
-LinkBuff:
-  spell-class: ".buff.DummySpell"
-  duration: 3600
-  effects:
-    effect1:
-      effect: effectlibentity
-      position: buffeffectlib
-      effectlib:
-        class: CircleEffect
-        particle: DUST_COLOR_TRANSITION
-        color: FFFFFF
-        to-color: 87CEEB
-        orient: false
-        radius: 0.75
-        wholeCircle: false
-        particles: 15
-        offset: 0,0.1,0
-        iterations: 25
-#This buff will display the particles to those who have the buff active
-LinkDamagePassive:
+LinkDamageUpdatePassive:
   spell-class: ".PassiveSpell"
   modifiers:
-    - buffactive LinkBuff required
+    - buffactive LinkBuffActive required
   triggers:
     - takedamage
   spells:
-    - SensoryDamageVariable
-    - DELAY 5
-    - tellmedmgtaken
-
-tellmedmgtaken:
-    spell-class: ".instant.DummySpell"
-    str-cast-self: "&f&lLast amount of damage takenr&f&l: &r&b&l%var:SensoryDamageTaken%" 
+    - LinkDamageUpdateMultu
+LinkDamageUpdateMultu:
+    spell-class: ".MultiSpell"
+    spells:
+        - SensoryDamageVariable
+        - TargetSensoryPainAoE
 SensoryDamageVariable:
   spell-class: ".targeted.DataSpell"
   target-self: true
   variable-name: SensoryDamageTaken
   data-element: lastdamagecause.amount
-  str-cast-self: "You've taken %var:SensoryDamageTaken%. damage"
+  
+DisplayLinkDamagePassive:
+  spell-class: ".PassiveSpell"
+  modifiers:
+    - buffactive LinkBuffActive required
+  triggers:
+    - ticks. 20
+  spells:
+    - SensoryDamageVariableDisplay
+
+
+LinkBuffActive:
+  spell-class: ".buff.DummySpell"
+  effects:
+        cherryaura:
+            position: buff
+            effect: effectlib
+            effectlib:
+                class: FlameEffect
+                particle: ELECTRIC_SPARK
+                iterations: 10
+        halo:
+            effect: effectlib
+            effect-interval: 5
+            position: buff
+            effectlib:
+                class:  WarpEffect 
+                particle: ELECTRIC_SPARK
+                orient: false
+                radius: 0.35
+                grow: 0
+                rings: 1
+                particles: 15
+                offset: 0,2.1,0
+                iterations: 3
+        variabledisplay: 
+            effect-interval: 1
+            position: buff
+            effect: actionbartext
+            message: "&d&lLast amount damage taken: %var:SensoryDamageTaken%."
+            broadcast: false
+SensoryLinkApplicationPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive LinkBuffActive required
+          - sneaking required required
+     triggers:
+          - givedamage
+     spells:
+          - SensoryLinkApplication
+SensoryLinkApplication:
+    spell-class: ".TargetedMultiSpell"
+    require-entity-target: true
+    stop-on-fail: false
+    hit-players: true
+    range: 20
+    can-target: players,nonplayers
+    spells:
+        - TargetLinkBuffApplied
+TargetLinkBuffAppliedPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive TargetLinkBuffApplied required
+     triggers:
+          - ticks 30
+     spells:
+          - TargetSensoryAppliedPotion
+TargetSensoryAppliedPotion:
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: glowing
+    strength: 2
+    duration: 40
+    can-target: players,nonplayers
+TargetLinkBuffApplied:
+  spell-class: ".buff.DummySpell"
+  effects:
+    effects:
+        tingsound:
+            position: target
+            effect: sound
+            sound: entity.experience_orb.pickup
+            volume: 0.03
+            pitch: 3
+
+TargetSensoryPainAoE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    circle-shape: true
+    horizontal-radius: 100
+    vertical-radius: 100
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - painreceivedfromsensory
+    effects:
+        tingsound:
+            position: pos2
+            effect: sound
+            sound: entity.experience_orb.pickup
+            volume: 0.03
+            pitch: -3
+        effect3:
+            position: line
+            effect-interval: 1
+            effect: particles
+            height-offset: 0
+            particle-name: effect
+            speed: 5
+            horiz-spread: 1
+            vert-spread: 3
+            count:  10
+painreceivedfromsensory:
+    spell-class: ".targeted.PainSpell"
+    damage: "1 * %var:SensoryDamageTaken%"
+    ignore-armor: true
+    can-target: players,monsters
+    check-plugins: true
+    target-modifiers:
+        - buffactive TargetLinkBuffApplied required
 
 
 
