@@ -48,3 +48,251 @@ SensoryDamageVariable:
   variable-name: SensoryDamageTaken
   data-element: lastdamagecause.amount
   str-cast-self: "You've taken %var:SensoryDamageTaken%. damage"
+
+
+
+
+
+
+  OLD BROKEN SPELL BELOW
+# Vars
+variables:
+    SensoryLinkBalancer:
+        type: player
+        permanent: false
+        default: 0
+        min: -100
+        max: 100
+    SensoryLinkDamageAmount:
+        type: player
+        permanent: false
+        default: 0
+        min: -100
+        max: 100
+
+SensoryLinkTakeDamagePassive:
+    spell-class: ".PassiveSpell"
+    range: 80
+    triggers:
+        - trigger: damage
+          mode: take
+          indirect-damager: true
+    modifiers:
+        - buffactive SensoryLinkBuff1 required
+    spells:
+        - SensoryLinkTakeDamageMulti
+
+SensoryLinkTakeDamageMulti:
+    spell-class: ".MultiSpell"
+    helper-class: true
+    can-target: self
+    range: 80
+    spells:
+        - DecrementDmgCounter
+        - SensoryLinkBalanceDummyDecrement
+
+DecrementDmgCounter:
+    spell-class: ".targeted.DataSpell"
+    helper-spell: true
+    target-self: true
+    obey-los: false
+    data-element: lastdamagecause.amount
+    variable-name: SensoryLinkDamageAmount
+    effects:
+ #       Effect-2:
+#            position: caster
+#            effect: fireworks
+#            trail: no
+#            type: 2
+#            colors: FFFFFF
+#            fade-colors: 000000 
+    
+SensoryLinkBalanceDummyDecrement:
+    spell-class: ".instant.DummySpell"
+    helper-spell: true
+    variable-mods-cast:
+        - SensoryLinkBalancer =%castervar:SensoryLinkBalancer:5%-%castervar:SensoryLinkDamageAmount:5%
+
+SensoryLinkTakeAOE:
+    spell-class: ".targeted.AreaEffectSpell"
+    helper-spell: true
+    hidden: true
+    duration: 100
+    horizontal-radius: 100
+    vertical-radius: 100
+    point-blank: true
+    spell-source-in-center: true
+    target-players: true
+    max-targets: 100
+    require-entity-target: false
+    fail-if-no-targets: false
+    spells:
+     - SensoryLinkDmgCounter
+            
+## Sensory Link ##
+SensoryLink:
+    spell-class: ".TargetedMultiSpell"
+    name: "&#F870DBSensory Link"
+    cooldown: 0
+    cost:
+        - mana 0
+    cast-item: Diamond
+    require-entity-target: true
+    stop-on-fail: false
+    hit-players: true
+    range: 20
+    can-target: players,nonplayers
+    spells:
+        - SensoryLinkDumMulti
+        - SensoryLinkDummy2
+        - SensoryLinkDummy1
+        - SensoryLinkAOEChain
+
+SensoryLinkDumMulti:
+    spell-class: ".MultiSpell"
+    helper-spell: true
+    can-target: caster
+    target-self: true
+    spells:
+        - SensoryLinkDummy1
+        
+SensoryLinkDummy1:
+    spell-class: ".buff.DummySpell"
+    helper-spell: true
+    duration: 20
+    toggle: false
+    targeted: true
+    can-target: caster,players,nonplayers,invisibles
+    effects:
+        3:
+          position: buff
+          effect: effectlibentity
+          effectlib:
+            class: CircleEffect
+            particle: redstone
+            color: F870DB
+            iterations: 20
+            type: repeating
+            angular_velocity_x: 0
+            x_rotation: 0
+            angular_velocity_z: 0
+            z_rotation: 0
+            angular_velocity_y: 0
+            y_rotation: 0
+            whole_circle: true
+            enable_rotation: true
+            relative_offset: 0,1,0
+            radius: 0.8
+            particles: 25
+            pitch: 0
+            period: 0
+
+SensoryLinkDummy2:
+    spell-class: ".targeted.DummySpell"
+    helper-spell: true
+    duration: 4
+    toggle: false
+    can-target: players,nonplayers
+    effects:
+      4:
+            position: line
+            effect: particles
+            particle-name: redstone
+            color: F870DB
+            horiz-spread: 0.5
+            vert-spread: 1.5
+            size: 1
+            count: 18
+      5:
+            position: line
+            effect: particles
+            particle-name: redstone
+            color: F870DB
+            relative-offset: 0,1,0
+            horiz-spread: 0.25
+            vert-spread: 0.25
+            size: 1
+            count: 6
+      2:
+        position: target
+        effect: sound
+        sound: block.amethyst_cluster.step
+        volume: 1
+        pitch: 0
+      3:
+        position: caster
+        effect: broadcast
+        message: "%a &#F870DBlinks their targets senses!"
+        range: 25
+        
+SensoryLinkAOEChain:
+    spell-class: ".targeted.AreaEffectSpell"
+    helper-spell: true
+    max-targets: 1
+    horizontal-radius: 20
+    cancel-on-death: false
+    vertical-radius: 20
+    hit-players: true
+    hit-nonplayers: true
+    point-blank: true
+    fail-if-no-targets: false
+    spell-source-in-center: true
+    can-target: players,nonplayers
+    spells: [SensoryLinkChain]
+    
+SensoryLinkChain:
+    spell-class: ".targeted.ChainSpell"
+    helper-spell: true
+    spell: SensoryLinkMulti
+    bounces: 10
+    bounce-range: 30
+    interval: 1
+    target-players: true
+    target-non-players: true
+    hit-players: true
+    can-target: players,nonplayers
+    effects:
+      1:
+        position: line
+        effect: effectlibentity
+        effectlib:
+            class: SphereEffect
+            particle: redstone
+            color: F870DB
+            iterations: 1
+            radius: 0.4
+            particles: 5
+            period: 0
+            pitch: false
+            orient: true
+            relativeOffset: "0,1,0"
+      
+      2:
+        position: line
+        effect: effectlibentity
+        effectlib:
+            class: SphereEffect
+            particle: redstone
+            color: F870DB
+            iterations: 1
+            radius: 0.4
+            particles: 5
+            period: 0
+            pitch: false
+            orient: true
+            relativeOffset: "0,1,0"
+      
+      Sound-1:
+            position: line
+            effect: sound 
+            effect-interval: 5
+            sound: block.amethyst_cluster.step
+            volume: 0.25
+            pitch: 1.75
+
+SensoryLinkMulti:
+    spell-class: ".TargetedMultiSpell"
+    helper-spell: true
+    can-target: players,nonplayers
+    spells:
+        - SensoryLinkDummy1
