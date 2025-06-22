@@ -1,0 +1,51 @@
+#This spell is going to make use of the data spelltype to capture ingame data and store it as a variable.
+#This variable can than be used passed on to others or recalled at a later date.
+
+variables:
+  SensoryDamageTaken:
+    type: player
+    permanent: false
+    default: 0
+    min: 0
+    max: 1000 
+#The above spells basically defines maximum and minimum value of the damage storing variable
+LinkBuff:
+  spell-class: ".buff.DummySpell"
+  duration: 3600
+  effects:
+    effect1:
+      effect: effectlibentity
+      position: buffeffectlib
+      effectlib:
+        class: CircleEffect
+        particle: DUST_COLOR_TRANSITION
+        color: FFFFFF
+        to-color: 87CEEB
+        orient: false
+        radius: 0.75
+        wholeCircle: false
+        particles: 15
+        offset: 0,0.1,0
+        iterations: 25
+#This buff will display the particles to those who have the buff active
+LinkDamagePassive:
+  spell-class: ".PassiveSpell"
+  modifiers:
+    - buffactive LinkBuff required
+  triggers:
+    - takedamage
+  spells:
+    - SensoryDamageVariable
+    - ApplyDamageArea
+
+SensoryDamageVariable:
+  spell-class: ".targeted.DataSpell"
+  target-self: true
+  variable-name: SharedDamage
+  data-element: lastdamagecause.amount
+  str-cast-self: "You've taken %var:SensoryDamageTaken%. damage"
+ApplyDamageToLinked:
+  spell-class: ".targeted.DamageSpell"
+  damage: variable SensoryDamageTaken  # Assuming this syntax works
+  modifiers:
+    - buffactive LinkedBuff required  # Only apply to entities with LinkedBuff
