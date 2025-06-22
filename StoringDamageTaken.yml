@@ -3,7 +3,7 @@
 
 variables:
   SensoryDamageTaken:
-    type: player
+    type: playerstring
     permanent: false
     default: 0
     min: 0
@@ -36,16 +36,15 @@ LinkDamagePassive:
     - takedamage
   spells:
     - SensoryDamageVariable
-    - ApplyDamageArea
+    - DELAY 5
+    - tellmedmgtaken
 
+tellmedmgtaken:
+    spell-class: ".instant.DummySpell"
+    str-cast-self: "&f&lLast amount of damage takenr&f&l: &r&b&l%var:SensoryDamageTaken%" 
 SensoryDamageVariable:
   spell-class: ".targeted.DataSpell"
   target-self: true
-  variable-name: SharedDamage
+  variable-name: SensoryDamageTaken
   data-element: lastdamagecause.amount
   str-cast-self: "You've taken %var:SensoryDamageTaken%. damage"
-ApplyDamageToLinked:
-  spell-class: ".targeted.DamageSpell"
-  damage: variable SensoryDamageTaken  # Assuming this syntax works
-  modifiers:
-    - buffactive LinkedBuff required  # Only apply to entities with LinkedBuff
