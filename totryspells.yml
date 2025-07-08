@@ -1,0 +1,1263 @@
+ScarletVisualSpectacle:
+    spell-class: ".MultiSpell"
+    name: "&4&lScarlet Witch &5&lVisual Spectacle"
+    cooldown: 5
+    cast-item: quartz
+    require-entity-target: false
+    stop-on-fail: false
+    str-cast-self: "&4Pure Chaoooooooooooooooos"
+    spells:
+        - ScarletWitchCSM1
+        - ScarletWitchCSE
+        - sdadsahdjfuhadasd
+        - ScarletWitchCSS2
+        - ScarletWitchCSG
+        - DELAY 45
+        - ScarletWitchCSS3
+ScarletWitchCSS3:
+   spell-class: ".buff.DummySpell"
+   duration: 3
+   special-effect-interval: 5
+   effects:
+        LevelSoundLow:
+            position: buff
+            effect: sound
+            sound: entity.lightning_bolt.thunder
+            volume: 0.35
+            pitch: 3        
+ScarletWitchCSS2:
+   spell-class: ".buff.DummySpell"
+   duration: 3
+   special-effect-interval: 5
+   effects:
+        LevelSoundLow:
+            position: buff
+            effect: sound
+            sound: particle.soul_escape
+            volume: 0.35
+            pitch: -3
+        LevelSoundMid:
+            position: buff
+            effect: sound
+            sound: block.amethyst_block.step
+            volume: 0.15
+            pitch: 0
+sdadsahdjfuhadasd:
+    spell-class: ".instant.DummySpell"
+    effects:
+      elderguardian:
+          position: buff
+          effect: sound
+          sound: entity.elder_guardian.curse
+          volume: 0.25
+          pitch: 3
+ScarletWitchCSG:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: glowing
+    strength: 2
+    duration: 60
+    target-self: true
+    can-target: players
+ScarletWitchCSE:
+  spell-class: ".buff.DummySpell"
+  duration: 5
+  effects:
+    redstone:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: BLOCK_CRACK
+        material: REDSTONE_BLOCK
+        particles: 10
+        particles2: 9
+        duration: 10
+        iterations: 1
+        orientPitch: false
+        cycle: false
+        xEquation: 0
+        yEquation: 0
+        zEquation: 0
+        x2Equation: (10 * (1 - t/385)^2 + 0.5) * sin(4 * 3.1415 * t/385 + 2 * 3.1415 * t2/9)
+        y2Equation: (10 * (1 - t/385)^2 + 0.5) * sin(-4 * 3.1415 * t/385 + 2 * 3.1415 * t2/9) 
+        z2Equation: (10 * (1 - t/385)^2 + 0.5) * cos(-4 * 3.1415 * t/385 + 2 * 3.1415 * t2/9)
+        relative-offset: 0,1,0
+    redtoneparticle:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: REDSTONE
+        particleSize: 2
+        particles: 10
+        particles2: 9
+        duration: 10
+        iterations: 1
+        orientPitch: false
+        cycle: false
+        xEquation: 0
+        yEquation: 0
+        zEquation: 0
+        x2Equation: (10 * (1 - t/385)^2 + 0.5) * sin(4 * 3.1415 * t/385 + 2 * 3.1415 * t2/9)
+        y2Equation: (10 * (1 - t/385)^2 + 0.5) * sin(-4 * 3.1415 * t/385 + 2 * 3.1415 * t2/9) 
+        z2Equation: (10 * (1 - t/385)^2 + 0.5) * cos(-4 * 3.1415 * t/385 + 2 * 3.1415 * t2/9)
+        relative-offset: 0,1,0
+      StarOrbitDistance:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: 12
+            orbit-vert-expand-radius: 1
+            orbit-vert-expand-delay: 30
+            orbit-x-axis: 11
+            orbit-y-offset: 5
+            orbit-seconds-per-revolution: rand(15,30)
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                speed: 0
+                particles: 2
+                radius: 0.1
+                iterations: 2
+      flashOrbitDistance2:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: rand(30,50)
+            orbit-vert-expand-radius: -1
+            orbit-vert-expand-delay: 30
+            orbit-x-axis: -5
+            orbit-y-offset: 3
+            orbit-seconds-per-revolution: rand(15,30)
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                speed: 0
+                particles: 2
+                radius: 0.1
+                iterations: 20
+      flashOrbitDistance3:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: rand(30,50)
+            orbit-vert-expand-radius: 0
+            orbit-vert-expand-delay: 20
+            orbit-z-axis: -4
+            orbit-y-offset: 7
+            orbit-seconds-per-revolution: rand(15,30)
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                speed: 0
+                particles: 2
+                radius: 0.1
+                iterations: 20
+      explosionthing:
+           position: special
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 2000
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: REDSTONE
+                   particleSize: 2
+                   visible_range: 30
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+Sickanimationtemplate:
+  spell-class: ".buff.DummySpell"
+  duration: 1
+  effects:
+    eff1:
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: DUST_COLOR_TRANSITION
+        color: FFFFFF
+        to-color: 87CEEB
+        particles: 10
+        particles2: 9
+        duration: 10
+        iterations: 1
+        orientPitch: false
+        cycle: false
+        xEquation: 0
+        yEquation: 0
+        zEquation: 0
+        x2Equation: (10 * (t/250 - 1)^2 + 0.5) * sin(4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
+        y2Equation: (-10 * (t/250 - 1)^2 + 0.5) * sin(-4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
+        z2Equation: (10 * (t/250 - 1)^2 + 0.5) * cos(-4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
+AcidWaveMulti:
+    cast-item: Poison
+    name: "&#67517d&lAcid Orb"
+    spell-class: ".TargetedMultiSpell"
+    target-self: true
+    spells:
+        - AcidWaveReset
+        - AcidWaveLoop(mode=full)
+AcidWaveReset:
+    spell-class: ".buff.DummySpell"
+    helper-spell: true
+    duration: 0.05
+    toggle: false
+    modifiers:
+        - always variable AcidWaveVar;=0
+AcidWaveLoop:
+    spell-class: ".targeted.LoopSpell"
+    interval: 1
+    helper-spell: true
+    target-self: true
+    spells:
+        - AcidWaveLoopDummy
+    variable-mods-loop: 
+        - AcidWaveVar +1
+    spell-on-end: AcidWaveProjectile(mode=full)
+    str-fade-self: "The variable has reached its maximum value of %var:AcidWaveVar%"
+    loop-modifiers:
+        - variable AcidWaveVar=100 denied
+        - sneaking denied
+AcidWaveLoopDummy:
+    spell-class: ".buff.DummySpell"
+    helper-spell: true
+    duration: 0.05
+    toggle: false
+    effects:
+        3:
+            position: buff
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                particle: redstone
+                color: 000000
+                particles: 10
+                radius: "%var:AcidWaveVar%/25"
+                period: 1
+                iterations: 1
+                relative-offset: 0,4,0
+                delay: 0
+AcidWaveProjectile:
+    spell-class: ".instant.ParticleProjectileSpell"
+    helper-spell: true
+    change-pitch: true
+    controllable: false
+    projectile-velocity: 10
+    point-blank: true
+    tick-interval: 1
+    max-distance: 40
+    hit-radius: 1
+    special-effect-interval: 1
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    relative-offset: 0,0,0
+    effects:
+        eff1:
+            position: special
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                particle: redstone
+                color: 000000
+                particles: 10
+                radius: "%var:AcidWaveVar%/25"
+                period: 1
+                iterations: 1
+                delay: 0
+BaconInteraction:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cooldown: 30
+    cast-item: stick
+    name: "&5Bacon&f: Spell&6 Injection"
+    interactions:
+        - InitialInteractionOrb BaconImpactBuff
+    change-pitch: false
+    controllable: false
+    projectile-velocity: 0
+    tick-interval: 1
+    max-duration: 1
+    special-effect-interval: 1
+    stop-on-hit-entity: false
+    stop-on-hit-ground: false
+    hit-radius: 5
+    hug-surface: true
+    effects:
+        soundI:
+            position: special
+            effect: sound
+            sound: entity.drowned.ambient
+            volume: 0.5
+            pitch: 2
+        soundII:
+            position: special
+            effect: sound
+            sound: entity.drowned.ambient_water
+            volume: 0.5
+            pitch: 2
+        soundIII:
+            position: special
+            effect: sound
+            sound: block.note_block.bell
+            volume: 0.5
+            pitch: 3
+        spiral:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: HelixEffect
+                particle: SPELL_WITCH
+                strands: 5
+                radius: 15
+                curve: 5
+                rotation : 6
+                iterations: 20
+        spiral2:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: HelixEffect
+                particle: PORTAL
+                strands: 5
+                radius: 15
+                curve: 5
+                rotation : 6
+                iterations: 20
+        Star:
+            effect: effectlibentity
+            position: special
+            effectlib:
+                class: StarEffect
+                particle: END_ROD
+                spikeHeight: 2.5
+                spikesHalf: 3
+                innerRadius: 0.5
+                particles: 20
+                iterations: 20
+                offset: 0,5,0
+        whoosh:
+            effect: effectlibentity
+            position: special
+            effect-interval: 15
+            effectlib:
+                class: HelixEffect
+                particle: CLOUD
+                particles: 2
+                speed: 0.2
+                strands: 3
+                radius: 3
+                curve: 3
+                rotation : 5
+                iterations: 20
+                relative-offset: 0,0,0
+BaconImpactBuff:
+    spell-class: ".buff.DummySpell"
+    Duration: 20
+    effects:
+        StarZone1:
+            effect: effectlibentity
+            position: buffeffectlib
+            effectlib:
+                class: WarpEffect
+                particle: Witch
+                radius: 10
+                grow: 0.5
+                particles: 45
+                rings: 10
+                iterations:  100
+        StarZone2:
+            effect: effectlibentity
+            position: buffeffectlib
+            effect-interval: 20
+            effectlib:
+                class: WarpEffect
+                particle: PORTAL
+                radius: 10
+                particles: 45
+                grow: 0.5
+                rings: 10
+                iterations:  100
+        StarZone3:
+            effect: effectlibentity
+            effect-interval: 20
+            position: buffeffectlib
+            effectlib:
+                class: WarpEffect
+                particle: PORTAL
+                radius: 3
+                particles: 75
+                grow: 0.5
+                rings: 15
+                iterations:  100
+        Zone:
+            effect: effectlibentity
+            position: buffeffectlib
+            effectlib:
+                class:  CircleEffect
+                particle: END_ROD
+                orient: true
+                radius: 15
+                wholeCircle: true
+                particles: 100
+                offset: 0,10,0
+                iterations: 100
+        Zone2:
+            effect: effectlibentity
+            position: buffeffectlib
+            effectlib:
+                class:  CircleEffect
+                particle: CRIT_MAGIC
+                orient: true
+                radius: 15
+                wholeCircle: true
+                particles: 100
+                offset: 0,10,0
+                iterations: 100
+        StarOrbitDistance:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: 12
+            orbit-vert-expand-radius: 1
+            orbit-vert-expand-delay: 30
+            orbit-x-axis: 10
+            orbit-y-offset: 55
+            orbit-seconds-per-revolution: rand(15,30)
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                speed: 0
+                particles: 2
+                radius: 0.1
+                iterations: 2
+        StarOrbitDistance2:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: rand(30,50)
+            orbit-vert-expand-radius: -1
+            orbit-vert-expand-delay: 30
+            orbit-x-axis: -15
+            orbit-y-offset: 35
+            orbit-seconds-per-revolution: rand(15,30)
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                speed: 0
+                particles: 2
+                radius: 0.1
+                iterations: 2
+        StarOrbitDistance3:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: rand(30,50)
+            orbit-vert-expand-radius: 0
+            orbit-vert-expand-delay: 20
+            orbit-z-axis: 10
+            orbit-y-offset: 45
+            orbit-seconds-per-revolution: rand(15,30)
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                speed: 0
+                particles: 2
+                radius: 0.1
+                iterations: 2
+        effect1:
+            position: buff
+            effect-interval: 20
+            effect: particles
+            height-offset: 0
+            particle-name: composter
+            horiz-spread: 15
+            vert-spread: 15
+            count:  125
+        effect2:
+            position: buff
+            effect-interval: 2
+            effect: particles
+            height-offset: 0
+            particle-name: composter
+            horiz-spread: 15
+            vert-spread: 15
+            count:  125
+        message:
+            effect-interval: 1
+            position: buff
+            effect: actionbartext
+            message: "f Attack to make targets float &b hold shift to stun subjects around you. &9 release shift on a target to shadowstep."
+            broadcast: false
+BaconStarHop:
+    spell-class: ".targeted.ChainSpell"
+    spell: BaconStarHopMulti
+    bounces: 10
+    bounce-range: 20
+    interval: 15
+    target-players: true
+    can-target: players,monsters,animals
+    effects:
+        purple:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.5
+            vert-spread: 0.2
+            color: A020F0
+            size: 2
+            count: 3
+        witch:
+            position: line
+            effect: particles
+            particle-name: witch
+            horiz-spread: 1
+            vert-spread: 2
+            count: 10
+        gold:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.5
+            vert-spread: 0.2
+            color: FFD700
+            size: 2
+            count: 3
+        soundtravel:
+            position: line
+            effect: sound
+            sound: block.bell.resonate
+            volume: 0.5
+            pitch: 2
+        soundhit:
+            position: target
+            effect: sound
+            sound: block.note_block.bell
+            volume: 2
+            pitch: 2
+        soundhit2:
+            position: target
+            effect: sound
+            sound: block.note_block.bell
+            volume: 2
+            pitch: -2
+BaconStarHopMultiAOEassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - buffactive BaconImpactBuff required
+     triggers:
+          - givedamage
+     spells:
+          - BaconStarHop
+BaconStarHopMultiAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 15
+    vertical-radius: 10
+    point-blank: true
+    fail-if-no-targets: false
+    spell-source-in-center: true
+    can-target: players,monsters,animals
+    spells:
+        - BaconStarHopMulti
+BaconStarHopMulti:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    cast-random-spell-instead: false
+    spells:
+        - BaconStarHopGlow
+        - BaconStarHopBlind
+        - BaconStarHopLev
+        - GotHitByBaconDummy
+        - DELAY: 5
+        - BaconStarHopLevSelf
+BaconStarHopGlow:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Glowing
+    strength: 15
+    duration: 30
+    targeted: true
+    can-target: players,nonplayers
+BaconStarHopBlind:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Darkness
+    strength: 1
+    duration: 30
+    targeted: true
+    can-target: players,monsters,animals
+BaconStarHopLev:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Levitation
+    strength: 2
+    duration: 40
+    targeted: true
+    can-target: players,nonplayers
+BaconStarHopLevSelf:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Levitation
+    strength: 2
+    duration: 40
+    targeted: true
+    target-self: true
+GotHitByBaconDummy:
+   spell-class: ".buff.DummySpell"
+   duration: 3
+   effects:
+        Flash:
+           position: buff
+           effect: particles
+           particle-name: flash
+           speed: 0.1
+           horiz-spread: 0.1
+           vert-spread: 0.1
+           count: 2
+BaconStarPassive:
+     spell-class: ".PassiveSpell"
+     range: 15
+     cooldown: 2
+     modifiers:
+          - buffactive BaconImpactBuff required
+     triggers:
+          - startsneak 
+     spells:
+          - GotHitByBaconStunAOE
+GotHitByBaconStunAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 15
+    vertical-radius: 10
+    point-blank: true
+    fail-if-no-targets: false
+    spell-source-in-center: true
+    can-target: players,monsters,animals
+    spells:
+        - GotHitByBaconStun
+BaconStarPassive2:
+     spell-class: ".PassiveSpell"
+     range: 15
+     cooldown: 2
+     modifiers:
+          - buffactive BaconImpactBuff required
+     triggers:
+          - stopsneak 
+     spells:
+        - GotHitByBaconShadowstep
+GotHitByBaconStun:
+    spell-class: ".targeted.StunSpell"
+    duration: 100
+    targeted: true
+    str-cast-target: "&9&l %a 's Celestial&f forces keep you in place.'"
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: line
+            effectlib:
+                class: target
+                particle: BLOCK_DUST
+                material: GOLD_BLOCK
+                iterations: 10
+GotHitByBaconShadowstep:
+    helper-spell: true
+    spell-class: ".targeted.ShadowstepSpell"
+    can-target: players,monsters,animals
+    range: 20
+    effects:
+        eff1:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: FlameEffect
+                particle: SOUL_FIRE_FLAME
+                iterations: 20
+
+frazenimpactAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 30
+    vertical-radius: 30
+    point-blank: true
+    fail-if-no-targets: false
+    spell-source-in-center: true
+    can-target: players
+    spells:
+        - frazenimpacPotion
+        - SnakeBiteWither
+    effects:
+       goldsparkles:
+           position: special
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 4000
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: REDSTONE
+                   color: E5B80B
+                   visible_range: 30
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+       whitesprakles:
+           position: special
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 4000
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: FLAME
+                   color: E5B80B
+                   visible_range: 30
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+frazenimpacPotion:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Darkness
+    strength: 2
+    duration: 80
+    targeted: true
+    can-target: players,nonplayers
+
+frazenmodified:
+   spell-class: ".instant.DummySpell"
+   effects:
+       goldsparkles:
+           position: caster
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 4000
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: REDSTONE
+                   color: E5B80B
+                   visible_range: 50
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+       whitesprakles:
+           position: caster
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 4000
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: FLAME
+                   color: E5B80B
+                   visible_range: 50
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+FrazenInteractionOrb:
+    spell-class: ".instant.ParticleProjectileSpell"
+    hit-non-players: false
+    hit-players: true
+    hit-ground: true
+    spell-on-hit-ground: frazenimpactAOE
+    start-y-offset: 35
+    projectile-vert-offset: -90
+    visibleRange: 50
+    spell-interval: 1
+    spell-on-tick: none
+    projectile-velocity: 0.03
+    projectile-acceleration: 25
+    projectile-acceleration-delay: 40
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    max-distance: 60
+    hit-radius: 1.5
+    controllable: false
+    effects:
+        InnerCoreFlash:
+            effect: effectlibentity
+            effect-interval: 15
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                particles: 1
+                radius: 0.1
+                relative-offset: 2.25,1.25,0
+                iterations: 10
+        OuterCore:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: WAX_ON
+                particles: 3
+                radius: 2
+                radiusIncrease: 0.1
+                relative-offset: 2.25,1.25,0
+                iterations: 5
+        SphereOrbits:
+            effect: effectlibentity
+            effect-interval: 11
+            position: special
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: REDSTONE
+                colorNucleus: 000000
+                particlesNucleus: 1
+                radiusNucleus: 0.4
+                particleOrbital: FLAME
+                orient: true
+                radius: 5
+                ParticleSpeed: 0.1
+                particlesOrbital: 20
+                particle-size: 0.5+
+                orbitals: 2
+                rotation: 30
+                relative-offset: 2.25,1.25,0
+                iterations: 11
+        SpinnyThings:
+            effect: effectlibentity
+            effect-interval: 25
+            position: special
+            effectlib:
+                class:  VortexEffect 
+                particle: BLOCK_CRACK
+                material: STONE
+                particle-size: 5.1
+                speed: 0.1
+                orient: true
+                radials: 0.1
+                radius: 2.5
+                grow: 0.075
+                helixes: 3
+                relative-offset: 
+        SpinnyThings2:
+            effect: effectlibentity
+            effect-interval: 25
+            position: special
+            effectlib:
+                class:  VortexEffect 
+                particle: REDSTONE
+                color: E5B80B
+                particle-size: 3
+                speed: 0.1
+                orient: true
+                radials: 0.1
+                radius: 5.1
+                grow: 0.1
+                helixes: 3
+                relative-offset: 0.5,1.5,0
+                iterations: 15
+        SpinnyThings3:
+            effect: effectlibentity
+            effect-interval: 25
+            position: special
+            effectlib:
+                class:  VortexEffect 
+                particle: LARGE_SMOKE
+                particle-size: 3
+                speed: 0.1
+                orient: true
+                radials: 0.1
+                radius: 5.1
+                grow: 0.1
+                helixes: 3
+                relative-offset: 0.45,1.5,0
+                iterations: 15
+        sound:
+            position: special
+            effect: sound
+            sound: entity.warden.death
+            volume: 2
+            pitch: 2
+        sound2:
+            position: special
+            effect: sound
+            sound: entity.warden.death
+            volume: 2
+            pitch: -2  
+frazeninteract:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: stick
+    name: "&6Frazen&f: Spell&2 Injection"
+    render-distance: 30
+    interactions:
+        - InitialInteractionOrb FrazenInteractionOrb
+    hit-non-players: false
+    hit-self: false
+    hug-surface: true
+    projectile-velocity: 5
+    tick-interval: 3
+    hit-radius: 3
+    stop-on-hit-ground: false
+    max-distance: 15
+    controllable: true
+    effects:
+        stone:
+            effect: effectlibentity
+            position: special
+            effect-interval: 20
+            effectlib:
+                class: HelixEffect
+                particle: BLOCK_CRACK
+                particles: 15
+                material: STONE
+                strands: 3
+                radius: 3
+                curve: 2
+                rotation : 2
+                iterations: 2
+        dirt:
+            effect: effectlibentity
+            position: special
+            effect-interval: 20
+            effectlib:
+                class: HelixEffect
+                particle: BLOCK_CRACK
+                particles: 15
+                material: DIRT
+                strands: 3
+                radius: 3
+                curve: -2
+                rotation : 2
+                iterations: 2
+        goldie:
+            position: special
+            effect: particles
+            particle-name: wax_on
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 25
+            intervals: 200
+        sound:
+            position: special
+            effect: sound
+            sound: block.grass.step
+            volume: 1
+            pitch: -2             
+willowinteract:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: stick
+    name: "&BWillow&f: Spell&9 Injection"
+    render-distance: 30
+    hit-non-players: false
+    hit-self: true
+    hit-ground: true
+    projectile-velocity: 5
+    interactions:
+        - InitialInteractionOrb WillowInteractionOrb
+    tick-interval: 1
+    stop-on-hit-ground: false
+    max-distance: 15
+    start-y-offset: 10
+    projectile-vert-offset: -3
+    spell-on-tick: ToxicScreenAoE
+    effects:
+        effect1:
+            position: special
+            effect: particles
+            particle-name: SOUL_FIRE_FLAME
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 25
+            intervals: 200
+        effect2:
+            position: special
+            effect: particles
+            particle-name: GLOW
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 25
+            intervals: 200
+InitialInteractionOrb:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cooldown: 5
+    hit-non-players: false
+    hit-players: false
+    hit-ground: false
+    hit-air-during: true
+    spell-interval: 5
+    spell-on-tick: CloudBurstAOE
+    projectile-velocity: 0.01
+    stop-on-hit-entity: false
+    stop-on-hit-ground: false
+    max-duration: 60
+    hit-radius: 1.5
+    controllable: true
+    effects:
+        enchantcore:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: ENCHANT
+                particles: 15
+                radius: 2
+                speed: -2
+                relative-offset: 0,0,0
+                iterations: 5
+        Atom:
+            effect: effectlibentity
+            effect-interval: 30
+            position: special
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: END_ROD
+                particlesNucleus: 0
+                radiusNucleus: 0.1
+                particleOrbital: REDSTONE
+                orient: false
+                radius: 3
+                particlesOrbital: 20
+                particle-size: 0.5
+                orbitals: 3
+                relative-offset: 0,0,0
+                iterations: 20
+WillowInteractionOrb:
+    spell-class: ".instant.ParticleProjectileSpell"
+    hit-non-players: false
+    hit-players: false
+    hit-ground: false
+    hit-air-during: true
+    spell-interval: 1
+    spell-on-tick: none
+    projectile-velocity: 0.03
+    projectile-acceleration: 25
+    projectile-acceleration-delay: 60
+    stop-on-hit-entity: false
+    stop-on-hit-ground: false
+    max-distance: 50
+    hit-radius: 1.5
+    relative-offset: 2.25,1.25,0
+    controllable: false
+    effects:
+        InnerCoreFlash:
+            effect: effectlibentity
+            effect-interval: 15
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: FLASH
+                particles: 1
+                radius: 0.1
+                relative-offset: 2.25,1.25,0
+                iterations: 10
+        OuterCore:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: GLOW
+                particles: 3
+                radius: .5
+                radiusIncrease: 0.05
+                relative-offset: 2.25,1.25,0
+                iterations: 5
+        SphereOrbits:
+            effect: effectlibentity
+            effect-interval: 11
+            position: special
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: SONIC_BOOM
+                particlesNucleus: 1
+                radiusNucleus: 0.1
+                particleOrbital: SOUL_FIRE_FLAME
+                orient: true
+                radius: 2
+                particlesOrbital: 10
+                particle-size: 0.5
+                orbitals: 2
+                rotation: 30
+                relative-offset: 2.25,1.25,0
+                iterations: 11
+        SpinnyThings:
+            effect: effectlibentity
+            effect-interval: 25
+            position: special
+            effectlib:
+                class:  VortexEffect 
+                particle: REDSTONE
+                color: E0FFFF
+                particle-size: 1.75
+                speed: 0.1
+                orient: true
+                radials: 0.1
+                radius: 2.5
+                grow: 0.075
+                helixes: 3
+                relative-offset: 0.5,1.5,0
+                iterations: 15
+        sound2:
+            position: special
+            effect: sound
+            sound: entity.ender_dragon.shoot 
+            volume: 0.5
+            pitch: 3
+        sound3:
+            position: special
+            effect: sound
+            sound:  entity.firework_rocket.twinkle_far
+            volume: 0.75
+            pitch: 2 
+
+magic-items:
+    Mirror:
+        type: "name_tag"
+        name: "&fBack to sender"
+        lore: "Stores spells targeted at the caster using RTS buff"
+
+variables:
+    BacktoSender:
+        type: playerstring
+
+Galeblastrecord:
+    spell-class: ".buff.ImpactRecordSpell"
+    duration: 3
+    variable-name: BacktoSender
+    num-uses: 1
+    effects:
+        effect4:
+            position: buffeffectlib
+            effect: effectlib
+            effect-interval: 20
+            effectlib:
+                class: SphereEffect
+                particle: flash
+                speed: 2
+                radius: 0.1
+                particles: 10
+                iterations: 3
+                relative-offset: 0,0,0
+        Message:
+            position: caster
+            effect: broadcast
+            message: "%t is ready is preparing back to sender..."
+            range: 20
+Galeblastrecordcast:
+    spell-class: ".instant.VariableCastSpell"
+    variable-name: BacktoSender
+    str-doesnt-contain-spell: "&b Nothing stored up yet"
+    name: "&8Back &7to &4Sender"
+    cast-item: Mirror
+    effects:
+        eff1:
+            position: pos1
+            effect: effectlib
+            effectlib:
+                class: EquationEffect
+                particle: DUST_COLOR_TRANSITION
+                color: FFFFFF
+                to-color: 87CEEB
+                particles: 10
+                particles2: 9
+                duration: 10
+                iterations: 1
+                orientPitch: false
+                cycle: false
+                xEquation: 0
+                yEquation: 0
+                zEquation: 0
+                x2Equation: (2 * (t/-250 - 1)^3 + 0.5) * sin(4 * 3.1415 * t/-250 + 2 * 3.1415 * t2/9)
+                y2Equation: 0
+                z2Equation: (2 * (t/-250 - 1)^3 + 0.5) * cos(4 * 3.1415 * t/-250 + 2 * 3.1415 * t2/9)
+        Message:
+            position: caster
+            effect: broadcast
+            message: "%t &4Taste your own medicine!"
+            range: 20
+ReturnToSenderPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - buffactive ReturnToSenderDummy required
+     triggers:
+          - startsneak 
+     spells:
+          - Galeblastrecord
+ReturnToSenderDummy:
+    spell-class: ".buff.DummySpell"
+    name: "&4 This yo bullshit"
+    cast-item: stick
+    duration: 0
+    effects:
+        Spinning:
+            effect: effectlibentity
+            effect-interval: 15
+            position: buffeffectlib
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: ENCHANTMENT_TABLE
+                particlesNucleus: 10
+                particleOrbital: SPELL_WITCH
+                relative-offset: 0,0,0
+                orient: true
+                radius: 1
+                yOffset: 0
+                particlesOrbital: 10
+                orbitals: 3
+                iterations: 20
+        Orbital:
+            effect: effectlibentity
+            effect-interval: 7
+            position: buff
+            effectlib:
+                class:  VortexEffect 
+                particle: ELECTRIC_SPARK
+                speed: 0.1
+                orient: true
+                radius: 0.75
+                grow: 0
+                helixes: 2
+                relative-offset: 1.25,1.5,0
+                iterations: 5
+        effect2:
+            position: buffeffectlib
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: ENCHANTMENT_TABLE
+                speed: -1
+                radius: 0.1
+                particles: 1
+                iterations: 3
+                relative-offset: 1.25,1.5,0
+        sound:
+            position: buff
+            effect: sound
+            sound: ambient.basalt_deltas.mood
+            volume: 0.3
+            pitch: 3
+---------------------------------------------------------------------------------------------
+HoldRightLightning:
+    spell-class: ".targeted.HoldRightSpell"
+    right-click-cast-item: golden_sword
+    spell: lightning
+    target-entity: true
+    target-location: false
+    reset-time: 1000
+    max-duration: 5
+    max-distance: 10
+---------------------------------------------------------------------------------------------
+Slow-Motion:
+    spell-class: ".targeted.ProjectileModifySpell"
+    horizontal-radius: 20
+    vertical-radius: 20
+    point-blank: true
+    projectile-velocity: 0.25
+    spells:
+        - PROJ_TEST1
+---------------------------------------------------------------------------------------------

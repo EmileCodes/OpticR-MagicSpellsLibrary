@@ -1,0 +1,310 @@
+TsunamiDragAOE:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 3
+    vertical-radius: 3
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - TsunamiDrag
+TsunamiDrag:
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 6
+    horizontal-force: -3
+    vertical-force: 0
+    target-players: true
+    can-target: players,monsters,animals
+    check-plugins: true
+Tsunamiblind:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Blindness
+    strength: 0
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+Tsunamislow:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: slowness
+    strength: 1
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+TsunamiNauseau:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: nausea
+    strength: 1
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+TsunamiHitsuLmao:
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    require-entity-target: false
+    spells:
+        - TsunamiDragAOE
+        - TsunamiNauseau
+        - Tsunamislow
+        - Tsunamiblind
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+TsunamiHGP2:
+    spell-class: ".instant.ParticleProjectileSpell"
+    hug-surface: true
+    height-from-surface: 0.25
+    max-distance: 25
+    hit-players: true
+    hit-non-players: true
+    projectile-horiz-offset: 0
+    projectile-velocity: 10
+    tick-spell-limit: 3
+    stop-on-hit-entity: false
+    tick-interval: 1
+    hit-air-during: true
+    spell: TsunamiHitsuLmao
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: 1172F0
+            horiz-spread: 0.5
+            vert-spread: 0.5
+            size: 2
+            count: 5
+        eff2:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: ffffff
+            horiz-spread: 0.5
+            vert-spread: 0.5
+            size: 4
+            count: 2
+        eff3:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.5
+Tsunamimulti:
+    spell-class: ".MultiSpell"
+    name: "&9Water Magic&3:&b Tsunami!"
+    str-cast-self: "&bYou create a giant wave to flood your enemies"
+    cast-item: nether_star
+    cooldown: 10
+    spells:
+        - TsunamiSplitN45
+        - TsunamiSplitN35
+        - TsunamiSplitN25
+        - TsunamiSplitN15
+        - TsunamiSplitN5
+        - TsunamiSplitP45
+        - TsunamiSplitP35
+        - TsunamiSplitP25
+        - TsunamiSplitP15
+        - TsunamiSplitP5
+TsunamiSplitN45:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    stop-on-hit-ground: false
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -45
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP45:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 45
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN35:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -35
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP35:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 35
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN25:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -25
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP25:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 25
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN15:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -15
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP15:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 15
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN5:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -5
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP5:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 5
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplit:
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
