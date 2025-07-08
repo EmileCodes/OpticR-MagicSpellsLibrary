@@ -1,0 +1,4579 @@
+MegiddoAOE:
+    spell-class: ".targeted.AreaEffectSpell"
+    name: "&b&lMegiddo"
+    cooldown: 3
+    cast-item: bone
+    horizontal-radius: 50
+    vertical-radius: 20
+    max-targets: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - MigiddoHoming1
+        - MigiddoHoming2
+        - MigiddoHoming3
+        - MigiddoHoming4
+        - MigiddoHoming5
+        - MarkedMegiddoDummy
+MarkedMegiddoDummy:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 5
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: pos2
+            effectlib:
+                class: StarEffect
+                particle: REDSTONE
+                color: 0F98E4
+                spikeHeight: 2
+                spikesHalf: 3
+                particles: 15
+                iterations: 20
+        effect2:
+            effect: particles
+            position: pos2
+            particle-horiz-spread: 0.5
+            particle-vert-spread: 5
+            particle-count: 30
+            particle-name: end_rod
+MigiddoHoming1:
+    helper-spell: true
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 100
+    projectile-velocity: 15
+    hit-radius: 2
+    max-duration: 10
+    tick-interval: 3
+    special-effect-interval: 2
+    relative-offset: 0,5,-3
+    target-relative-offset: 0,1,0
+    can-target: player,monsters,animals
+    spell: pleaseworkthistime1
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0F98E4 
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff2:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0A71F0
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff3:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: TraceEffect
+                particle: END_ROD
+                maxWayPoints: 30
+                refresh: 3
+                iterations: 20
+        eff4:
+            position: target
+            effect: sound
+            sound: block.anvil.land
+            volume: 0.5
+            pitch: 4
+MigiddoHoming1TD:
+    spell-class: ".targeted.DummySpell"
+    helper-spell: true
+    relative-offset: 0,5,-3
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 5
+            position: pos1
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 0F98E4
+                particles: 5
+                radius: 0.5
+                radiusIncrease: 0.1
+                iterations: 5
+        effect2:
+            effect: effectlibentity
+            effect-interval: 5
+            position: pos1
+            effectlib:
+                class:  SphereEffect
+                particle: END_ROD
+                particles: 3
+                radius: 0.1
+                radiusIncrease: 0.1
+        effect3:
+            effect: effectlibentity
+            effect-interval: 20
+            position: startcast
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: none
+                particlesNucleus: 0
+                particleOrbital: DRIP_WATER
+                relative-offset: 0,-15,0
+                orient: true
+                radius: .75
+                yOffset: 2
+                particlesOrbital: 6
+                orbitals: 1
+MigiddoHoming2:
+    helper-spell: true
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 100
+    projectile-velocity: 15
+    hit-radius: 2
+    max-duration: 10
+    tick-interval: 3
+    special-effect-interval: 5
+    relative-offset: 0,5,-3
+    target-relative-offset: 0,1,0
+    can-target: player,monsters,animals
+    spell: pleaseworkthistime1
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0F98E4 
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff2:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0A71F0
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff3:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: TraceEffect
+                particle: END_ROD
+                maxWayPoints: 30
+                refresh: 3
+                iterations: 20
+        eff4:
+            position: target
+            effect: sound
+            sound: block.anvil.land
+            volume: 0.5
+            pitch: 4
+MigiddoHoming3:
+    helper-spell: true
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 100
+    projectile-velocity: 15
+    hit-radius: 2
+    max-duration: 10
+    tick-interval: 3
+    special-effect-interval: 5
+    relative-offset: 0,5,-3
+    target-relative-offset: 0,1,0
+    can-target: player,monsters,animals
+    spell: pleaseworkthistime1
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0F98E4 
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff2:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0A71F0
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff3:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: TraceEffect
+                particle: END_ROD
+                maxWayPoints: 30
+                refresh: 3
+                iterations: 20
+        eff4:
+            position: target
+            effect: sound
+            sound: block.anvil.land
+            volume: 0.5
+            pitch: 4
+MigiddoHoming4:
+    helper-spell: true
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 100
+    projectile-velocity: 15
+    hit-radius: 2
+    max-duration: 10
+    tick-interval: 3
+    special-effect-interval: 5
+    relative-offset: 0,5,-3
+    target-relative-offset: 0,1,0
+    can-target: player,monsters,animals
+    spell: pleaseworkthistime1
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0F98E4 
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff2:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0A71F0
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff3:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: TraceEffect
+                particle: END_ROD
+                maxWayPoints: 30
+                refresh: 3
+                iterations: 20
+        eff4:
+            position: target
+            effect: sound
+            sound: block.anvil.land
+            volume: 0.5
+            pitch: 4
+MigiddoHoming5:
+    helper-spell: true
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 100
+    projectile-velocity: 15
+    hit-radius: 2
+    max-duration: 10
+    tick-interval: 3
+    special-effect-interval: 5
+    relative-offset: 0,5,-3
+    target-relative-offset: 0,1,0
+    can-target: player,monsters,animals
+    spell: pleaseworkthistime1
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0F98E4 
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff2:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0A71F0
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff3:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: TraceEffect
+                particle: END_ROD
+                maxWayPoints: 30
+                refresh: 3
+                iterations: 20
+        eff4:
+            position: target
+            effect: sound
+            sound: block.anvil.land
+            volume: 0.5
+            pitch: 4
+Megiddobroadcast:
+    spell-class: ".instant.DummySpell"
+    effects:
+        eff1:
+            position: caster
+            effect: broadcast
+            message: "&b&l%a &9&l> &8&lMay the &f&lwrath&8&l of the gods pierce you."
+            range: 100
+Megiddo-Spheres:
+    spell-class: ".MultiSpell"
+    spells:
+        - MEGGIDO_TARGETSPHERE_1
+        - MEGGIDO_TARGETSPHERE_2
+MEGGIDO_TARGETSPHERE_1: &astralSphere
+    spell-class: ".targeted.OrbitSpell"
+    helper-spell: true
+    permission-name: astral_spheres
+    target-self: true
+    horiz-expand-delay: 2
+    horiz-expand-radius: -0.1
+    vert-expand-delay: 2
+    vert-expand-radius: 0.25
+    start-horiz-offset: 0
+    hit-radius: 2
+    vertical-hit-radius: 2
+    seconds-per-revolution: 1
+    orbit-radius: 1.5
+    tick-interval: 1
+    max-duration: 5
+    y-offset: 0.35
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    can-hit:
+        - players
+        - nonplayers
+        - monsters
+        - animals
+    spell: FORCEBOMB_ASTRAL_SPHERESAOE
+    spell-on-hit-entity: DMG_ASTRAL_SPHERES
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0F98E4 
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff2:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: TraceEffect
+                particle: END_ROD
+                maxWayPoints: 30
+                refresh: 3
+                iterations: 20
+        eff3:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  VortexEffect
+                particle: WATER_BUBBLE
+                particles: 10
+                radius: 0.5
+                iterations: 4
+MEGGIDO_TARGETSPHERE_2:
+    <<: *astralSphere
+    start-horiz-offset: 180
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: redstone
+            color: 0F98E4 
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 10
+        eff2:
+            effect: effectlibentity
+            position: special
+            effect-interval: 10
+            effectlib:
+                class: TraceEffect
+                particle: END_ROD
+                maxWayPoints: 30
+                refresh: 3
+                iterations: 20
+        eff3:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  VortexEffect
+                particle: WATER_BUBBLE
+                particles: 10
+                radius: 0.5
+                iterations: 4
+Meggblind:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Slowness
+    strength: 2
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+Megglevitate:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Levitation
+    strength: 2
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+Meggpain:
+    helper-spell: true
+    spell-class: ".targeted.PainSpell"
+    damage: 2
+    ignore-armor: true
+    check-plugins: true
+    can-target: players,nonplayers
+pleaseworkthistime1:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    require-entity-target: false
+    spells:
+        - Meggblind
+        - Megglevitate
+        - Meggpain
+        - DELAY 30
+        - Meggpain
+        - DELAY 20
+        - Meggpain
+        - DELAY 20
+        - Meggpain
+MegiddoTrace:
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        eff1:
+            position: buff
+            effect: sound
+            sound: block.anvil.land
+            volume: 0.5
+            pitch: 4
+        eff2:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 1000
+            effectlib:
+                class: LineEffect
+                particle: ITEM_CRACK
+                material: DIAMOND_BLOCK
+        eff3:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 1000
+            effectlib:
+                class: TraceEffect
+                particle: DRIP_WATER
+                relative-offset: -0.5,1.8,1.5
+                refresh: 5
+                interations: 60
+RockStarTransSchemPasteMulti:
+     spell-class: ".MultiSpell"
+     name: "&8&lMika&f&l >&7&l Rock&6&lStar&7&l Transformation"
+     str-cast-others: "&61L %a &81LR &7&lO &6&lC &7&lK &6&lS"
+     cast-item: quartz
+     cooldown: 30
+     effects:
+       eff1:
+         position: caster
+         effect: sound
+         sound: block.stone.place
+         volume: 0.55
+         pitch: 2
+     spells:
+         - RockStarTransGeyseAOE
+         - DELAY 5
+         - RockStarTransBlind
+         - RockStarTransSchemP
+         - RockStarTransSchemPI
+         - DELAY 1
+         - RockStarTransSchemPII
+         - RockStarTransBlind
+         - RockStarTransfJump
+         - DELAY 25
+         - MikaStoneBuff
+         - StoneEntomb
+         - RockStarTransOE
+         - RockStarTransSchemPIV
+         - DELAY 5
+         - Stonevision
+         - DELAY 300
+         - RockStarTransSchemPIII
+RockStarTransSchemPIV:
+    spell-class: ".ExternalCommandSpell"
+    temporary-op: true
+    command-to-execute: [/schematic load MikaRocks]
+    command-delay: 3
+    command-to-execute-later: [/paste]
+RockStarTransSchemPV:
+    spell-class: ".ExternalCommandSpell"
+    temporary-op: true
+    command-to-execute: [/undo]
+RockStarTransPassiveMulti:
+     spell-class: ".MultiSpell"
+     target-self: true
+     effects:
+       eff1:
+         position: caster
+         effect: sound
+         sound: block.stone.place
+         volume: 0.55
+         pitch: 2
+     spells:
+         - RockStarTransfJump
+         - DELAY 30
+MikaStoneBuff:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    effect-interval: 1
+    duration: 10
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 25
+            position: startcast
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: none
+                particlesNucleus: 0
+                particleOrbital: TOWN_AURA
+                relative-offset: 0,-15,0
+                orient: true
+                radius: 20
+                yOffset: 2
+                particlesOrbital: 50
+                orbitals: 2
+                iterations: 22
+        effect2:
+            effect: effectlibentity
+            effect-interval: 25
+            position: startcast
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: none
+                particlesNucleus: 0
+                particleOrbital: BLOCK_CRACK
+                material: STONE
+                relative-offset: 0,-15,0
+                orient: true
+                radius: 20
+                yOffset: 2
+                particlesOrbital: 50
+                orbitals: 2
+                iterations: 22
+        effect3:
+            effect: effectlibentity
+            effect-interval: 25
+            position: buff
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: none
+                particlesNucleus: 0
+                particleOrbital: TOWN_AURA
+                relative-offset: 0,-15,0
+                orient: true
+                yOffset: 2
+                radius: 15
+                particlesOrbital: 50
+                orbitals: 2
+                iterations: 22
+RockStarTransGeyser:
+    spell-class: ".targeted.GeyserSpell"
+    range: 20
+    damage: -4
+    velocity: 15
+    animation-speed: 2
+    geyser-height: 5
+    geyser-type: stone
+    ignore-armor: false
+    can-target: players,monsters,animals
+    check-plugins: true
+RockStarTransGeyseAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 20
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - RockStarTransGeyser
+RockStarTransfJump:
+    helper-spell: true
+    spell-class: ".instant.LeapSpell"
+    forward-velocity: 0
+    upward-velocity: 25
+    cancel-damage: true
+    effects:
+        effect1:
+            position: pos1
+            effect: nova
+            type: stone
+            radius: 5
+RockStarTransSchemP:
+    spell-class: ".ExternalCommandSpell"
+    temporary-op: true
+    command-to-execute: [/clearhistory]
+RockStarTransSchemPI:
+    spell-class: ".ExternalCommandSpell"
+    temporary-op: true
+    command-to-execute: [/gmask 0]
+RockStarTransSchemPII:
+    spell-class: ".ExternalCommandSpell"
+    temporary-op: true
+    command-to-execute: [/schematic load MikaStone]
+    command-delay: 3
+    command-to-execute-later: [/paste]
+RockStarTransSchemPIII:
+    spell-class: ".ExternalCommandSpell"
+    temporary-op: true
+    command-to-execute: [/undo 2]
+RockStarTransRegen:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: regeneration
+    strength: 3
+    duration: 200
+    target-self: false
+    can-target: players,nonplayers
+RockStarTransOE:
+    spell-class: ".targeted.AreaEffectSpell"
+    target-self: false
+    horizontal-radius: 20
+    vertical-radius: 30
+    max-targets: 20
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - RockStarTransSpeed
+        - RockStarTransGlow
+        - RockStarTransRegen
+RockStarTransSpeed:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: speed
+    strength: 3
+    duration: 200
+    target-self: false
+    can-target: players,nonplayers
+RockStarTransGlow:
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: glowing
+    strength: 3
+    duration: 200
+    target-self: false
+    can-target: players,nonplayers
+RockStarTransBlind:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: blindness
+    strength: 3
+    duration: 40
+    target-self: true
+    can-target: players,nonplayers
+StoneEntomb: 
+    spell-class: ".targeted.EntombSpell"
+    target-self: true
+    allow-breaking: false
+    block-type: stone
+    duration: 20
+    str-cast-target: "&bYou've reached peak singularity and transformedd into a &7Stone"
+Stonevision:
+    spell-class: ".buff.StonevisionSpell"
+    range: 3
+    transparent-types:
+        - stone
+        - cobblestone
+    unobfuscate: false
+    material: barrier
+    duration: 15
+AirForceBuff:
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        eff1:
+            position: buff
+            effect: sound
+            sound: entity.player.levelup
+            volume: 0.65
+            pitch: -2
+        eff2:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 5
+            effectlib:
+                class: HelixEffect
+                particle: CLOUD
+                speed: 0.1
+                strands: 8
+                radius: 5
+                curve: 0.75
+                rotation : 2
+                iterations: 10
+AirForceBurst:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    effect-interval: 1
+    duration: 30
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 5
+            position: caster
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: ffffff
+                particles: 30
+                radius: 0.1
+                radiusIncrease: 0.75
+                iterations: 15
+        effect2:
+            effect: effectlibentity
+            effect-interval: 5
+            position: caster
+            effectlib:
+                class:  SphereEffect
+                particle: FIREWORKS_SPARK
+                particles: 30
+                radius: 0.1
+                radiusIncrease: 0.75
+                iterations: 15
+WillowSkullsPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - buffactive WillowSkulls required
+     triggers:
+          - sneak
+     spells:
+          - WillowSkulls2
+WillowSkulls2:
+    spell-class: ".instant.ItemProjectileSpell"
+    speed: 0.5
+    vert-speed: 0 
+    hit-radius: 1
+    gravity: false
+    y-offset: 1
+    spell-on-hit-entity: itemprojectilepainspell
+    spell-on-hit-ground: itemprojectilefailspell
+    item: skeleton_skull
+itemprojectilepainspell:
+    spell-class: ".targeted.PainSpell"
+    range: 5
+    damage: 6
+WillowSkulls:
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        eff1:
+            effect: nova
+            effect-interval: 1
+            type: skeleton_skull
+            circle-shape: true
+            position: orbit
+            range: 50
+            radius: 0.9
+            orbit-radius: 3
+            orbit-y-offset: 2.5
+            orbit-seconds-per-revolution: 3000
+            relative-offset: -3,0,-3
+        eff2:
+            effect: nova
+            effect-interval: 1
+            type: wither_skeleton_skull
+            circle-shape: true
+            range: 50
+            radius: 0.9
+            position: orbit
+            orbit-radius: 3
+            orbit-y-offset: 3
+            orbit-seconds-per-revolution: -3000
+            relative-offset: 3,0,-3
+CloudBurstProjectile:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cooldown: 7
+    name: cloudburstbeam
+    cast-item: blaze_rod
+    hit-non-players: true
+    hit-players: true
+    hit-ground: false
+    hit-air-during: true
+    spell-interval: 1
+    spell-on-tick: CloudBurstAOE
+    projectile-velocity: 0.05
+    projectile-acceleration: 25
+    projectile-acceleration-delay: 18
+    stop-on-hit-entity: false
+    stop-on-hit-ground: false
+    max-distance: 50
+    hit-radius: 2
+    relative-offset: 2.25,1.25,0
+    controllable: false
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 3
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: SMOKE_LARGE
+                speed: 0.055
+                particles: 1
+                radius: 0.35
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect2:
+            effect: effectlibentity
+            effect-interval: 3
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: SPELL_WITCH
+                particles: 3
+                radius: .35
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect3:
+            effect: effectlibentity
+            effect-interval: 3
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: CLOUD
+                particles: 6
+                radius: .35
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect4:
+            effect: effectlibentity
+            effect-interval: 3
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 880DA1
+                particles: 10
+                radius: .75
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect5:
+            effect: effectlibentity
+            effect-interval: 3
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 000000
+                particles: 8
+                radius: .75
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect6:
+            effect: effectlibentity
+            effect-interval: 25
+            position: special
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: none
+                particlesNucleus: 0
+                particleOrbital: TOWN_AURA
+                orient: true
+                radius: 1.15
+                particlesOrbital: 9
+                orbitals: 4
+                relative-offset: 2.25,1.25,0
+                iterations: 22
+CloudBurstTest:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    effect-interval: 1
+    duration: 10
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 3
+            position: buff
+            effectlib:
+                class:  SphereEffect
+                particle: SMOKE_LARGE
+                speed: 0.055
+                particles: 1
+                radius: 0.35
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect2:
+            effect: effectlibentity
+            effect-interval: 3
+            position: buff
+            effectlib:
+                class:  SphereEffect
+                particle: SPELL_WITCH
+                particles: 3
+                radius: .35
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect3:
+            effect: effectlibentity
+            effect-interval: 3
+            position: buff
+            effectlib:
+                class:  SphereEffect
+                particle: CLOUD
+                particles: 6
+                radius: .35
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect4:
+            effect: effectlibentity
+            effect-interval: 3
+            position: buff
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 880DA1
+                particles: 10
+                radius: .75
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect5:
+            effect: effectlibentity
+            effect-interval: 3
+            position: buff
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 000000
+                particles: 8
+                radius: .75
+                relative-offset: 2.25,1.25,0
+                iterations: 3
+        effect6:
+            effect: effectlibentity
+            effect-interval: 25
+            position: buff
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: none
+                particlesNucleus: 0
+                particleOrbital: TOWN_AURA
+                orient: true
+                radius: 1.15
+                particlesOrbital: 9
+                orbitals: 4
+                relative-offset: 2.25,1.25,0
+                iterations: 22
+AnnaWalk:
+    spell-class: ".buff.LifewalkSpell"
+    tick-interval: 5
+    blocks:
+        - pink_tulip 40
+        - poppy 40
+        - rose_bush 30
+        - blue_orchid 30
+DetroitSmashMulti:
+    spell-class: ".MultiSpell"
+    name: "&3&lOne For All&9&l>&b&l Detroit&3&l Smash"
+    cast-item: nether_star
+    cooldown: 20
+    spells:
+        - DSMASHDUMMY
+        - DELAY 30
+        - DetroitSmashKB
+        - DetroitSmash
+DetroitSmashKB:
+    helper-spell: true
+    spell-class: ".instant.LeapSpell"
+    forward-velocity: -40
+    upward-velocity: 2
+    cancel-damage: true
+    str-cast-self: "&3&lS &f&lM &3&lA &f&lS &3&lH&f&l!"
+    str-cast-others: "&3&l %a&9&l: &3&lS &f&lM &3&lA &f&lS &3&lH&f&l!"
+    effects:
+        effect1:
+            position: pos1
+            effect: particles
+            particle-name: firework
+            horiz-spread: 1
+            vert-spread: 2
+            count: 15
+        effect2:
+            position: caster
+            effect: sound
+            sound: block.piston.extend
+            volume: 1
+            pitch: 3
+DSMASHDUMMY:
+    helper-spell: true
+    str-cast-self: "&3&lOne For All.. D E T R O I T"
+    str-cast-others: "&3&l %a&9&l: &3&lOne For All.. D E T R O I T "
+    spell-class: ".buff.DummySpell"
+    duration: 1.5
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 3
+            effectlib:
+                class: HelixEffect
+                particle: CRIT_MAGIC
+                strands: 2
+                radius: 3
+                curve: -1
+                rotation : 7
+                iterations: 2
+        effect2:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle:  REDSTONE
+                color: 09CAFC
+                radius: 10
+                particles: 45
+                radiusIncrease: -0.5
+                iterations: 20
+        effect3:
+            position: caster
+            effect: sound
+            sound: entity.parrot.imitate.wither
+            volume: 1
+            pitch: -1
+        effect4:
+            position: caster
+            effect: sound
+            sound: block.beacon.activate
+            volume: 1
+            pitch: 5
+        effect5:
+            position: caster
+            effect: sound
+            sound: block.beacon.activate
+            volume: 1
+            pitch: -10
+        effect6:
+            position: caster
+            effect: sound
+            sound: entity.parrot.imitate.wither
+            volume: 1
+            pitch: -3
+DetroitSmash:
+    spell-class: ".instant.ParticleProjectileSpell"
+    render-distance: 200
+    hit-non-players: true
+    hit-ground: false
+    projectile-velocity: 17
+    hit-air-during: true
+    spell-interval: 1
+    spell-on-tick: OFADRAGAOE
+    stop-on-hit-entity: false
+    max-distance: 50
+    hit-radius: 4
+    projectile-gravity: -0.5
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  VortexEffect
+                particle: EXPLOSION_NORMAL
+                particles: 15
+                radius: 4
+                iterations: 4
+        effect2:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: DragonEffect
+                pitch: .3
+                particle: CRIT_MAGIC
+                length: 5
+                arcs: 5
+                particles: 15
+                iterations: 10
+        effect3:
+            position: caster
+            effect: sound
+            sound: entity.generic.explode
+            volume: 0.8
+            pitch: -10
+OFADRAGAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 5
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - OFADRAG
+OFADRAG:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 4
+    horizontal-force: 15
+    vertical-force: 8
+    target-players: true
+    can-target: monsters,players,animals
+    check-plugins: true
+    effects:
+        effect1:
+            position: target
+            effect: fireworks
+            height-offset: 1
+            type: 0
+            flight: 0
+            trail: false
+            flicker: false
+            colors: 09CAFC
+            fade-colors: FFFFFF
+SerenaPunchPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - buffactive SerenaArmor required
+          - holding air required
+     triggers:
+          - givedamage 
+     spells:
+          - SerenaPP
+SerenaPP:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    modifier:
+        - roof deny
+    require-entity-target: false
+    spells:
+        - SerenaEntomb
+        - DELAY 31
+        - SerenaPunchToss
+SerenaEntomb:
+    spell-class: ".targeted.EntombSpell"
+    can-target: players,nonplayers
+    block-type: ice
+    duration: 30
+SerenaPunchToss:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 5
+    horizontal-force: 1000
+    vertical-force: 1
+    target-players: true
+    can-target: monsters,players,animals
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: effectlib
+            effectlib:
+                class: DragonEffect
+                particle: DRIP_WATER
+                arcs: 10
+                particles: 15
+                iterations: 40
+        eff2:
+            position: line
+            effect: sound
+            sound: entity.dolphin.splash
+            volume: 0.35
+            pitch: -5
+SerenaRPunchPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive SerenaArmor required
+     triggers:
+          - rightclickentity
+     spells:
+          - SerenaLevitate
+SerenaLevitate:
+    spell-class: ".targeted.LevitateSpell"
+    tick-rate: 2
+    duration: 40
+    distance-change: 20
+    range: 15
+    min-distance: 10
+    max-distance: 16
+    distance-change: 8
+    effect-interval: 1
+    cancel-on-item-switch: false
+    cancel-on-spell-cast: false
+    cancel-on-take-damage: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: cloud
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            size: 0.8
+            count: 10
+        eff2:
+            position: reverse_line
+            effect: nova
+            type: water
+            radius: 0.5
+            range: 100
+        eff3:
+            position: line
+            effect: sound
+            sound: entity.dolphin.splash
+            volume: 0.35
+            pitch: 2
+SerenaSeaDragonRoar:
+    spell-class: ".MultiSpell"
+    cast-item: quartz
+    name: "&b&lSea&3&l King&9&l Dragon&1&l Form"
+    cooldown: 40
+    spells:
+        - Astral-Spheres
+        - DELAY 100
+        - SerenaSkyDrakeMark
+        - SerenaGlow
+        - SerenaLev
+        - DELAY 60
+        - SerenaMonsterRoar
+        - SerenasSF
+        - SerenaArmor
+SerenaArmor:
+    helper-spell: true
+    spell-class: ".buff.ArmorSpell"
+    target_self: true
+    duration: 15
+    replace: false
+    helmet: 
+    chestplate: leather_chestplate#097AFC
+    leggings:
+    boots: leather_boots#ffffff
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 15
+            effectlib:
+                class: LoveEffect
+                particle: DRIP_WATER
+                iterations: 10
+Astral-Spheres:
+    spell-class: ".MultiSpell"
+    spells:
+        - ORBIT_ASTRAL_SPHERES_1
+        - ORBIT_ASTRAL_SPHERES_2
+ORBIT_ASTRAL_SPHERES_1: &astralSphere
+    spell-class: ".targeted.OrbitSpell"
+    helper-spell: true
+    permission-name: astral_spheres
+    target-self: true
+    horiz-expand-delay: 2
+    horiz-expand-radius: -0.1
+    vert-expand-delay: 2
+    vert-expand-radius: 0.25
+    start-horiz-offset: 0
+    hit-radius: 2
+    vertical-hit-radius: 2
+    seconds-per-revolution: 1
+    orbit-radius: 5
+    tick-interval: 1
+    max-duration: 5
+    y-offset: 0.35
+    stop-on-hit-entity: false
+    stop-on-hit-ground: true
+    can-hit:
+        - players
+        - nonplayers
+        - monsters
+        - animals
+    spell: FORCEBOMB_ASTRAL_SPHERESAOE
+    spell-on-hit-entity: DMG_ASTRAL_SPHERES
+    effects:
+        eff1:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 85BBF9
+                iterations: 1
+                radius: 0.5
+                particles: 15
+                period: 0
+                visibleRange: 100
+        eff2:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 0076FF
+                iterations: 1
+                radius: 1.5
+                particles: 25
+                period: 0
+                visibleRange: 100
+        eff3:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  VortexEffect
+                particle: DRIP_WATER
+                particles: 15
+                radius: 1
+                iterations: 3
+ORBIT_ASTRAL_SPHERES_2:
+    <<: *astralSphere
+    start-horiz-offset: 180
+    effects:
+        eff1:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 85BBF9
+                iterations: 1
+                radius: 0.5
+                particles: 15
+                period: 0
+                visibleRange: 100
+        eff2:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 0076FF
+                iterations: 1
+                radius: 1.5
+                particles: 25
+                period: 0
+                visibleRange: 100
+        eff3:
+            effect: effectlibentity
+            effect-interval: 10
+            position: special
+            effectlib:
+                class:  VortexEffect
+                particle: DRIP_WATER
+                particles: 15
+                radius: 1
+                iterations: 3
+FORCEBOMB_ASTRAL_SPHERESAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 5
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - FORCEBOMB_ASTRAL_SPHERES
+FORCEBOMB_ASTRAL_SPHERES:
+    spell-class: ".targeted.ForcebombSpell"
+    helper-spell: true
+    permission-name: astral_spheres
+    radius: 3
+    pushback-force: 5
+    additional-vertical-force: 10
+    max-vertical-force: 15
+    can-target: players,monsters,animals
+EFF_ASTRAL_SPHERES_GROUND:
+    spell-class: ".targeted.DummySpell"
+    helper-spell: true
+    permission-name: astral_spheres
+    effects:
+        eff1:
+            position: target
+            effect: particles
+            particle-name: explosion_large
+            horiz-spread: 0.5
+            vert-spread: 0.5
+            count: 5
+            speed: 0
+DMG_ASTRAL_SPHERES:
+    spell-class: ".targeted.PainSpell"
+    helper-spell: true
+    permission-name: astral_spheres
+    damage: 3
+    check-plugins: true
+    ignore-armor: false
+    can-target: players,nonplayers
+    effects:
+        eff1:
+            position: target
+            height-offset: 0.75
+            effect: particles
+            particle-name: explosion_large
+            horiz-spread: 0.3
+            vert-spread: 0.3
+            count: 2
+            speed: 0
+SerenaSkyDrakeMark:
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        eff1:
+            position: pos1
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                effect-interval: 200
+                orient_pitch: true
+                pitch: 90
+                particle: DRIP_WATER
+                speed: 0.1
+                fileName: plugins/MagicSpells/Images/WaterDrakeMark.png
+                isGif: false
+                enableRotation: false
+                offset: 0,20,0
+                visibleRange: 30
+                size: 0.025
+                stepX: 15
+                stepY: 15
+                iterations: 200
+        eff2:
+            position: caster
+            effect: sound
+            sound: entity.ender_dragon.growl
+            volume: 0.5
+            pitch: 5
+        eff3:
+            position: caster
+            effect: sound
+            sound: entity.ender_dragon.growl
+            volume: 0.5
+            pitch: -15
+        eff4:
+            position: caster
+            effect: sound
+            sound: entity.ender_dragon.growl
+            volume: 0.5
+            pitch: 0
+        eff5:
+            position: pos1
+            effect: particles
+            height-offset: 0
+            particle-name: dripping_water
+            horiz-spread: 3
+            vert-spread: 20
+            count:  200
+        eff6:
+            position: pos1
+            effect: particles
+            height-offset: 0
+            particle-name: end_rod
+            speed: 5
+            horiz-spread: 3
+            vert-spread: 20
+            count:  200
+        eff7:
+            position: caster
+            effect: lightning
+        eff9:
+            effect: nova
+            effect-interval: 1
+            type: water
+            circle-shape: true
+            position: orbit
+            range: 50
+            radius: 0.9
+            orbit-radius: 4
+            orbit-y-offset: 0.5
+            orbit-seconds-per-revolution: 1.5
+        eff10:
+            effect: nova
+            effect-interval: 1
+            type: water
+            circle-shape: true
+            range: 50
+            radius: 0.9
+            position: orbit
+            orbit-radius: 4
+            orbit-y-offset: 3
+            orbit-seconds-per-revolution: 1.5
+        eff12:
+            position: buff
+            effect-interval: 10
+            effect: effectlib
+            effectlib:
+                class: VortexEffect
+                radius: 2.5
+                particle: DRIP_WATER
+                iterations: 5
+SerenaGlow:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: glowing
+    hidden: true
+    strength: 2
+    duration: 500
+    target-self: true
+SerenaLev:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: levitation
+    hidden: true
+    strength: 2
+    duration: 60
+    target-self: true
+SerenaSF:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: slow_falling
+    hidden: true
+    strength: 3
+    duration: 60
+    target-self: true
+MikaMultiPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam Mika required
+     triggers:
+          - sneak
+     spells:
+          - MikaMulti
+MikaMulti:
+    cast-item: nether_star
+    cooldown: 10
+    name: "&a&lMika3&l: &4&lRoot&8&l Assault"
+    spell-class: ".MultiSpell"
+    spells:
+        - MikaWoodTossJump
+        - DELAY 18
+        - MikaWoodTossOutAOE
+MikaWoodTossJump:
+    helper-spell: true
+    spell-class: ".instant.LeapSpell"
+    forward-velocity: 0
+    upward-velocity: 15
+    cancel-damage: true
+    effects:
+        effect1:
+            position: pos1
+            effect: nova
+            type: oak_wood
+            radius: 4
+MikaWoodTossOutAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 25
+    vertical-radius: 50
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: monsters,players,animals
+    spells:
+        - MikaWoodTossOut
+MikaWoodTossOut:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    require-entity-target: false
+    spells:
+        - MikaWoodTossI
+        - DELAY 15
+        - MikaWoodToss
+MikaWoodTossI:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 2
+    horizontal-force: 0
+    vertical-force: 10
+    target-players: false
+    can-target: monsters,players,animals
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: VILLAGER_HAPPY
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            size: 0.8
+            count: 10
+        eff2:
+            position: line
+            effect: nova
+            type: oak_wood
+            radius: 0.5
+        eff3:
+            position: line
+            effect: sound
+            sound: block.grass.break
+            volume: 0.35
+            pitch: -5
+MikaWoodToss:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 2
+    horizontal-force: 10
+    vertical-force: 0
+    target-players: false
+    can-target: monsters,players,animals
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: VILLAGER_HAPPY
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            size: 0.8
+            count: 10
+        eff2:
+            position: line
+            effect: nova
+            type: oak_wood
+            radius: 0.5
+        eff3:
+            position: line
+            effect: sound
+            sound: block.grass.break
+            volume: 0.35
+            pitch: -5
+OpticDModePassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive OpticD required
+     triggers:
+          - ticks 40
+     spells:
+          - OpticMobsOutAOE
+OpticDMmagnet:
+  spell-class: ".instant.MagnetSpell"
+  radius: 10
+  velocity: 100
+  teleport-items: false
+  force-pickup: true
+  remove-item-gravity: false
+OpticMobsOutAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 10
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: monsters
+    spells:
+        - OpticMobsOut
+OpticMobsOut:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    require-entity-target: false
+    spells:
+        - DarkModeMoobTossI
+        - DELAY 15
+        - DarkModeMoobTossII
+        - DELAY 15
+        - DarkModeMoobTossIII
+        - DELAY 15
+        - DarkModeMoobTossIV
+        - OpticDMmagnet
+DarkModeMoobTossI:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 2
+    horizontal-force: 0
+    vertical-force: 10
+    target-players: false
+    can-target: monsters
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            color: 00DEFF
+            size: 0.8
+            count: 10
+        eff2:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            color: 000000
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            count: 7
+        eff3:
+            position: line
+            effect: sound
+            sound: entity.blaze.hurt
+            volume: 0.35
+            pitch: -5
+DarkModeMoobTossII:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 2
+    horizontal-force: -10
+    vertical-force: 0
+    target-players: false
+    can-target: monsters
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            color: 00DEFF
+            size: 0.8
+            count: 10
+        eff2:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            color: 000000
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            count: 7
+        eff3:
+            position: line
+            effect: sound
+            sound: entity.blaze.hurt
+            volume: 0.35
+            pitch: -5
+DarkModeMoobTossIII:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 2
+    horizontal-force: 0
+    vertical-force: 25
+    target-players: false
+    can-target: monsters
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            color: 00DEFF
+            size: 0.8
+            count: 10
+        eff2:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            color: 000000
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            count: 7
+        eff3:
+            position: line
+            effect: sound
+            sound: entity.blaze.hurt
+            volume: 0.35
+            pitch: -5
+DarkModeMoobTossIV:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 2
+    horizontal-force: 0
+    vertical-force: -50
+    target-players: false
+    can-target: monsters
+    check-plugins: true
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            color: 00DEFF
+            size: 0.8
+            count: 10
+        eff2:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            color: 000000
+            horiz-spread: 0.2
+            vert-spread: 0.2
+            count: 7
+        eff3:
+            position: line
+            effect: sound
+            sound: entity.blaze.hurt
+            volume: 0.35
+            pitch: -5
+DarkModeTransform:
+    spell-class: ".MultiSpell"
+    cast-item: quartz
+    name: "&8&lOversaturation&f&l:&8&l Dark&f&l Posture"
+    str-cast-self: "&fNegative energy is being channeled"
+    cooldown: 20
+    spells:
+        - OpticDT
+        - OpticDSound
+        - DELAY 80
+        - OpticDBlindAOE
+        - OpticD
+        - OpticDArmor
+        - OpticDPI
+        - OpticDPII
+        - OpticDPIII
+OpticDBlindAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 15
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - OpticDBlind
+OpticDBlind:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: blindness
+    targeted: true
+    hidden: true
+    strength: 5
+    duration: 20
+    can-target: players,nonplayers
+    effects:
+        effect1:
+            position: target
+            effect: sound
+            sound: block.chain.hit
+            volume: 1
+            pitch: -10
+OpticDPI:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: glowing
+    hidden: true
+    strength: 2
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+    effects:
+        effect1:
+            position: caster
+            effect-interval: 27
+            effect: sound
+            sound: entity.ender_dragon.growl
+            volume: 1
+            pitch: -10
+        effect2:
+            position: caster
+            effect-interval: 27
+            effect: sound
+            sound: entity.ender_dragon.growl
+            volume: 1
+            pitch: 5
+        effect3:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle:  SPELL_MOB
+                speed: 0
+                radius: 10
+                particles: 75
+                radiusIncrease: -0.75
+                iterations: 10
+        effect4:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle:  REDSTONE
+                color: 00DEFF
+                radius: 10
+                particles: 45
+                radiusIncrease: -0.75
+                iterations: 10
+OpticDPII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: speed
+    hidden: true
+    strength: 2
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+OpticDPIII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: invisibility
+    hidden: true
+    strength: 2
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+OpticD:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    effect-interval: 1
+    duration: 30
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 5
+            position: buff
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 00DEFF
+                particles: 3
+                radius: 0.1
+                relative-offset: 0,0.65,0.28
+                iterations: 3
+        effect2:
+            effect: effectlibentity
+            effect-interval: 5
+            position: buff
+            effectlib:
+                class:  SphereEffect
+                particle: SPELL_MOB
+                speed: 0
+                particles: 3
+                radius: 0.1
+                relative-offset: 0,0.65,0.28
+                iterations: 3
+        effect3:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: 3
+            orbit-y-offset: 0.1
+            orbit-seconds-per-revolution: 2
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 00DEFF
+                particles: 2
+                radius: 0.1
+                relative-offset: 0,0,0
+                iterations: 2
+        effect4:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: 3
+            orbit-y-offset: 0.1
+            orbit-seconds-per-revolution: 2
+            effectlib:
+                class:  SphereEffect
+                particle: SPELL_MOB
+                speed: 0
+                particles: 2
+                radius: 0.1
+                relative-offset: 0,0,0
+                iterations: 2
+        effect5:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: 3
+            orbit-y-offset: 0.1
+            orbit-seconds-per-revolution: -2
+            effectlib:
+                class:  SphereEffect
+                particle: REDSTONE
+                color: 00DEFF
+                particles: 2
+                radius: 0.1
+                relative-offset: 0,0,0
+                iterations: 2
+        effect6:
+            effect: effectlibentity
+            effect-interval: 1
+            position: orbit
+            orbit-radius: 3
+            orbit-y-offset: 0.1
+            orbit-seconds-per-revolution: -2
+            effectlib:
+                class:  SphereEffect
+                particle: SPELL_MOB
+                speed: 0
+                particles: 2
+                radius: 0.1
+                relative-offset: 0,0,0
+                iterations: 2
+        effect7:
+            position: buff
+            effect-interval: 3
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                orient_pitch: false
+                pitch: 0
+                particle: REDSTONE
+                color: 000000
+                fileName: plugins/MagicSpells/Images/OSWing1.png
+                isGif: false
+                enableRotation: false
+                relative-offset: -0.5,1.8,1.5
+                visibleRange: 20
+                size: 0.015
+                stepX: 10
+                stepY: 13
+                iterations: 2
+        effect8:
+            position: buff
+            effect-interval: 3
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                orient_pitch: false
+                pitch: 0
+                particle: REDSTONE
+                color: 00DEFF
+                speed: 0.1
+                fileName: plugins/MagicSpells/Images/OSWing2.png
+                isGif: false
+                enableRotation: false
+                relative-offset: -0.5,1.8,1.5
+                visibleRange: 20
+                size: 0.013
+                stepX: 10
+                stepY: 13
+                iterations: 2
+OpticDT:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 4
+    effects:
+        effect1:
+            position: buff
+            effect-interval: 30
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle:  REDSTONE
+                color: 00DEFF
+                radius: 10
+                particles: 45
+                radiusIncrease: -0.5
+                iterations: 20
+        effect2:
+            position: buff
+            effect-interval: 30
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle:  SPELL_MOB
+                speed: 0
+                radius: 10
+                particles: 50
+                radiusIncrease: -0.5
+                iterations: 20
+        effect3:
+            position: buff
+            effect-interval: 27
+            effect: sound
+            sound: entity.wolf.growl
+            volume: 1
+            pitch: -10
+        effect4:
+            position: buff
+            effect-interval: 27
+            effect: sound
+            sound: entity.wolf.growl
+            volume: 1
+            pitch: 5
+OpticDArmor:
+    helper-spell: true
+    spell-class: ".buff.ArmorSpell"
+    target_self: true
+    duration: 30
+    replace: false
+    helmet: 
+    chestplate: leather_chestplate#000000
+    leggings:
+    boots: leather_boots#000000
+
+ABOVEHOMINGTESTAOE:
+    spell-class: ".targeted.AreaEffectSpell"
+    cast-item: nether_star
+    name: "&fnow u can stop crying anna "
+    horizontal-radius: 15
+    vertical-radius: 5
+    max-targets: 20
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - ABOVEHOMINGTEST
+        - ABOVEHOMINGTESTDummy
+ABOVEHOMINGTESTDummy:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 5
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: pos2
+            effectlib:
+                class: SphereEffect
+                particle: SPELL_WITCH
+                radius: 1
+                radiusIncrease: -0.5
+                particles: 25
+                iterations: 10
+        effect2:
+            effect: particles
+            position: pos2
+            particle-horiz-spread: 0.5
+            particle-vert-spread: 2
+            particle-count: 15
+            particle-name: end_rod
+
+ABOVEHOMINGTEST:
+    helper-spell: true
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 100
+    projectile-velocity: 10
+    hit-radius: 4
+    projectile-inertia: 0.5
+    max-duration: 10
+    tick-interval: 3
+    special-effect-interval: 10
+    relative-offset: 0,30,0
+    target-relative-offset: 0,1,0
+    can-target: player,monsters,animals
+    spell: pleaseworkthistime
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: BD136D
+            horiz-spread: 3
+            vert-spread: 3
+            size: 1
+            count: 50
+        eff2:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: F0AC11
+            horiz-spread: 3
+            vert-spread: 3
+            size: 1
+            count: 50
+        eff3:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: DnaEffect
+                particleHelix: REDSTONE
+                colorHelix: ffffff
+                particleBase1: REDSTONE
+                colorBase1: BD136D
+                particleBase2: REDSTONE
+                colorBase2: FOAC11
+                radius: 3
+                particlesHelix: 5
+                particlesBase: 0
+                iterations: 15
+        eff4: 
+            position: special
+            effect: effectlib
+            effectlib:
+                class: DnaEffect
+                particleHelix: SPELL_WITCH
+                particleBase1: REDSTONE
+                colorBase1: BD136D
+                particleBase2: REDSTONE
+                colorBase2: FOAC11
+                radius: 3
+                particlesHelix: 5
+                particlesBase: 0
+                iterations: 5
+Cometblind:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Blindness
+    strength: 2
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+Cometlevitate:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Levitation
+    strength: 2
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+homingcometpain:
+    helper-spell: true
+    spell-class: ".targeted.PainSpell"
+    damage: 10
+    ignore-armor: true
+    check-plugins: true
+    can-target: players,nonplayers
+pleaseworkthistime:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    require-entity-target: false
+    spells:
+        - CPROJECTILEKNOCKBACK
+        - Cometblind
+        - Cometlevitate
+ExtinctionComet:
+    spell-class: ".instant.ParticleProjectileSpell"
+    name: "&4fire?: &cExtinction"
+    cast-item: nether_star
+    cooldown: 13
+    render-distance: 30
+    hit-non-players: true
+    hit-self: true
+    hit-ground: true
+    projectile-velocity: 10
+    projectile-gravity: 2
+    tick-interval: 1
+    stop-on-hit-ground: false
+    max-distance: 100
+    relative-offset: 0,30,0
+    spell:  FLCometHitGroundAOE
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 12
+            position: special
+            effectlib:
+                class:  VortexEffect
+                particle: FLAME
+                particles: 30
+                radius: 4
+                iterations: 5
+        effect2:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: 690B0B
+            horiz-spread: 5
+            vert-spread: 5
+            size: 1
+            count: 30
+        effect3:
+            effect: effectlibentity
+            effect-interval: 15
+            position: special
+            effectlib:
+                class:  SphereEffect
+                particle: DRIP_LAVA
+                particles: 15
+                radius: 5
+                iterations: 7
+        effect4:
+            position: special
+            effect-interval: 3
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 690B0B
+                radius: 3
+                particles: 15
+                particleSize: 2
+                iterations: 5
+        effect5:
+            position: special
+            effect-interval: 3
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: F2AB09
+                radius: 3
+                particles: 15
+                particleSize: 1
+                iterations:  7
+FLCometHitGroundAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 5
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - FLCometHitGround
+        - FLCometHitGroundDummy
+FLCometHitGround:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    horizontal-force: 30
+    vertical-force: 7
+    can-target: players,monsters
+    check-plugins: true
+    str-cast-self: You push back your enemy!
+    str-cast-others: "%a pushes back his enemy."
+    effects:
+        eff1:
+            position: target
+            effect: fireworks
+            height-offset: 0
+            type: 0
+            flight: 0
+            trail: false
+            flicker: false
+            colors: 601717,EEADAD
+            fade-colors: F2AB09
+        eff2:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: SMOKE_LARGE
+                radius: 0.1
+                radiusIncrease: 15
+                particles: 75
+AnnaFlowPunchPassive:
+     spell-class: ".PassiveSpell"
+     chance: 40
+     modifiers:
+          - onteam Anna required
+          - buffactive AnnaFlowStateI required
+          - sneaking required
+     triggers:
+          - givedamage
+     spells:
+          - LightningChain
+LightningSpreadMulti:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    cast-random-spell-instead: false
+    spells:
+        - Lightningpain
+        - LightningBlind
+        - LightningStun
+LightningChain:
+    spell-class: ".targeted.ChainSpell"
+    spell: LightningSpreadMulti
+    bounces: 10
+    bounce-range: 15
+    interval: 5
+    target-players: true
+    can-target: players,monsters,animals
+    effects:
+        eff1:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.7
+            vert-spread: 0.2
+            color: 0ADDE9
+            size: 0.8
+            count: 10
+        eff2:
+            position: line
+            effect: particles
+            particle-name: end_rod
+            horiz-spread: 0.7
+            vert-spread: 0.2
+            count: 10
+        eff3:
+            position: line
+            effect: particles
+            particle-name: REDSTONE
+            horiz-spread: 0.7
+            vert-spread: 0.2
+            color: 71FF00
+            size: 0.8
+            count: 10
+Lightningpain:
+    helper-spell: true
+    spell-class: ".targeted.PainSpell"
+    damage: 3
+    ignore-armor: false
+    check-plugins: true
+    can-target: players,monsters,animals
+LightningBlind:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Blindness
+    strength: 1
+    duration: 20
+    targeted: true
+    can-target: players,monsters,animals
+LightningStun:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Slowness
+    strength: 15
+    duration: 30
+    targeted: true
+    can-target: players,nonplayers
+    effects:
+        eff1:
+            position: target
+            effect: fireworks
+            colors: 71FF00
+            fade-colors: 0ADDE9
+FlowStateGetHurtMoon:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam Anna required
+          - buffactive AnnaFlowStateI required
+          - night required
+     triggers:
+          - takedamage
+     spells:
+          - FlowStateRegen
+FlowStateRegen:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: regeneration
+    strength: 3
+    duration:  40
+    target-self: true
+    can-target: players
+    obey-los: true
+    effects:
+        effect2:
+            effect: effectlibentity
+            effect-interval: 20
+            position: caster
+            effectlib:
+                class: IconEffect
+                iterations: 5
+                particle: HEART
+FlowStateGetHurtSun:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam Anna required
+          - buffactive AnnaFlowStateI required
+          - day required
+     triggers:
+          - takedamage
+     spells:
+          - FlowStateCombustion
+FlowStateCombustion:
+    helper-spell: true
+    spell-class: ".targeted.CombustSpell"
+    fire-ticks: 40
+    fire-tick-damage: 2
+    prevent-immunity: false
+    can-target: players,monsters,animals
+    effects:
+        effect1:
+            effect: explosion
+            position: target
+        effect2:
+            position: caster
+            effect: sound
+            sound: entity.blaze.hurt
+            volume: 0.4
+            pitch: -10
+FlowStateReapply:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam Anna required
+          - buffactive AnnaFlowStateI deny
+     triggers:
+          - jump
+     spells:
+          - AnnaFlowState
+          - AnnaWalk
+FlowStateJoinPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam Anna required
+     triggers:
+          - join
+     spells:
+          - AnnaFlowState
+AnnaFlowState:
+    spell-class: ".buff.DummySpell"
+    duration: 99999999
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 15
+            effectlib:
+                class: LoveEffect
+                particle: ENCHANTMENT_TABLE
+                iterations: 10
+        effect2:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 40
+            effectlib:
+                class: LoveEffect
+                particle: REDSTONE
+                color: F118F0
+                iterations: 20
+        effect3:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 50
+            effectlib:
+                class: LoveEffect
+                particle: REDSTONE
+                color: 04F215
+                iterations: 10
+        effect4:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 40
+            effectlib:
+                class: LoveEffect
+                particle: REDSTONE
+                color: 04AFF2
+                iterations: 20
+        effect5:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 50
+            effectlib:
+                class: LoveEffect
+                particle: REDSTONE
+                color: F21604
+                iterations: 10
+        effect6:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 40
+            effectlib:
+                class: LoveEffect
+                particle: REDSTONE
+                color: D6F204
+                iterations: 10
+DivineCreature:
+    spell-class: ".targeted.SpawnEntitySpell"
+    name: "&6Celestial Magic&6:&f Doggo"
+    cast-item: nether_star
+    cooldown: 90
+    location: caster
+    attack-spell: DivineCreatureCasts
+    can-target: players,monsters,animals
+    nameplate-formatting: true    
+    target-range: 20
+    no-ai: false
+    nameplate-text: "&d&lStuat"
+    add-look-at-player-ai: true
+    target-interval: 60
+    effect-interval: 10
+    duration: 1200
+    potion-effects:
+        - speed 6000 2 false false false
+        - strength 6000 3 false false false
+        - resistance 2 1 false false false
+        - regeneration 1 1 false false false
+    entity:
+        entity: wolf
+        tamed: true
+        color: blue
+        baby: true
+        powered: true
+DivineCreaturePain:
+    helper-spell: true
+    spell-class: ".targeted.PainSpell"
+    damage: 4
+    ignore-armor: false
+    check-plugins: true
+    can-target: players,monsters,animals
+    effects:
+        eff1:
+            position: target
+            effect: particles
+            horiz-spread: 1
+            vert-spread: 1
+            particle-name: explosion
+            count: 1
+        eff2:
+            position: target
+            effect: particles
+            horiz-spread: 1
+            vert-spread: 1
+            particle-name: end_rod
+            vert-spread: 2
+            count: 10
+        eff3:
+            position: target
+            effect: sound
+            sound: entity.generic.explode
+            volume: 0.5
+            pitch: 3
+DivineCreatureCasts:
+    helper-spell: true
+    can-target: players,monsters,animals
+    spell-class: ".TargetedMultiSpell"
+    cast-random-spell-instead: true
+    spells:
+        - DivineCreatureSilence
+        - DivineCreatueStun
+        - DivineCreaturePain
+DivineCreateDummy:
+    helper-spell: true
+    modifiers:
+        - buffactive DivineCreateDummy denied
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    effects:
+        effect1:
+            position: buff
+            effect-interval: 10
+            effect: particles
+            height-offset: 0
+            particle-name: end_rod
+            horiz-spread: 1
+            vert-spread: 1
+            count: 5
+DivineCreateLeap:
+  helper-spell: true
+  spell-class: ".instant.VelocitySpell"
+  speed: 5
+  effects:
+      effect1:
+          position: pos1
+          effect: particles
+          height-offset: -0.125
+          particle-name:  explosion
+          horiz-spread: 1
+          vert-spread: 1
+          count:  1
+DivineCreatureSilence:
+    spell-class: ".targeted.SilenceSpell"
+    range: 5
+    prevent-cast: true
+    prevent-chat: false
+    prevent-commands: false
+    duration: 30
+    effects:
+        eff1:
+            position: target
+            effect-interval: 4
+            effect: effectlib
+            effectlib:
+                class: TornadoEffect
+                showCloud: false
+                tornadoParticle: END_ROD
+                yOffset: 0.1
+                tornadoHeight: 0.4
+                maxTornadoRadius: 2
+                distance: 0.2
+                circleParticles: 20
+                circleHeight: 0
+                iterations: 2
+DivineCreatueStun:
+    helper-spell: true
+    spell-class: ".targeted.StunSpell"
+    duration: 20
+    interval: 5
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: target
+            effectlib:
+                class: WarpEffect
+                particle: END_ROD
+                iterations:  10
+NaturePulser:
+    spell-class: ".targeted.PulserSpell"
+    range: 3
+    total-pulses: 2
+    interval: 5
+    max-distance: 500
+    block-type: lime_carpet
+    unbreakable: false
+    only-count-on-success: true
+    str-modifier-failed: "&aPut it underneath u"
+    str-at-cap: "&2You've reached the max amount you can currently handle"
+    cap-per-player: 5
+    modifiers:
+        - pitchabove 70 required
+    spells:
+        - NaturePulseAoe
+NaturePulseAoe:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 2
+    vertical-radius: 1
+    can-target: players,nonplayers
+    spells:
+        - NaturetEntomb
+        - NatureEntombslow
+        - NatureEntombjump
+NaturetEntomb:
+    spell-class: ".targeted.EntombSpell"
+    can-target: players,nonplayers
+    block-type: oak_leaves
+    duration: 30
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: pos2
+            effect-interval: 2
+            effectlib:
+                class: HelixEffect
+                particle: VILLAGER_HAPPY
+                strands: 5
+                radius: 2
+                curve: -2
+                rotation : 8
+                iterations: 1
+        effect2:
+            effect: effectlibentity
+            position: pos2
+            effect-interval: 2
+            effectlib:
+                class: HelixEffect
+                particle: SPELL_WITCH
+                strands: 5
+                radius: 2
+                curve: -2
+                rotation : 8
+                iterations: 1
+NatureEntombslow:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: slowness
+    strength: 2
+    duration: 60
+    targeted: true
+    can-target: players,monsters,animals
+NatureEntombjump:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: jump_boost
+    strength: -2
+    duration: 60
+    targeted: true
+    can-target: players,monsters,animals
+NatureMageDummyI:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 15
+            effectlib:
+                class: LoveEffect
+                particle: VILLAGER_HAPPY
+                iterations: 10
+        effect2:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 20
+            effectlib:
+                class: LoveEffect
+                particle: SPELL_WITCH
+                iterations: 1
+NatureMageJoin:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam NatureMage required
+          - buffactive NatureMageDummyI deny
+     triggers:
+          - rightclickblocktype grass_block
+     spells:
+          - NatureMageDummyI
+NatureMageActivePassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - onteam NatureMage required
+          - buffactive NatureMageDummyI required
+     triggers:
+          - sneak
+     spells:
+          - NaturePulser
+ValorWings:
+    spell-class: ".buff.DummySpell"
+    duration: 10
+    pitch: 90
+    effects:
+        eff1:
+            position: pos1
+            effect-interval: 200
+            pitch: 90
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                particle: REDSTONE
+                color: ffffff
+                speed: 0.1
+                fileName: plugins/MagicSpells/Images/ValorWings.gif
+                isGif: true
+                enableRotation: true
+                pitch: 270
+                relative-offset: -1,1,0
+                visibleRange: 20
+                forward-offset:  10
+                size: 0.02
+                stepX: 7
+                stepY: 7
+                iterations: 150
+TsunamiDragAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 3
+    vertical-radius: 3
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - TsunamiDrag
+TsunamiDrag:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 6
+    horizontal-force: -3
+    vertical-force: 0
+    target-players: true
+    can-target: players,monsters,animals
+    check-plugins: true
+Tsunamiblind:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Blindness
+    strength: 0
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+Tsunamislow:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: slowness
+    strength: 1
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+TsunamiNauseau:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: nausea
+    strength: 1
+    duration: 60
+    targeted: true
+    can-target: players,nonplayers
+TsunamiHitsuLmao:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    require-entity-target: false
+    spells:
+        - TsunamiDragAOE
+        - TsunamiNauseau
+        - Tsunamislow
+        - Tsunamiblind
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+        - DELAY 1
+        - TsunamiDragAOE
+TsunamiHGP2:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    hug-surface: true
+    height-from-surface: 0.25
+    max-distance: 25
+    hit-players: true
+    hit-non-players: true
+    projectile-horiz-offset: 0
+    projectile-velocity: 10
+    tick-spell-limit: 3
+    stop-on-hit-entity: false
+    tick-interval: 1
+    hit-air-during: true
+    spell: TsunamiHitsuLmao
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: 1172F0
+            horiz-spread: 0.5
+            vert-spread: 0.5
+            size: 2
+            count: 5
+        eff2:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: ffffff
+            horiz-spread: 0.5
+            vert-spread: 0.5
+            size: 4
+            count: 2
+        eff3:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.5
+Tsunamimulti:
+    spell-class: ".MultiSpell"
+    cast-item: nether_star
+    name: "&9Water Magic&3:&b Tsunami!"
+    str-cast-self: "&bYou create a giant wave to flood your enemies"
+    cooldown: 17
+    spells:
+        - TsunamiSplitN45
+        - TsunamiSplitN35
+        - TsunamiSplitN25
+        - TsunamiSplitN15
+        - TsunamiSplitN5
+        - TsunamiSplitP45
+        - TsunamiSplitP35
+        - TsunamiSplitP25
+        - TsunamiSplitP15
+        - TsunamiSplitP5
+TsunamiSplitN45:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    stop-on-hit-ground: false
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -45
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP45:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 45
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN35:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -35
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP35:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 35
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN25:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -25
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP25:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 25
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN15:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -15
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP15:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 15
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitN5:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: -5
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplitP5:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    max-distance: 100
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-horiz-offset: 5
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+TsunamiSplit:
+    helper-spell: true
+    spell-class: ".instant.ParticleProjectileSpell"
+    relative-offset: -2,0,0
+    hit-ground: true
+    projectile-gravity: 0.75
+    projectile-vert-offset: 5
+    projectile-velocity: 15
+    spell: TsunamiHGP2
+    tick-interval: 1
+    special-effect-interval: 1
+    effects:
+        eff1:
+            position: special
+            effect: nova
+            type: water
+            radius: 0.1
+FireDisguiseMulti:
+    spell-class: ".MultiSpell"
+    cast-item: nether_star
+    name: "&4steamy-ish magic: &cEvaporation"
+    str-cast-self: "&4Your body briefly dissapears! Keep in mind you're leaving a trail behind"
+    cooldown: 9
+    spells:
+        - FireDisguiseDummy
+        - FireDisguisePI
+        - FireDisguisePII
+FireDisguisePassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive FireDisguiseDummy required
+     triggers:
+          - ticks 5
+     spells:
+          - FireDisguiseCombustAOE
+FireDisguiseCombustAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 2.5
+    vertical-radius: 2
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - FireDisguiseCombust
+FireDisguiseCombust:
+    helper-spell: true
+    spell-class: ".targeted.CombustSpell"
+    fire-ticks: 40
+    fire-tick-damage: 2
+    prevent-immunity: false
+    can-target: players,monsters,animals
+FireDisguisePI:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: invisibility
+    strength: 1
+    duration: 60
+    target-self: true
+    can-target: players,nonplayers
+FireDisguisePII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: speed
+    strength: 2
+    duration: 60
+    target-self: true
+    can-target: players,nonplayers
+FireDisguiseDummy:
+    spell-class: ".buff.DummySpell"
+    duration: 3
+    effects:
+        effect1:
+            effect: particles
+            position: buff
+            horiz-spread: 1
+            vert-spread: 2
+            count: 5
+            particle-name: lava
+            effect-interval: 5
+        effect2:
+            effect: particles
+            position: buff
+            horiz-spread: 1
+            vert-spread: 0.2
+            count:  5
+            particle-name: dripping_lava
+            effect-interval: 2
+        effect3:
+            effect: particles
+            position: buff
+            horiz-spread: 1
+            vert-spread: 2
+            count:  5
+            particle-name: campfire_cosy_smoke
+            effect-interval: 3
+NatureConvertPassiveSCREEPER:
+     spell-class: ".PassiveSpell"
+     cooldown: 15
+     modifiers:
+          - onteam NatureMage required
+     triggers:
+          - rightclickentity CREEPER
+     spells:
+          - NaturecreepsConvertDummy
+NatureSCREEPERConvertP:
+     spell-class: ".PassiveSpell"
+     cooldown: 15
+     modifiers:
+          - buffactive NaturecreepsConvertDummy required
+     triggers:
+          -  sneak
+     spells:
+          - CreeperConvertMulti
+NaturecreepsConvertDummy:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    modifiers:
+        - sneaking stop
+    duration: 15
+    effects:
+        eff1:
+            position: buff
+            effect-interval: 10
+            effect: effectlib
+            effectlib:
+                class: FlameEffect
+                particle: ITEM_CRACK
+                material: TNT
+                iterations: 3
+        eff2:
+            position: caster
+            effect-interval: 20
+            effect: effectlib
+            effectlib:
+                class: TornadoEffect
+                showCloud: false
+                tornadoParticle: SPELL_WITCH
+                yOffset: 0.1
+                tornadoHeight: 0.4
+                maxTornadoRadius: 2
+                distance: 0.2
+                circleParticles: 20
+                circleHeight: 0
+                iterations: 2
+        eff3:
+            effect: particles
+            position: caster
+            particle-name: flash
+        eff4:
+            effect: effectlibentity
+            effect-interval: 30
+            position: caster
+            effectlib:
+                class: WarpEffect
+                particle: SMOKE_NORMAL
+                iterations:  10
+CreeperConvertMulti:
+    spell-class: ".MultiSpell"
+    helper-spell: true
+    cooldown: 15
+    spells:
+        - NatureCreepBP
+        - NatureConvertCreeperDummy
+        - DELAY 60
+        - NatureConvertCreeperAoe
+NatureConvertCreeperAoe:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 3
+    vertical-radius: 3
+    fail-if-no-targets: false
+    can-target: players,nonplayers
+    spells:
+        - NatureConvertCreeper
+NatureConvertCreeper:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 5
+    horizontal-force: 50
+    vertical-force: 0
+    target-players: true
+    can-target: players,monsters,animals
+    check-plugins: true
+    effects:
+        eff1:
+            position: pos1
+            effect: particles
+            horiz-spread: 3
+            vert-spread: 3
+            particle-name: explosion
+            vert-spread: 2
+            count: 15
+        eff2:
+            position: pos1
+            effect: particles
+            horiz-spread: 3
+            vert-spread: 3
+            particle-name: firework
+            vert-spread: 2
+            count: 10
+        eff3:
+            position: caster
+            effect: sound
+            sound: entity.generic.explode
+NatureConvertCreeperDummy:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 3
+    effects:
+        effect1:
+            effect: effectlibentity
+            effect-interval: 60
+            position: caster
+            effectlib:
+                class: SphereEffect
+                particle: SMOKE_NORMAL
+                radius: 3
+                radiusIncrease: -0.05
+                particles: 25
+                iterations: 60
+        effect2:
+            effect: effectlibentity
+            effect-interval: 20
+            position: caster
+            effectlib:
+                class: IconEffect
+                iterations: 5
+NatureConvertPassiveSKELETON:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam NatureMage required
+     triggers:
+          - rightclickentity SKELETON
+     spells:
+          - NatureSkeletonConvertDummy
+NatureSkeletonConvertP:
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - buffactive NatureSkeletonConvertDummy required
+     triggers:
+          -  sneak
+     spells:
+          - NatureSkeletonConvert
+NatureSkeletonConvertDummy:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        eff1:
+            position: buff
+            effect-interval: 10
+            effect: effectlib
+            effectlib:
+                class: FlameEffect
+                particle: ITEM_CRACK
+                material: QUARTZ_BLOCK
+                iterations: 3
+        eff2:
+            position: caster
+            effect-interval: 20
+            effect: effectlib
+            effectlib:
+                class: TornadoEffect
+                showCloud: false
+                tornadoParticle: SPELL_WITCH
+                yOffset: 0.1
+                tornadoHeight: 0.4
+                maxTornadoRadius: 2
+                distance: 0.2
+                circleParticles: 20
+                circleHeight: 0
+                iterations: 2
+        eff3:
+            effect: particles
+            position: caster
+            particle-name: flash
+        eff4:
+            effect: effectlibentity
+            effect-interval: 30
+            position: caster
+            effectlib:
+                class: WarpEffect
+                particle: SMOKE_NORMAL
+                iterations:  10
+NatureSkeletonConvert:
+    spell-class: ".targeted.VolleySpell"
+    range: 30
+    arrows: 5
+    speed: 20
+    no-target: true
+    y-offset: 1
+    spread: 5
+    shoot-interval: 8
+    gravity: false # arrows don't need gravity, see?
+    effects:
+        projectile:
+            effect: effectlibentity 
+            position: projectile 
+            effectlib:
+                class: SphereEffect
+                iterations: 100
+                disappearWithOriginEntity: true
+                particle: ITEM_CRACK
+                material: QUARTZ_BLOCK
+                radius: .1
+                particles: 5
+                period: 2
+        heavy-tracers:
+            position: casterprojectileline
+            effect: effectlibline
+            static-origin-location: true
+            effectlib:
+                class: ArcEffect
+                particles: 10
+                particle: CLOUD
+                period: 1
+                iterations: 20
+                disappearWithOriginEntity: false
+                disappearWithTargetEntity: true
+NatureCreepBP:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: resistance
+    strength: 1
+    duration: 300
+    targeted: true
+    target-self: true
+    can-target: players,monsters,animals
+EnderConvertMulti:
+    spell-class: ".MultiSpell"
+    helper-spell: true
+    cooldown: 15
+    spells:
+        - NatureBeastConversion
+        - enderbuffdummyconversion
+EDNERTRIGGERSTUFF:
+     name: "teachtoothers"
+     helper-spell: true
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - buffactive enderbuffdummyconversion required
+     triggers:
+          - sneak
+     spells:
+          - EnderConvertTP
+enderbuffdummyconversion:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        eff1:
+            position: buff
+            effect-interval: 10
+            effect: effectlib
+            effectlib:
+                class: FlameEffect
+                particle: DRAGON_BREATH
+                iterations: 5
+        eff2:
+            position: caster
+            effect-interval: 20
+            effect: effectlib
+            effectlib:
+                class: TornadoEffect
+                showCloud: false
+                tornadoParticle: SPELL_WITCH
+                yOffset: 0.1
+                tornadoHeight: 0.4
+                maxTornadoRadius: 2
+                distance: 0.2
+                circleParticles: 20
+                circleHeight: 0
+                iterations: 2
+        eff3:
+            effect: particles
+            position: caster
+            particle-name: flash
+        eff4:
+            effect: effectlibentity
+            effect-interval: 30
+            position: caster
+            effectlib:
+                class: WarpEffect
+                particle: SMOKE_NORMAL
+                iterations:  10
+NatureConvertPassiveEnder:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - onteam NatureMage required
+     triggers:
+          - rightclickentity ENDERMAN
+     spells:
+          - enderbuffdummyconversion
+NatureConvertPassiveEnderTP:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive enderbuffdummyconversion required
+     triggers:
+          -  sneak
+     spells:
+          - EnderConvertTP
+EnderConvertTP:
+    helper-spell: true
+    spell-class: ".targeted.BlinkSpell"
+    range: 10
+    effects:
+        eff1:
+            position: pos1
+            effect: ender
+        eff2:
+            position: pos2
+            effect: ender
+SFP_TRIGGER:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive SFP_Dummy required
+     triggers:
+          - spellcast SFP_Dummy
+     spells:
+        - SFP_Dummy  
+SFP_TRIGGER2:
+     spell-class: ".PassiveSpell"
+     cooldown: 5
+     modifiers:
+          - buffactive SFP_Dummy required
+     triggers:
+          - ticks 1
+     spells:
+        - SFP_Aoes
+SFP_Multi:
+    spell-class: ".TargetedMultiSpell"
+    spells:
+        - SFP_ProjectileMod
+        - SFP_Aoes
+SFP_Dummy:
+    name: "&eDivine Magic&6:&f Steadfast Presence!"
+    spell-class: ".buff.DummySpell"
+    cast-item: nether_star
+    cooldown: 15
+    duration: 5
+    effects:
+        effect1:
+            position: buff
+            effect-interval: 20
+            effect: particles
+            height-offset: 0
+            particle-name: composter
+            horiz-spread: 5
+            vert-spread: 10
+            count:  75
+        effect2:
+            position: buff
+            effect-interval: 2
+            effect: particles
+            height-offset: 0
+            particle-name: composter
+            horiz-spread: 5
+            vert-spread: 10
+            count:  75
+        effect3:
+            position: buff
+            effect-interval: 1
+            effect: particles
+            height-offset: 0
+            particle-name: effect
+            speed: 5
+            horiz-spread: 5
+            vert-spread: 10
+            count:  100
+SFP_ProjectileMod:
+    spell-class: ".targeted.ProjectileModifySpell"
+    horizontal-radius: 5
+    vertical-radius: 20
+    projectile-turn: 90
+    point-blank: false
+    projectile-velocity: 0.25
+    spells:
+        - COMETPROJECTILE2
+        - COMETPROJECTILE
+        - ExtinctionComet
+    effects:
+        eff1:
+            position: pos1
+            effect: sound
+            sound: item.elytra.flying
+            volume: 0.25
+            pitch: 5
+SFP_Aoes:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    targeted: true
+    horizontal-radius: 5
+    vertical-radius: 20
+    circle-shape: true
+    fail-if-no-targets: false
+    point-blank: true
+    spells: [SFP_Cleanse,SFP_PotionI,SFP_PotionII,SFP_ProjectileMod]
+    effects:
+        eff1:
+            position: target
+            effect: sound
+            sound: entity.player.splash.high_speed
+            volume: 0.25
+SFP_ProjectileMod:
+    spell-class: ".targeted.ProjectileModifySpell"
+    horizontal-radius: 5
+    vertical-radius: 20
+    projectile-acceleration: 5
+    projectile-acceleration-delay: 1
+    projectile-vert-gravity: -10
+    point-blank: true
+    projectile-velocity: 0.25
+    effects:
+        eff1:
+            position: pos1
+            effect: sound
+            sound: item.elytra.flying
+            volume: 0.25
+            pitch: 5
+SFP_Cleanse:
+  spell-class: ".targeted.CleanseSpell"
+  target-self: false
+  remove:
+    - fire
+    - slowness
+    - blindness
+    - hunger
+    - weakness
+    - poison
+    - wither
+    - bad_luck
+    - bad_omen
+    - stun
+    - silence
+SFP_PotionI:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: regeneration
+    strength: 3
+    duration:  40
+    targeted: true
+    can-target: players
+    obey-los: true
+    effects:
+        effect2:
+            effect: effectlibentity
+            effect-interval: 20
+            position: target
+            effectlib:
+                class: IconEffect
+                iterations: 5
+                particle: HEART
+SFP_PotionII:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: resistance
+    strength: 2
+    duration:  100
+    targeted: true
+    can-target: players
+    obey-los: true
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: target
+            effect-interval: 20
+            effectlib:
+                class: LoveEffect
+                particle: ICON_CRACK
+                material: GOLD_BLOCK
+                iterations: 10
+PalmBurstMulti:
+    spell-class: ".TargetedMultiSpell"
+    name: "&fSky Magic&8: &7Palm Burst"
+    cast-item: nether_star
+    cooldown: 20
+    range: 3
+    require-entity-target: true
+    stop-on-fail: false
+    targeted: true
+    spells:
+        - PalmBurstStun
+        - Palmburstlev
+        - DELAY 16
+        - PalmBurstKnockBack
+Palmburstlev:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: levitation
+    strength: 2
+    duration: 15
+    targeted: true
+    can-target: players,nonplayers
+PalmBurstStun:
+    helper-spell: true
+    spell-class: ".targeted.StunSpell"
+    duration: 15
+    interval: 1
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: target
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: ffffff
+                radius: 2
+                radiusIncrease: -0.15
+                particles: 25
+                iterations: 10
+        effect3:
+            position: target
+            effect: sound
+            sound: block.beacon.activate
+            volume: 0.5
+            pitch: 3
+        effect4:
+            position: startcast
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: DragonEffect
+                particle: REDSTONE
+                color: ffffff
+                length: 5
+                particles: 8
+                arcs: 20
+                pitch: -0.1
+                iterations: 5
+PalmBurstKnockBack:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 4
+    horizontal-force: 30
+    vertical-force: 3
+    target-players: true
+    can-target: players,monsters,animals
+    check-plugins: true
+    effects:
+        effect1:
+            position: target
+            effect: sound
+            sound: entity.generic.explode
+            volume: 0.5
+            pitch: 1
+        effect2:
+            position: target
+            effect: particles
+            horiz-spread: 1
+            particle-name: explosion
+            vert-spread: 1
+            count: 3
+        effefct3:
+            effect: effectlibentity
+            position: target
+            effectlib:
+                class:  VortexEffect
+                particle:  REDSTONE
+                color: ffffff
+                particles: 15
+                radius: 1
+                iterations: 20
+Valor2MeMulti:
+    spell-class: ".MultiSpell"
+    name: "&9Quinn:&6 Behind the enemy lines"
+    cast-item: crossbow
+    cooldown: 20
+    spells:
+        - Valor2MeSlow
+        - DELAY 40
+        - Valor2MeJump
+        - DELAY 13
+        - Valor2MeFly
+Valor2MeSlow:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: slowness
+    strength: 2
+    duration: 40
+    target-self: true
+    can-target: players,nonplayers
+    str-cast-self: "&9&lValor! To&6&l me"
+    str-cast-others: "&9Justice takes&6 wing."
+Valor2MeJump:
+    helper-spell: true
+    spell-class: ".instant.LeapSpell"
+    forward-velocity: 0
+    upward-velocity: 10
+    cancel-damage: true
+    effects:
+        effect1:
+            position: pos1
+            effect: particles
+            particle-name:  cloud
+            horiz-spread: 1
+            vert-spread: 1
+            count:  10
+Valor2MeFly:
+    spell-class: ".buff.WindglideSpell"
+    duration: 15
+    block-collision-dmg: true
+    cancel-on-collision: true
+    can-target: players,nonplayers,monsters
+    velocity: 7
+    height: 0.0075
+    spell:  ZephyrRotateAOE
+    collision-spell: ZephyrColision
+    effects: 
+        effect1:
+            position: buff
+            effect-interval: 2
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                orient_pitch: true
+                pitch: 90
+                particle: REDSTONE
+                color: 0E50C0
+                speed: 0.1
+                fileName: plugins/MagicSpells/Images/ValorWings.gif
+                isGif: true
+                enableRotation: false
+                relative-offset: -1,1,0
+                visibleRange: 20
+                size: 0.015
+                stepX: 7
+                stepY: 7
+                iterations: 2
+        effect2:
+            effect: effectlib
+            effect-interval: 1
+            position: buff
+            effectlib:
+                class: CircleEffect
+                iterations: 20
+                particles:  10
+                particle: REDSTONE
+                wholeCircle: false
+                color: 04C5EE
+                radius: 1
+                iterations: 25
+ZephyrColision:
+    spell-class: ".targeted.ForcebombSpell"
+    radius: 5
+    pushback-force: 30
+    additional-vertical-force: 5
+    max-vertical-force: 10
+    can-target: players,nonplayers,monsters
+    effects:
+        eff1:
+            position: pos1
+            effect: fireworks
+            height-offset: 1
+            type: 0
+            flight: 0
+            trail: false
+            flicker: false
+            colors: FFFFFF
+            fade-colors: 07C2FC
+        eff2:
+            effect: effectlibentity
+            position: pos1
+            effectlib:
+                class: SphereEffect
+                particle: SPELL
+                radius: 5
+                particles: 75
+                iterations: 30
+ZephyrRotateAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 2
+    vertical-radius: 2
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - ZephyrRotate
+ZephyrRotate: 
+    spell-class: ".targeted.RotateSpell"
+    random: true
+NightStalkPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 15
+     modifiers:
+          - onteam MeleeAssasin required
+     triggers:
+          - sprint
+     spells:
+          - NightStalkMulti
+NightStalkMulti:
+    helper-spell: true
+    spell-class: ".MultiSpell"
+    cooldown: 15
+    spells:
+        - NightStalkerDummy
+        - NightStalkerPI
+        - NightStalkerPII
+        - NightStalkerPIII
+NightStalkerPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 3
+     modifiers:
+          - buffactive NightStalkerDummy required
+     triggers:
+          - ticks 1
+     spells:
+          - NightStalkerCombustAOE
+NightStalkerCombustAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 2.5
+    vertical-radius: 2
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - NightStalkerBlind
+NightStalkerPI:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: invisibility
+    strength: 1
+    duration: 60
+    target-self: true
+    can-target: players,nonplayers
+    effects:
+        eff1:
+            position: caster
+            effect: sound
+            sound: entity.player.attack.sweep
+            volume: 0.5
+            pitch: 0.75
+NightStalkerPII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: speed
+    strength: 2
+    duration: 40
+    target-self: true
+    can-target: players,nonplayers
+NightStalkerPIII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: night_vision
+    strength: 2
+    duration: 60
+    target-self: true
+    can-target: players,nonplayers
+NightStalkerPIV:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: blindness
+    strength: 1
+    duration: 60
+    target-self: false
+    can-target: players,nonplayers
+NightStalkerDummy:
+    spell-class: ".instant.DummySpell"
+    effects:
+        eff1:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: FlameEffect
+                particle: SMOKE_LARGE
+                iterations: 20
+QuickDrawTMulti:
+    range: 15
+    spell-class: ".TargetedMultiSpell"
+    require-entity-target: true
+    can-target: players,monsters,animals
+    name: "&9Quinn: &6Vault"
+    cooldown: 15
+    cast-item: crossbow
+    spells:
+        - QuickDrawStep
+        - DELAY 5
+        - QuickDrawDamageAoe
+        - QuickDrawPushAoe
+        - DELAY 1
+        - QuickDrawPushAoe
+        - leapback
+leapback:
+    helper-spell: true
+    spell-class: ".instant.LeapSpell"
+    forward-velocity: 25
+    upward-velocity: 5
+    cancel-damage: true
+    effects:
+        effect1:
+            position: pos1
+            effect: particles
+            particle-name:  cloud
+            horiz-spread: 1
+            vert-spread: 1
+            count:  10
+QuickDrawPushAoe:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 2
+    vertical-radius: 1
+    max-targets: 5
+    can-target: players,nonplayers
+    spells:
+        - QuickDrawPush
+QuickDrawDamageAoe:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 2
+    vertical-radius: 1
+    max-targets: 5
+    can-target: players,nonplayers
+    spells:
+        - QuickDrawDamage
+QuickDrawDamage:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: wither
+    strength: 3
+    duration: 40
+    targeted: true
+    can-target: players,nonplayers
+    effects:
+        eff1:
+            effect: effectlibentity
+            position: target
+            effectlib:
+                class: BleedEffect
+                iterations: 5
+QuickDrawPush:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    range: 15
+    damage: 0
+    horizontal-force: -5
+    vertical-force: 5
+    can-target: players,monsters,animals
+    check-plugins: true
+    effects:
+        eff1:
+            effect: effectlibentity
+            position: target
+            effectlib:
+                class:  VortexEffect
+                particle:  REDSTONE
+                color: EE4004
+                particles: 10
+                radius: 0.5
+                iterations: 10
+QuickDrawStep:
+    helper-spell: true
+    spell-class: ".targeted.ShadowstepSpell"
+    can-target: players,monsters,animals
+    range: 20
+    str-no-target: "&8Focus... One person.. a time."
+    str-no-landing-spot: "&8You can't get in that spot"
+    effects:
+        eff1:
+            position: caster
+            effect: effectlib
+            effectlib:
+                class: FlameEffect
+                particle: SMOKE_NORMAL
+                iterations: 20
+        eff2:
+            position: reverseline
+            effect-interval: 5
+            effect: particles
+            height-offset: 0
+            particle-name:  mycelium
+            horiz-spread: 0.25
+            vert-spread: 2
+            count: 25
+        eff3:
+            position: target
+            effect: effectlib
+            effectlib:
+                class: HelixEffect
+                radius: 5
+                curve: -3
+                particles: 0
+                strands: 4
+                iterations: 0
+        eff4:
+            position: caster
+            effect: sound
+            sound: block.anvil.hit
+            volume: 1
+            pitch: -15
+        eff5:
+            position: pos2
+            effect: sound
+            sound: block.anvil.hit
+            volume: 0.5
+            pitch: -3
+LSSPDummy:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 5
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: buff
+            special-effect-interval: 20
+            effectlib:
+                class: SphereEffect
+                particle: ENCHANTMENT_TABLE
+                radius: 20
+                radiusIncrease: -6
+                particles: 150
+                iterations: 15
+        effect2:
+            effect: effectlibentity
+            position: buff
+            special-effect-interval: 20
+            effectlib:
+                class: SphereEffect
+                particle: SPELL_WITCH
+                radius: 20
+                radiusIncrease: -6
+                particles: 150
+                iterations: 15
+LSSPPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 5
+     modifiers:
+          - buffactive LRDUMMYI required
+     triggers:
+          - sneak 
+     spells:
+          - LSSPMulti
+LSSPMulti:
+    helper-spell: true
+    spell-class: ".MultiSpell"
+    spells:
+        - LSSPDummy
+        - LSSPAOE
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+        - DELAY 2
+        - LSSPDragAOE
+LSSPDragAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 20
+    vertical-radius: 75
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - LSSPDrag
+    effects: 
+        effect1:
+            effect: particles
+            position: line
+            horiz-spread: 0.25
+            vert-spread: 0.2
+            count: 5
+            particle-name: block_crack
+            material:  GOLD_BLOCK
+            effect-interval: 15
+LSSPAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 20
+    vertical-radius: 75
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - LSSP
+LSSPDrag:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 0
+    horizontal-force: -2
+    vertical-force: -100
+    target-players: true
+    can-target: players,monsters,animals
+    check-plugins: true
+LSSP:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: jump_boost
+    targeted: true
+    hidden: false
+    strength: -2
+    duration: 100
+    can-target: players,nonplayers
+LRPotionI:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: regeneration
+    hidden: true
+    strength: 3
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+LRPotionII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: night_vision
+    hidden: true
+    strength: 2
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+LRPotionIII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: glowing
+    hidden: true
+    strength: 2
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+LRPotionIV:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: speed
+    hidden: true
+    strength: 3
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+LRPotionV:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: jump_boost
+    hidden: true
+    strength: 2
+    duration: 600
+    target-self: true
+    can-target: players,nonplayers
+LRLCLEV:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Levitation
+    strength: 2
+    duration: 20
+    targeted: true
+    can-target: players,nonplayers
+LRLCblind:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: Levitation
+    strength: 2
+    duration: 20
+    targeted: true
+    can-target: players,nonplayers
+LCLCToss:
+    helper-spell: true
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 2
+    horizontal-force: 1
+    vertical-force: 2
+    target-players: true
+    can-target: players,monsters,animals
+    check-plugins: true
+LRLCMulti:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    require-entity-target: true
+    spells:
+        - LCLCToss
+        - LRLCblind
+        - LRLCLEV
+LSLCEmpower:
+    spell-class: ".buff.EmpowerSpell"
+    power-multiplier: 2.0
+    max-power-multiplier: 3.0
+    duration: 15
+    str-cast-self: "&fYou're kinda strong now lol"
+LRLCPassive:
+     spell-class: ".PassiveSpell"
+     cooldown: 5
+     modifiers:
+          - buffactive LRDUMMYI required
+     triggers:
+          - givedamage 
+     spells:
+          - LRLCMulti
+LRBuffmulti:
+     spell-class: ".MultiSpell"
+     cooldown: 60
+     spells:
+         - LRDUMMYI
+         - LRPotionI
+         - LRPotionII
+         - LRPotionIII
+         - LRPotionIV 
+         - LRPotionV
+         - LSLCEmpower
+LRRCPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive LRDUMMYI required
+     triggers:
+          - rightclickentity PLAYER
+     spells:
+          - LRTMULTI
+LRTMULTI:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    str-cast-target: "&5You've recieved &6 %a's &5favor."
+    str-cast-others: "&6 %t &5 has recieved&6 %a 's&5 favor"
+    require-entity-target: true
+    spells:
+        - LRArmor
+        - LRTDummy
+        - LRTPI
+        - LRTPII
+        - LRTPIII
+        - LRTPIV
+LRArmor:
+    helper-spell: true
+    spell-class: ".buff.ArmorSpell"
+    targeted: true
+    duration: 15
+    replace: false
+    helmet: 
+    chestplate: leather_chestplate#F9FFFE 
+    leggings: leather_ leggings#F9FFFE 
+    boots: leather_boots#F9FFFE
+LRTPI:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: speed
+    strength: 2
+    duration: 300
+    targeted: true
+    can-target: players,nonplayers
+LRTPII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: jump_boost
+    strength: 2
+    duration: 300
+    targeted: true
+    can-target: players,nonplayers
+LRTPIII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: glowing
+    strength: 2
+    duration: 300
+    targeted: true
+    can-target: players,nonplayers
+LRTPIV:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: night_vision
+    strength: 2
+    duration: 300
+    targeted: true
+    can-target: players,nonplayers
+LRTDummy:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 15
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 15
+            effectlib:
+                class: LoveEffect
+                particle: BLOCK_DUST
+                material:  GOLD_BLOCK
+                iterations: 7
+        effect2:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 20
+            effectlib:
+                class: FlameEffect
+                particle: END_ROD
+                iterations: 1
+        effect3:
+            effect: effectlibentity
+            position: buff
+            effect-interval: 15
+            effectlib:
+                class: LoveEffect
+                particle: SPELL_WITCH
+                iterations: 7
+        effect4:
+            effect: particles
+            position: pos2
+            particle-name: flash
+LRAOEDEBUFFIAOE:
+    helper-spell: true
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 10
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - LRAOEDEBUFFI
+        - LRAOEDEBUFFII
+LRAOEDEBUFFI:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: blindness
+    targeted: true
+    hidden: true
+    strength: 5
+    duration: 100
+    can-target: players,nonplayers
+LRAOEDEBUFFII:
+    spell-class: ".targeted.PotionEffectSpell"
+    targeted: true
+    hidden: true
+    type: night_vision
+    strength: 8
+    duration: 100
+    can-target: players,nonplayers
+LRDUMMYI:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    effect-interval: 1
+    duration: 30
+    effects:
+        effect1:
+            position: orbit
+            orbit-radius:  0
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: AnimatedBallEffect
+                particles: 5
+                size: 2
+                xFactor: 1
+                yFactor: 1
+                zFactor: 1
+                yOffset: 0
+                iterations: 10
+                relative-offset: 0,0.75,0
+        effect3:
+            effect: particles
+            position: caster
+            horiz-spread: 1
+            vert-spread: 50
+            count: 5
+            particle-name: flash
+        effect4:
+            effect: particles
+            position:  buff
+            horiz-spread: 1.5
+            vert-spread: 20
+            count: 175
+            particle-name: enchant
+        effect5:
+            position: buff
+            effect: particles
+            horiz-spread: 0.5
+            vert-spread: 20
+            count: 125
+            particle-name: enchanted_hit
+LRDUMMYII:
+    helper-spell: true
+    spell-class: ".buff.DummySpell"
+    duration: 10
+    effects:
+        effect1:
+            position: buff
+            effect-interval: 30
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle:  REDSTONE
+                color: ffffff
+                radius: 10
+                particles: 75
+                radiusIncrease: -0.75
+                iterations: 10
+        effect2:
+            position: buff
+            effect-interval: 30
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle:  REDSTONE
+                color: F1CD1F
+                radius: 10
+                particles: 45
+                radiusIncrease: -0.75
+                iterations: 10
