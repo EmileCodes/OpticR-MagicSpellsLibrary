@@ -1,0 +1,89 @@
+#Thorn grasp
+#Imitatia summons a mass of creeping thorny vines beneath target. Damages on pulse, target is entombed, slow on release.
+ThorngraspEntomb: 
+    spell-class: ".targeted.EntombSpell"
+    target-self: false
+    allow-breaking: false
+    block-type: barrier
+    duration: 20
+    str-cast-target: "&aYou've been caught in a thorn-prison"
+    effects:
+        Greenhelix:
+            effect: effectlibentity
+            position: pos2
+            effect-interval: 2
+            effectlib:
+                class: HelixEffect
+                particle: VILLAGER_HAPPY
+                strands: 5
+                radius: 2
+                curve: -2
+                rotation : 8
+                iterations: 1
+        effect2:
+            effect: effectlibentity
+            position: pos2
+            effect-interval: 2
+            effectlib:
+                class: HelixEffect
+                particle: SPELL_WITCH
+                strands: 5
+                radius: 2
+                curve: -2
+                rotation : 8
+                iterations: 1
+Thorngraspdamage:
+    helper-spell: true
+    spell-class: ".targeted.PainSpell"
+    damage: 3
+    ignore-armor: true
+    check-plugins: true
+    can-target: players,nonplayers
+ThorngraspSlowI:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: slowness
+    targeted: true
+    hidden: true
+    strength: 1
+    duration: 20
+    can-target: players,nonplayers
+    effects:
+        fallsound:
+            position: target
+            effect: sound
+            sound: block.grass.break
+            volume: 0.01
+            pitch: 1
+ThorngraspSlowII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: slowness
+    targeted: true
+    hidden: true
+    strength: 3
+    duration: 40
+    can-target: players,nonplayers
+    effects:
+        fallsound:
+            position: target
+            effect: sound
+            sound: item.elytra.flying
+            volume: 0.01
+            pitch: 1
+  ThorngraspSlowIII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    type: slowness
+    targeted: true
+    hidden: true
+    strength: 5
+    duration: 60
+    can-target: players,nonplayers
+    effects:
+        fallsound:
+            position: target
+            effect: sound
+            sound: item.elytra.flying
+            volume: 0.01
+            pitch: 1
