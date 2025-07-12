@@ -1,3 +1,77 @@
+#arcana
+variables:
+  arcana_stacks:
+    type: player
+    permanent: false
+    default: 0
+    min: 0
+    max: 5
+
+ArcanaPassive:
+  spell-class: ".PassiveSpell"
+  triggers:
+    - trigger: damage
+      mode: give
+      damage-types: ["player_attack", "#bypasses_armor"]
+      indirect-damager: true
+      minimum-damage: 6
+  spells:
+    - ArcanaAddStack
+    - ArcanaCheckProc
+
+ArcanaAddStack:
+  spell-class: ".instant.DummySpell"
+  targeted: true
+  variable-mods-target:
+    - arcana_stacks +1
+
+
+ArcanaCheckProc:
+  spell-class: ".instant.DamageSpell"
+  targeted: true
+  damage: 5
+  target-modifiers:
+    - variable arcana_stacks>=5 required
+  variable-mods-target:
+    - arcana_stacks =0
+
+MyRectangleOutlineEffect:
+  spell-class: ".instant.DummySpell"
+  effects:
+    horizontal_sides:
+      position: caster
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: REDSTONE
+        color: FFFFFF
+        iterations: 1
+        particles: 10  # Points per horizontal side
+        particles2: 2  # Two sides (top and bottom)
+        orient: false
+        xEquation: "0"
+        yEquation: "0"
+        zEquation: "0"
+        x2Equation: "(t / 9) * 5 - 2.5"  # t from 0 to 9, scale to width 5, centered
+        y2Equation: "(t2 * 3) - 1.5"   # t2=0 or 1, height 3, centered at -1.5 and 1.5
+        z2Equation: "0"
+    vertical_sides:
+      position: caster
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: REDSTONE
+        color: FFFFFF
+        iterations: 1
+        particles: 6   # Points per vertical side (for height 3, adjust density)
+        particles2: 2  # Two sides (left and right)
+        orient: false
+        xEquation: "0"
+        yEquation: "0"
+        zEquation: "0"
+        x2Equation: "(t2 * 5) - 2.5"   # t2=0 or 1, width 5, centered at -2.5 and 2.5
+        y2Equation: "(t / 5) * 3 - 1.5"  # t from 0 to 5, scale to height 3, centered
+        z2Equation: "0"
 #Thorn grasp
 #Imitatia summons a mass of creeping thorny vines beneath target. Damages on pulse, target is entombed, slow on release.
 ThorngraspEntomb: 
