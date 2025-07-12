@@ -1,3 +1,444 @@
+NSTBEAMPassive:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive NSTAnimationI required
+          - buffactiveNSTAnimationII deny
+          - sneaking required
+     triggers:
+          - ticks 5
+     spells:
+          - NSTBEAM
+NSTProjectileCancel:
+    spell-class: ".instant.ParticleProjectileSpell"
+    change-pitch: true
+    controllable: false
+    projectile-velocity: 10
+    max-distance: 15
+    hit-radius: 3
+    interactions:
+      - otherProjectile  NSTCancelled
+      - with:  
+          stop-causing: false
+          stop-with: true
+          can-interact: self
+          collision-spell: NSTCancelled
+    tick-interval: 1
+    special-effect-interval: 1
+    stop-on-hit-entity: false
+    stop-on-hit-ground: false
+    relative-offset: 0,0,0
+    effects:
+        effectx:
+            position: pos1
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: ELECTRIC_SPARK
+                speed: 0.1
+                radius: 1.5
+                radiusIncrease: 0.1
+                particles: 1
+                iterations: 1
+NSTCancelled: 
+    spell-class: ".instant.DummySpell"
+    effects:
+        effectx:
+            position: special
+            effect: effectlib
+            effect-interval: 5
+            effectlib:
+                class: SphereEffect
+                particle: ELECTRIC_SPARK
+                speed: 0.1
+                radius: 0.35
+                radiusIncrease: 0.1
+                particles: 1
+                iterations: 5
+                relative-offset: 0,0,0
+        Cancelsound:
+            position: start 
+            effect: sound
+            sound: block.lava.pop
+            volume: 3
+            pitch: 2
+        firework:
+            position: caster
+            effect: fireworks
+            type: 4
+            flicker: true
+            colors: 1f1137,673ab7
+            fade-colors: ffffff
+NSTBEAM:
+    spell-class: ".instant.BeamSpell"
+    y-offset: 0
+    max-distance: 15
+    vertical-rotation: 10
+    stop-on-hit-entity: true
+    spell: NSTBEAMLevitate
+    horizontal-rotation: 0
+    rotation: 0
+    spell-on-travel: NSTProjectileCancel
+    interval: 0.5
+    relative-offset: 0,0,0
+    effects:
+        ew:
+            effect: effectlibentity
+            effect-interval: 60
+            position: special
+            effectlib:
+                class:  VortexEffect 
+                particle: Redstone
+                color: F2C3DD
+                particleSize: 0.75
+                radius: 0.35
+                helixes: 3
+                relative-offset: 2,1.5,0
+                iterations: 5
+        thiscolor:
+            effect: effectlibentity
+            effect-interval: 60
+            position: special
+            effectlib:
+                class:  VortexEffect 
+                particle: Redstone
+                color: FFEEAC
+                particleSize: 0.35
+                radius: 0.75
+                helixes: 2
+                relative-offset: 2,1.5,0
+                iterations: 5
+        beuglyfrfr:
+            effect: effectlibentity
+            effect-interval: 60
+            position: special
+            effectlib:
+                class:  VortexEffect 
+                particle: Redstone
+                color: FACA81
+                particleSize: 0.35
+                radius: 0.75
+                helixes: 1
+                relative-offset: 2,1.5,0
+                iterations: 5
+NSTBEAMLevitate:
+    spell-class: ".targeted.LevitateSpell"
+    tick-rate: 5
+    duration: 15
+    distance-change: 0
+    range: 10
+    min-distance: 1
+    cancel-on-item-switch: false
+    cancel-on-spell-cast: false
+    cancel-on-take-damage: false
+NSTBEAMPassivIIe:
+     spell-class: ".PassiveSpell"
+     modifiers:
+          - buffactive NSTAnimationII required
+          - sneaking denied
+     triggers:
+          - ticks 10
+     spells:
+          - NSThoming
+NSThoming:
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 50
+    projectile-velocity: 15
+    projectile-inertia: 1.5
+    max-duration: 15
+    tick-interval: 1
+    special-effect-interval: 1
+    relative-offset: 1,1,0
+    target-relative-offset: 0,1.5,0
+    spell: NSTtargetedmulti
+    effects:
+        eff1:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: d64a2c
+                radius: 0.15
+                particles: 10
+                iterations: 1
+                period: 1
+                visibleRange: 30
+        eff2:
+            position: trail
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: d64a2c
+                radius: 0.05
+                particles: 5
+                iterations: 1
+                period: 1
+                visibleRange: 30
+        shootingsound:
+            position: caster
+            effect: sound
+            sound: entity.blaze.shoot
+            volume: 0.1
+            pitch: 2
+NSTtargetedmulti:
+    helper-spell: true
+    can-target: players,monsters,animals
+    spell-class: ".TargetedMultiSpell"
+    cast-random-spell-instead: true
+    spells:
+        - NSThomingstun
+        - DELAY 10
+        - NSTmanadrain
+        - NSTdamage
+NSTdamage:
+    helper-spell: true
+    spell-class: ".targeted.PainSpell"
+    damage: 5
+    ignore-armor: false
+    check-plugins: true
+    can-target: players,monsters,animals
+NSThomingstun:
+    helper-spell: true
+    spell-class: ".targeted.StunSpell"
+    duration: 40
+    power-affects-duration: false
+    interval: 3
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: target
+            effectlib:
+                class: WarpEffect
+                particle: DUST_COLOR_TRANSITION
+                color: F2C3DD
+                to-color: FACA81
+                radius: 1
+                radiusIncrease: -0.15
+                particles: 25
+                iterations: 20
+        effect3:
+            position: target
+            effect: sound
+            sound: entity.cat.hiss
+            volume: 0.5
+            pitch: 3
+NSTmanadrain:
+    spell-class: ".targeted.DrainlifeSpell"
+    take-type: mana
+    take-amt: 5
+    give-type: mana
+    give-amt: 5
+    ignore-armor: false
+    instant: false
+    show-spell-effect: true
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    effects:
+        eff2:
+            position: target
+            effect: sound
+            sound: entity.cat.hiss
+            volume: 0.3
+            pitch: 2
+        eff3:
+            position: caster
+            effect: sound
+            sound: entity.cat.hiss
+            volume: 0.3
+            pitch: 2            
+NSTAnimationII:
+    spell-class: ".buff.DummySpell"
+    cast-item: Catalyst
+    name: "&#FCAFBBNekosoku Tube"
+    modifiers:
+      - sneaking castinstead NSTAnimationI
+    cooldown: 25
+    duration: 5
+    effects:
+        DisplayPattern:
+            position: buffeffectlib
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                pitch: 0
+                orient_pitch: true
+                particleSize: 0.3
+                rotation: 0
+                enableRotation: false
+                plane: Y
+                particle: DUST_COLOR_TRANSITION
+                frameDelay: 1
+                color: FFFFFF
+                to-color: ff05e4
+                fileName: plugins/MagicSpells/images/MillianaCircle.png
+                isGif: false
+                relative-offset: 2,1.5,0
+                visibleRange: 15
+                size: 0.01
+                stepX: 5
+                stepY: 5
+                iterations: 5
+        OutsidePattern:
+            position: buffeffectlib
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                pitch: 0
+                orient_pitch: true
+                particleSize: 0.6
+                rotation: 0
+                enableRotation: false
+                plane: Y
+                particle: DUST_COLOR_TRANSITION
+                color: 673ab7
+                to-color: 3e236e
+                fileName: plugins/MagicSpells/images/MillianaCircleOutside.png
+                isGif: false
+                relative-offset: 2,1.5,0
+                visibleRange: 15
+                size: 0.01
+                stepX: 5
+                stepY: 4
+                iterations: 2
+        FillerPattern:
+            position: buffeffectlib
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                pitch: 0
+                orient_pitch: true
+                particleSize: 0.3
+                rotation: 0
+                enableRotation: false
+                plane: Y
+                particle: DUST_COLOR_TRANSITION
+                color: FFFFFF
+                to-color: ff05e4
+                fileName: plugins/MagicSpells/images/MillianaCircleFiller.png
+                isGif: false
+                relative-offset: 2,1.5,0
+                visibleRange: 15
+                size: 0.01
+                stepX: 5
+                stepY: 5
+                iterations: 5
+        TheChosenOneI:
+            position: buff
+            effect: sound
+            sound: ambient.crimson_forest.mood
+            volume: 1
+            pitch: 2
+            category: ambient
+        TheChosenOneII:
+            position: buff
+            effect: sound
+            sound: ambient.soul_sand_valley.mood
+            category: ambient
+            volume: 1
+            pitch: -2
+NSTAnimationI:
+    spell-class: ".buff.DummySpell"
+    duration: 10
+    effects:
+        DisplayPattern:
+            position: buffeffectlib
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                pitch: 0
+                orient_pitch: true
+                particleSize: 0.45
+                rotation: 0
+                enableRotation: false
+                plane: Y
+                particle: DUST_COLOR_TRANSITION
+                frameDelay: 1
+                color: FFFFFF
+                to-color: ff05e4
+                fileName: plugins/MagicSpells/images/MillianaCircle.png
+                isGif: false
+                relative-offset: 2,1.5,0
+                visibleRange: 15
+                size: 0.015
+                stepX: 5
+                stepY: 5
+                iterations: 5
+        OutsidePattern:
+            position: buffeffectlib
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                pitch: 0
+                orient_pitch: true
+                particleSize: 0.45
+                rotation: 0
+                enableRotation: false
+                plane: Y
+                particle: REDSTONE
+                color: 673ab7
+                fileName: plugins/MagicSpells/images/MillianaCircleOutside.png
+                isGif: false
+                relative-offset: 2,1.5,0
+                visibleRange: 15
+                size: 0.015
+                stepX: 4
+                stepY: 4
+                iterations: 5
+        FillerPattern:
+            position: buffeffectlib
+            effect-interval: 5
+            effect: effectlib
+            effectlib:
+                class: ImageEffect
+                pitch: 0
+                orient_pitch: true
+                particleSize: 0.45
+                rotation: 0
+                enableRotation: false
+                plane: Y
+                particle: DUST_COLOR_TRANSITION
+                color: FFFFFF
+                to-color: ff05e4
+                fileName: plugins/MagicSpells/images/MillianaCircleFiller.png
+                isGif: false
+                relative-offset: 2,1.5,0
+                visibleRange: 15
+                size: 0.015
+                stepX: 6
+                stepY: 6
+                iterations: 5
+        flash:
+            effect-interval: 20
+            effect: particles
+            position: pos1
+            particle-name: flash
+        soundcat:
+            position: pos1
+            effect-interval: 2
+            effect: sound
+            sound: entity.ocelot.hurt
+            volume: 3
+            pitch: -2
+        soundcatII:
+            position: pos1
+            effect-interval: 2
+            effect: sound
+            sound: entity.ocelot.hurt
+            volume: 3
+            pitch: -2
+
+
+
+---- OBSOLETE ---- 
 NSThoming:
     spell-class: ".targeted.HomingMissileSpell"
     range: 50
