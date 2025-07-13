@@ -1,77 +1,309 @@
 #arcana
-variables:
-  arcana_stacks:
-    type: player
-    permanent: false
-    default: 0
-    min: 0
-    max: 5
-
-ArcanaPassive:
+ArcanaPassiveInitiate:
   spell-class: ".PassiveSpell"
+  cooldown: 25
+  cost:
+    - mana 75
+  modifiers:
+    - onteam arcana required
   triggers:
     - trigger: damage
       mode: give
       damage-types: ["player_attack", "#bypasses_armor"]
       indirect-damager: true
-      minimum-damage: 6
+      minimum-damage: -1
   spells:
-    - ArcanaAddStack
-    - ArcanaCheckProc
+    - giveArcanadummyI
 
-ArcanaAddStack:
-  spell-class: ".instant.DummySpell"
-  targeted: true
-  variable-mods-target:
-    - arcana_stacks +1
+giveArcanadummyI:
+    spell-class: ".TargetedMultiSpell"
+    can-target: players,monsters,animals
+    spells:
+        - ArcanadummyI
 
+ArcanadummyI:
+    spell-class: ".buff.DummySpell"
+    duration: 10
+    effects:
+      Arcanavisual:
+        effect: particlespersonal
+        position: target
+        target: caster
+        particle-name: witch
+        count: 30
+        speed: 0.1
+        horiz-spread: 3
+        vert-spread: 3
+      notifsound:
+        position: target  
+        effect: sound
+        sound: entity.evoker.cast_spell
+        volume: 0.1
+        pitch: -2 
+      message:
+        position: target
+        effect: actionbartext
+        message: "&5Arcana Stacks's have been applied to you by &d %a &f1&d/&f5"
+        broadcast: false
 
+ArcanaPassivelvlItoII:
+  spell-class: ".PassiveSpell"
+  cooldown: 10
+  modifiers:
+    - buffactive ArcanadummyI required
+  triggers:
+    - trigger: damage
+      mode: take
+      damage-types: ["player_attack", "#bypasses_armor"]
+      indirect-damager: true
+      minimum-damage: -1
+  spells:
+    - giveArcanadummyII
+
+giveArcanadummyII:
+    spell-class: ".MultiSpell"
+    can-target: players,monsters,animals
+    spells:
+        - DELAY 5
+        - ArcanadummyII
+ArcanadummyII:
+    spell-class: ".buff.DummySpell"
+    duration: 10
+    effects:
+      Arcanavisual:
+        effect: particlespersonal
+        position: target
+        target: caster
+        particle-name: dragon_breath
+        count: 25
+        speed: 0.1
+        horiz-spread: 2
+        vert-spread: 2
+      notifsound:
+        position: target  
+        effect: sound
+        sound: entity.evoker.cast_spell
+        volume: 0.2
+        pitch: -2 
+      message:
+        position: target
+        effect: actionbartext
+        message: "&5Arcana Stacks's &f2&d/&f5"
+        broadcast: false
+
+ArcanaPassivelvlIItoIII:
+  spell-class: ".PassiveSpell"
+  cooldown: 10
+  modifiers:
+    - buffactive ArcanadummyII required
+  triggers:
+    - trigger: damage
+      mode: take
+      damage-types: ["player_attack", "#bypasses_armor"]
+      indirect-damager: true
+      minimum-damage: -1
+  spells:
+    - DELAY 5
+    - giveArcanadummyIII
+
+giveArcanadummyIII:
+    spell-class: ".MultiSpell"
+    can-target: players,monsters,animals
+    spells:
+        - DELAY 5
+        - ArcanadummyIII
+
+ArcanadummyIII:
+    spell-class: ".buff.DummySpell"
+    duration: 10
+    effects:
+      Arcanavisual:
+        effect: particlespersonal
+        position: target
+        target: caster
+        particle-name: witch
+        count: 20
+        speed: 0.1
+        horiz-spread: 1
+        vert-spread: 1
+      notifsound:
+        position: target  
+        effect: sound
+        sound: entity.evoker.cast_spell
+        volume: 0.3
+        pitch: -2 
+      message:
+        position: target
+        effect: actionbartext
+        message: "&5Arcana Stacks's &f3&d/&f5"
+        broadcast: false
+
+ArcanaPassivelvlIIItoIV:
+  spell-class: ".PassiveSpell"
+  cooldown: 10
+  modifiers:
+    - buffactive ArcanadummyIII required
+  triggers:
+    - trigger: damage
+      mode: take
+      damage-types: ["player_attack", "#bypasses_armor"]
+      indirect-damager: true
+      minimum-damage: -1
+  spells:
+    - DELAY 5
+    - giveArcanadummyIV
+    
+giveArcanadummyIV:
+    spell-class: ".MultiSpell"
+    can-target: players,monsters,animals
+    spells:
+        - ArcanadummyIV
+
+ArcanadummyIV:
+    spell-class: ".buff.DummySpell"
+    duration: 10
+    effects:
+      Arcanavisual:
+        effect: particlespersonal
+        position: target
+        target: caster
+        particle-name: dragon_breath
+        count: 30
+        speed: 0.1
+        horiz-spread: 0.5
+        vert-spread: 3
+      ArcanavisualII:
+        effect: particlespersonal
+        position: target
+        target: caster
+        particle-name: witch
+        count: 30
+        speed: 0.1
+        horiz-spread: 0.5
+        vert-spread: 3
+      notifsound:
+        position: target  
+        effect: sound
+        sound: entity.evoker.cast_spell
+        volume: 0.1
+        pitch: -2 
+      message:
+        position: target
+        effect: actionbartext
+        message: "&5Arcana Stacks's &f4&d/&f5"
+        broadcast: false
+
+ArcanaPassivelvlIVtoV:
+  spell-class: ".PassiveSpell"
+  cooldown: 6
+  modifiers:
+    - buffactive ArcanadummyIV required
+  triggers:
+    - trigger: damage
+      mode: take
+      damage-types: ["player_attack", "#bypasses_armor"]
+      indirect-damager: true
+      minimum-damage: -1
+  spells:
+    - ArcanaCycleReset
+
+ArcanaCycleReset:
+    spell-class: ".MultiSpell"
+    can-target: players,monsters,animals
+    spells:
+        - ArcanaCheckProc
+        - ArcanadummyIV
 ArcanaCheckProc:
-  spell-class: ".instant.DamageSpell"
-  targeted: true
-  damage: 5
-  target-modifiers:
-    - variable arcana_stacks>=5 required
-  variable-mods-target:
-    - arcana_stacks =0
-
-MyRectangleOutlineEffect:
-  spell-class: ".instant.DummySpell"
-  effects:
-    horizontal_sides:
-      position: caster
-      effect: effectlib
-      effectlib:
-        class: EquationEffect
-        particle: REDSTONE
-        color: FFFFFF
-        iterations: 1
-        particles: 10  # Points per horizontal side
-        particles2: 2  # Two sides (top and bottom)
-        orient: false
-        xEquation: "0"
-        yEquation: "0"
-        zEquation: "0"
-        x2Equation: "(t / 9) * 5 - 2.5"  # t from 0 to 9, scale to width 5, centered
-        y2Equation: "(t2 * 3) - 1.5"   # t2=0 or 1, height 3, centered at -1.5 and 1.5
-        z2Equation: "0"
-    vertical_sides:
-      position: caster
-      effect: effectlib
-      effectlib:
-        class: EquationEffect
-        particle: REDSTONE
-        color: FFFFFF
-        iterations: 1
-        particles: 6   # Points per vertical side (for height 3, adjust density)
-        particles2: 2  # Two sides (left and right)
-        orient: false
-        xEquation: "0"
-        yEquation: "0"
-        zEquation: "0"
-        x2Equation: "(t2 * 5) - 2.5"   # t2=0 or 1, width 5, centered at -2.5 and 2.5
-        y2Equation: "(t / 5) * 3 - 1.5"  # t from 0 to 5, scale to height 3, centered
-        z2Equation: "0"
+    spell-class: ".targeted.PainSpell"
+    damage: 4
+    ignore-armor: false
+    check-plugins: true
+    target-self: true 
+    can-target: players,monsters,animals
+    effects:
+      horizontal_sides:
+        position: target
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: DRAGON_BREATH
+          color: FFFFFF
+          iterations: 1
+          particles: 6  
+          particles2: 2  
+          orient: false
+          xEquation: "0"
+          yEquation: "0"
+          zEquation: "0"
+          x2Equation: "(t / 5) * 3 - 1.5" 
+          y2Equation: "(t2 * 5) - 2.5"   
+          z2Equation: "0"
+          relative-offset: 0,1.5,0
+      vertical_sides:
+        position: target
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: DRAGON_BREATH
+          color: FFFFFF
+          iterations: 1
+          particles: 10  
+          particles2: 2  
+          orient: false
+          xEquation: "0"
+          yEquation: "0"
+          zEquation: "0"
+          x2Equation: "(t2 * 3) - 1.5"   
+          y2Equation: "(t / 9) * 5 - 2.5"  
+          z2Equation: "0"
+          relative-offset: 0,1.5,0
+      purplehorizontal_sides:
+        position: target
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: SPELL_WITCH
+          color: FFFFFF
+          iterations: 1
+          particles: 6  
+          particles2: 2  
+          orient: false
+          xEquation: "0"
+          yEquation: "0"
+          zEquation: "0"
+          x2Equation: "(t / 5) * 3 - 1.5"  
+          y2Equation: "(t2 * 5) - 2.5"   
+          z2Equation: "0"
+          relative-offset: 0,1.5,0
+      purplevertical_sides:
+        position: target
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: SPELL_WITCH
+          color: FFFFFF
+          iterations: 1
+          particles: 10  
+          particles2: 2  
+          orient: false
+          xEquation: "0"
+          yEquation: "0"
+          zEquation: "0"
+          x2Equation: "(t2 * 3) - 1.5"  
+          y2Equation: "(t / 9) * 5 - 2.5"  
+          z2Equation: "0"
+          relative-offset: 0,1.5,0
+      proc_sound:
+        position: caster  
+        effect: sound
+        sound: entity.evoker.cast_spell
+        volume: 1
+        pitch: 1
+      message:
+        position: caster
+        effect: actionbartext
+        message: "&5Arcana Stacks's - bonus damage dealt to &f %t"
+        broadcast: true
 #Thorn grasp
 #Imitatia summons a mass of creeping thorny vines beneath target. Damages on pulse, target is entombed, slow on release.
 ThorngraspEntomb: 
