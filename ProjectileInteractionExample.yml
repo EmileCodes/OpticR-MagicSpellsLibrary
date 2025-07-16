@@ -1,0 +1,105 @@
+#Projectile Interaction
+# A way in minecraft to trigger spells by making 2 other projectiles hit each other.
+#Interactions allow you to create a spell entity that can react different based on what it collides with.
+
+#Config
+#entering the lines below into any particle projectile is all you need
+
+interactions:
+  - with: InjectionI
+    collision-spell: InteractI
+    stop-with: true
+    can-interact: self 
+
+#With = the spell that's allowed to interact with the original projectile
+# collision-spell = The spell to cast when the projectile collides with the projectile mentioned in the line above
+# stop-with = if the spell that triggered the interaction should stop after colliding with the initial projectile
+# stop-causing = if the original projectile should stop after a spell caused an interaction with it
+# can-interact = who can interact with the original projectile
+
+#A stationary projectile that will cause InteractI to be released when coming into contact with InjectionI This projectils is shaped like a 3x3 particle cloud
+InteractionProjec:
+    spell-class: ".instant.ParticleProjectileSpell"
+    projectile-velocity: 0
+    max-distance: 1
+    hit-radius: 3
+    interactions:
+      - with: InjectionI
+        collision-spell: InteractI
+        stop-with: true
+        can-interact: self
+    tick-interval: 1
+    special-effect-interval: 1
+    stop-on-hit-entity: false
+    stop-on-hit-ground: false
+    relative-offset: 0,0,0
+    effects:
+      eff1:
+        position: special
+        effect: effectlib
+        effectlib:
+          class: EquationEffect
+          particle: DUST_COLOR_TRANSITION
+          color: 000000
+          to-color: FFFFFF
+          particles: 50
+          xEquation: "rand(-1.5, 1.5)"
+          yEquation: "rand(-1.5, 1.5)"
+          zEquation: "rand(-1.5, 1.5)"
+          duration: 50
+          iterations: 10
+#Another stationairy projectile, so in order to trigger the interaction you need to stand in the particle cloud left by InteractionProjec
+InjectionI:
+    spell-class: ".instant.ParticleProjectileSpell"
+    cast-item: stick
+    cooldown: 3
+    projectile-velocity: 0
+    max-distance: 1
+    hit-radius: 3
+    tick-interval: 1
+    special-effect-interval: 1
+    stop-on-hit-entity: false
+    stop-on-hit-ground: false
+    relative-offset: 0,0,0
+#This projectile will thus appear when someone uses the InjectionI spell inside InteractionProjec, triggering the interaction.
+InteractI:
+    spell-class: ".instant.ParticleProjectileSpell"
+    hit-non-players: true
+    hit-ground: false
+    projectile-velocity: 10
+    hit-air-during: true
+    spell-interval: 1
+    spell-on-tick: OFADRAGAOE
+    stop-on-hit-entity: false
+    max-distance: 30
+    hit-radius: 3
+    projectile-gravity: 0
+    effects:
+        effect1:
+            effect: effectlibentity
+            position: special
+            effectlib:
+                class:  VortexEffect
+                particle: ELECTRIC_SPARK
+                particles: 15
+                radius: 3
+                iterations: 7
+        effect2:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: DragonEffect
+                pitch: .3
+                particle: REDSTONE
+                particleSize: 3
+                color: 34f7f7
+                length: 5
+                arcs: 5
+                particles: 15
+                iterations: 7
+        effect3:
+            position: special
+            effect: sound
+            sound: event.raid.horn
+            volume: 0.8
+            pitch: 2
