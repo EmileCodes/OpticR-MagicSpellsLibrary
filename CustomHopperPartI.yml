@@ -412,12 +412,11 @@ NSTProjectileCancel:
     max-distance: 15
     hit-radius: 3
     interactions:
-      - otherProjectile  NSTCancelled
       - with:  
-          stop-causing: false
-          stop-with: true
-          can-interact: self
-          collision-spell: NSTCancelled
+        stop-causing: false
+        stop-with: true
+        can-interact: self
+        collision-spell: NSTCancelled
     tick-interval: 1
     special-effect-interval: 1
     stop-on-hit-entity: false
@@ -533,19 +532,20 @@ NSTBEAMPassivIIe:
           - buffactive NSTAnimationII required
           - sneaking denied
      triggers:
-          - ticks 10
+          - ticks 25
      spells:
           - NSThoming
 NSThoming:
     spell-class: ".targeted.HomingMissileSpell"
     range: 50
-    projectile-velocity: 15
-    projectile-inertia: 1.5
+    projectile-velocity: 12
+    projectile-inertia: 1
     max-duration: 15
+    hit-radius: 1
     tick-interval: 1
     special-effect-interval: 1
     relative-offset: 1,1,0
-    target-relative-offset: 0,1.5,0
+    target-relative-offset: 0,0.5,0
     spell: NSTtargetedmulti
     effects:
         eff1:
@@ -554,7 +554,7 @@ NSThoming:
             effectlib:
                 class: SphereEffect
                 particle: REDSTONE
-                color: d64a2c
+                color: F2C3DD
                 radius: 0.15
                 particles: 10
                 iterations: 1
@@ -566,7 +566,7 @@ NSThoming:
             effectlib:
                 class: SphereEffect
                 particle: REDSTONE
-                color: d64a2c
+                color: FFEEAC
                 radius: 0.05
                 particles: 5
                 iterations: 1
@@ -579,10 +579,9 @@ NSThoming:
             volume: 0.1
             pitch: 2
 NSTtargetedmulti:
+    spell-class: ".TargetedMultiSpell"
     helper-spell: true
     can-target: players,monsters,animals
-    spell-class: ".TargetedMultiSpell"
-    cast-random-spell-instead: true
     spells:
         - NSThomingstun
         - DELAY 10
@@ -591,7 +590,7 @@ NSTtargetedmulti:
 NSTdamage:
     helper-spell: true
     spell-class: ".targeted.PainSpell"
-    damage: 5
+    damage: 4
     ignore-armor: false
     check-plugins: true
     can-target: players,monsters,animals
