@@ -311,7 +311,8 @@ ChillingPersuitAnimation:
         - DELAY 45
         - IceDevilFlashing
         - IceDevilModifiedExpansion
-        - DELAY 50
+        - DELAY 40
+        - IceDevilModifiedExpansion2
         - IceDevilFlashing2
         - DELAY 5
         - IceDevilAOECarrier
@@ -390,9 +391,8 @@ IceDevilChargeup:
       effect: effectlib
       effectlib:
         class: EquationEffect
-        particle: DUST_COLOUR_TRANSITION
-        color: FFFFFF
-        to-color: 2795F5
+        particle: REDSTONE
+        color: 2795F5
         particleSize: 1.5
         particles: 10
         particles2: 9
@@ -440,13 +440,13 @@ IceDevilModifiedExpansion:
            effect: effectlib
            effectlib:
                class: Modified
-               duration: 3475
+               duration: 1000
                orient_pitch: true
                effect:
                    class: Sphere
                    particle: REDSTONE
                    color: 00BFFF
-                   visible_range: 50
+                   visible_range: 25
                parameters:
                    radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
                    particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
@@ -455,17 +455,43 @@ IceDevilModifiedExpansion:
            effect: effectlib
            effectlib:
                class: Modified
-               duration: 3475
+               duration: 1000
                orient_pitch: true
                effect:
                    class: Sphere
-                   particle: DUST_COLOR_TRANSITION
-                   color: FFFFFF
-                   to-color: 2795F5
-                   visible_range: 50
+                   particle: REDSTONE
+                   color: 2795F5
+                   visible_range: 25
                parameters:
                    radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
                    particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+IceDevilModifiedExpansion2:
+   spell-class: ".instant.DummySpell"
+   effects:
+       goldsparkles:
+          position: caster
+          effect: effectlib
+          effect-interval: 5
+          effectlib:
+              class: SphereEffect
+              particle: REDSTONE
+              color: FFFFFF
+              speed: 0.1
+              radius: 0.25
+              radiusIncrease: 0.5
+              iterations: 60
+       whitesprakles:
+          position: caster
+          effect: effectlib
+          effect-interval: 5
+          effectlib:
+              class: SphereEffect
+              particle: REDSTONE
+              color: 2795F5
+              speed: 0.1
+              radius: 0.25
+              radiusIncrease: 0.5
+              iterations: 60
 #arcana
 ArcanaPassiveInitiate:
   spell-class: ".PassiveSpell"
