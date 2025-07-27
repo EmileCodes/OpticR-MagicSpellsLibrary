@@ -127,7 +127,40 @@ GaleblastJumpLoad:
         x2Equation: (10 * (t/250 - 1)^2 + 0.5) * sin(4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
         y2Equation: 0
         z2Equation: (10 * (t/250 - 1)^2 + 0.5) * cos(4 * 3.1415 * t/250 + 2 * 3.1415 * t2/9)
-
+# Dont ask me how I made this, all I know is that it's very laggy but looks sick
+IceDevilModifiedExpansion:
+   spell-class: ".instant.DummySpell"
+   effects:
+       goldsparkles:
+           position: caster
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 3475
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: REDSTONE
+                   color: 00BFFF
+                   visible_range: 25
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+       whitesprakles:
+           position: caster
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 3475
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: REDSTONE
+                   color: 2795F5
+                   visible_range: 25
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
 #In GaleblastJumpLoad:
 #The primary equations are all "0", so all main particles are at the caster’s position.
 
