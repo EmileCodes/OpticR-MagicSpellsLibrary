@@ -1,3 +1,471 @@
+# Ice Devil
+ChillingPersuitColorchange:
+    spell-class: ".MultiSpell"
+    require-entity-target: false
+    stop-on-fail: false
+    spells:
+        - ChillingPSGlowSelfII
+        - ChillingPSSlowSelfII
+        - DELAY 41
+        - ChillingPSGlowSelfIII
+        - ChillingPSSlowSelfIII
+        - DELAY 41
+        - ChillingPSGlowSelfIV
+        - ChillingPSSlowSelfIV
+        - DELAY 41
+        - ChillingPSGlowSelfV
+        - ChillingPSSlowSelfV
+ChillingPSGlowSelfV:
+    spell-class: ".targeted.GlowSpell"
+    key: ChillingPersuitGlowSelf
+    target-self: true
+    color: dark_red
+    global: true
+    duration: 20
+    priority: 50
+ChillingPSGlowSelfIV:
+    spell-class: ".targeted.GlowSpell"
+    key: ChillingPersuitGlowSelf
+    color: dark_blue
+    target-self: true
+    global: true
+    duration: 40
+    priority: 50
+ChillingPSGlowSelfIII:
+    spell-class: ".targeted.GlowSpell"
+    key: ChillingPersuitGlowSelf
+    target-self: true
+    color: blue
+    global: true
+    duration: 40
+    priority: 50
+ChillingPSGlowSelfII:
+    spell-class: ".targeted.GlowSpell"
+    key: ChillingPersuitGlowSelf
+    target-self: true
+    color: aqua
+    global: true
+    duration: 40
+    priority: 50
+ChillingPSSlowSelfV:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: slowness
+    strength: 2
+    duration: 20
+    target-self: true
+    can-target: players,nonplayers
+ChillingPSSlowSelfIV:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: slowness
+    strength: 3
+    duration: 40
+    target-self: true
+    can-target: players,nonplayers
+ChillingPSSlowSelfIII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: slowness
+    strength: 4
+    duration: 40
+    target-self: true
+    can-target: players,nonplayers
+ChillingPSSlowSelfII:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: slowness
+    strength: 5
+    duration: 40
+    target-self: true
+    can-target: players,nonplayers
+ChillingPSHomingAOE:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 25
+    vertical-radius: 50
+    point-blank: true
+    fail-if-no-targets: false
+    can-target: players,monsters,animals
+    spells:
+        - ChillingPSHoming
+ChillingPSHoming:
+    helper-spell: true
+    spell-class: ".targeted.HomingMissileSpell"
+    range: 100
+    projectile-velocity: 25
+    hit-radius: 3
+    projectile-inertia: 2
+    max-duration: 10
+    tick-interval: 3
+    special-effect-interval: 10
+    relative-offset: 0,0,0
+    target-relative-offset: 0,1,0
+    can-target: player,monsters,animals
+    spell: ChillingPSTM
+    effects:
+        effect1:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: 27F5EE
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 5
+            intervals: 200
+        effect2:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: 2795F5
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 5
+            intervals: 200
+        SpinnyThings:
+            effect: effectlibentity
+            effect-interval: 20
+            position: special
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: ELECTRIC_SPARK
+                particlesNucleus: 1
+                radiusNucleus: 0.1
+                particleOrbital: REDSTONE
+                colorOrbital: 27F5EE
+                particleSizeOrbital: 0.5
+                orient: true
+                radius: 2.5
+                particlesOrbital: 10
+                orbitals: 3
+                iterations: 20
+                angularVelocity: 0.5
+        sound2:
+            position: special
+            effect: sound
+            sound: block.amethyst_block.step
+            volume: 0.75
+            pitch: 2
+ChillingPSTM:
+    helper-spell: true
+    spell-class: ".TargetedMultiSpell"
+    stop-on-fail: false
+    modifier:
+        - roof deny
+    require-entity-target: false
+    spells:
+        - ChillingPSPull
+        - ChillingPSVelocity
+        - ChillingPSSlow
+        - ChillingPSGlow
+        - DELAY 40
+        - ChillingPSPull
+        - DELAY 40
+        - ChillingPSPull
+        - ChillingPSGlow
+        - ChillingPSSlow
+        - ChillingPSVelocity
+        - DELAY 40
+        - ChillingPSPull
+        - DELAY 40
+        - ChillingPSPull
+        - ChillingPSGlow
+        - ChillingPSSlow
+        - ChillingPSVelocity
+ChillingPSPull:
+    spell-class: ".targeted.ForcetossSpell"
+    damage: 3
+    horizontal-force: -20
+    vertical-force: -10
+    can-target: players,monsters,animals
+    str-cast-others: "%a - Not.. So.. Fast"
+    effects:
+        line:
+            position: line
+            effect: particles
+            particle-name: snowflake
+            horiz-spread: 0.25
+            vert-spread: 0.1
+            count: 20
+        line2:
+            position: line
+            effect: particles
+            particle-name: redstone
+            color: 27F5EE
+            horiz-spread: 0.2
+            vert-spread: 0.1
+            count: 20
+        sound:
+            position: line
+            effect: sound
+            sound: block.amethyst_block.break
+            volume: 0.75
+            pitch: -2
+        sound2:
+            position: caster
+            effect: sound
+            sound: block.amethyst_block.place
+            volume: 0.75
+            pitch: 2
+        sound3:
+            position: target
+            effect: sound
+            sound: block.amethyst_block.place
+            volume: 0.75
+            pitch: 2
+ChillingPSVelocity:
+    spell-class: ".instant.VelocitySpell"
+    speed: -5
+    add-velocity-instead: true
+    cancel-damage: false
+ChillingPSSlow:
+    helper-spell: true
+    spell-class: ".targeted.PotionEffectSpell"
+    hidden: true
+    type: slowness
+    strength: 3
+    duration: 60
+    target-self: false
+    can-target: players,nonplayers
+ChillingPSGlow:
+    spell-class: ".targeted.GlowSpell"
+    key: ChillingPersuitGlow
+    color: aqua
+    global: true
+    duration: 60
+    priority: 50
+IceDevilAOECarrier:
+    spell-class: ".instant.ParticleProjectileSpell"
+    hit-non-players: false
+    hit-air-at-end: true
+    projectile-velocity: 0.001
+    projectile-acceleration: 30
+    projectile-acceleration-delay: 15
+    vertical-rotation: 90
+    tick-interval: 1
+    stop-on-hit-ground: false
+    max-distance: 15
+    start-y-offset: 1
+    spell: ChillingPSHomingAOE
+    effects:
+        effect1:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: 27F5EE
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 5
+            intervals: 200
+        effect2:
+            position: special
+            effect: particles
+            particle-name: REDSTONE
+            color: 2795F5
+            horiz-spread: 0.1
+            vert-spread: 0.1
+            count: 5
+            intervals: 200
+        SpinnyThings:
+            effect: effectlibentity
+            effect-interval: 11
+            position: special
+            effectlib:
+                class:  AtomEffect
+                particleNucleus: ELECTRIC_SPARK
+                particlesNucleus: 1
+                radiusNucleus: 0.1
+                particleOrbital: REDSTONE
+                colorOrbital: 27F5EE
+                particleSizeOrbital: 1
+                orient: true
+                radius: 1
+                particlesOrbital: 10
+                particle-size: 0.5
+                orbitals: 3
+                iterations: 20
+                angularVelocity: 0.5
+        sound2:
+            position: special
+            effect: sound
+            sound: block.amethyst_block.step
+            volume: 0.75
+            pitch: 2
+        message:
+            position: caster
+            effect: actionbartext
+            message: "&bScanning &fCompleted&b."
+            broadcast: false
+ChillingPersuitAnimation:
+    spell-class: ".MultiSpell"
+    require-entity-target: false
+    stop-on-fail: false
+    str-cast-self: "&b&f Let's have some fun"
+    str-cast-others: "&l%a - &9I'd keep my head down if I were you ~"
+    spells:
+        - ChillingPersuitColorchange
+        - IceDevilChargeup
+        - DELAY 45
+        - IceDevilFlashing
+        - IceDevilModifiedExpansion
+        - DELAY 50
+        - IceDevilFlashing2
+        - DELAY 5
+        - IceDevilAOECarrier
+IceDevilFlashing:
+   spell-class: ".instant.DummySpell"
+   effects:
+        Flash:
+           position: caster
+           effect: particles
+           particle-name: flash
+           speed: 0.1
+           horiz-spread: 1
+           vert-spread: 1
+           count: 5
+        icebreak1:
+           position: caster
+           effect: sound
+           sound: block.glass.break
+           volume: 0.75
+           pitch: -2
+        anvil:
+           position: caster
+           effect: sound
+           sound: block.ancient_debris.hit
+           volume: 1
+           pitch: -2
+IceDevilFlashing2:
+   spell-class: ".instant.DummySpell"
+   effects:
+        Flash:
+           position: caster
+           effect: particles
+           particle-name: flash
+           speed: 0.1
+           horiz-spread: 2
+           vert-spread: 2
+           count: 5
+        icebreak1:
+           position: caster
+           effect: sound
+           sound: block.glass.break
+           volume: 1
+           pitch: 2
+        anvil:
+           position: caster
+           effect: sound
+           sound: block.anvil.land
+           volume: 1
+           pitch: -2
+IceDevilChargeup:
+  spell-class: ".buff.DummySpell"
+  duration: 2.5
+  effects:
+    Animation1: 
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: REDSTONE
+        color: 27F5EE
+        particleSize: 0.5
+        particles: 10
+        particles2: 9
+        duration: 10
+        iterations: 1
+        orientPitch: false
+        cycle: false
+        xEquation: 0
+        yEquation: 0
+        zEquation: 0
+        x2Equation: "(10 * (1 - t/385)^2 + 0.5) * sin(6 * 3.1415 * t/385 + 2 * 3.1415 * t2/9)"
+        y2Equation: "(10 * (1 - t/385)^2 + 0.5) * sin(-8 * 3.1415 * t/385 + 2 * 3.1415 * t2/9)"
+        z2Equation: "(10 * (1 - t/385)^2 + 0.5) * cos(-6 * 3.1415 * t/385 + 2 * 3.1415 * t2/9)"
+    Animation2: 
+      position: buffeffectlib
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: DUST_COLOUR_TRANSITION
+        color: FFFFFF
+        to-color: 2795F5
+        particleSize: 1.5
+        particles: 10
+        particles2: 9
+        duration: 10
+        iterations: 2
+        orientPitch: false
+        cycle: false
+        xEquation: 0
+        yEquation: 0
+        zEquation: 0
+        x2Equation: "(10 * (1 - t/385)^3 + 0.5) * sin(2 * 3.1415 * t/385 + 4 * 3.1415 * t2/9)"
+        y2Equation: "(10 * (1 - t/385)^3 + 0.5) * sin(-3 * 3.1415 * t/385 + 4 * 3.1415 * t2/9)" 
+        z2Equation: "(10 * (1 - t/385)^3 + 0.5) * cos(-2 * 3.1415 * t/385 + 4 * 3.1415 * t2/9)"
+    sound1:    
+        position: buff
+        effect-interval: 5
+        effect: sound
+        sound: block.beacon.activate
+        volume: 0.5
+        pitch: 2.0
+    sound2:
+           position: buff
+           effect-interval: 20
+           effect: sound
+           sound: block.amethyst_block.step
+           volume: 0.6
+           pitch: 1.5
+    sound3:
+           position: buff
+           effect-interval: 30
+           effect: sound
+           sound: entity.player.levelup
+           volume: 0.5
+           pitch: -2
+    message:
+        position: caster
+        effect: actionbartext
+        message: "&bScanning Area for &btargets&f."
+        broadcast: false
+IceDevilModifiedExpansion:
+   spell-class: ".instant.DummySpell"
+   effects:
+       goldsparkles:
+           position: caster
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 3475
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: REDSTONE
+                   color: 00BFFF
+                   visible_range: 50
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
+       whitesprakles:
+           position: caster
+           effect: effectlib
+           effectlib:
+               class: Modified
+               duration: 3475
+               orient_pitch: true
+               effect:
+                   class: Sphere
+                   particle: DUST_COLOR_TRANSITION
+                   color: FFFFFF
+                   to-color: 2795F5
+                   visible_range: 50
+               parameters:
+                   radius: "(t/10)*((t/10)^2-8 * (t/10)+16) / 2"
+                   particles: "floor ( 3.1415 * ((t/10)*((t/10)^2-8 * (t/10)+16))^2 )"
 #arcana
 ArcanaPassiveInitiate:
   spell-class: ".PassiveSpell"
