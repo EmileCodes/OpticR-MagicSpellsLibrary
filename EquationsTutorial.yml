@@ -12,6 +12,53 @@ Comments with a hashtag (#)are there to provide context
 #sin(t) and cos(t): Create circular or wavy patterns.
 #rand(a, b): Picks a random number between a and b, great for scattered effects.
 
+#Spiral that spins around the user
+Cyclonething:
+  spell-class: ".instant.DummySpell"
+  can-cast-by-command: true
+  effects:
+    eff1:
+      position: caster
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: EXPLOSION_EMITTER
+        color: FFFFFF
+        particles: 4
+        particles2: 26
+        speed: 0.05
+        duration: 3000
+        iterations: 1
+        cycle: true
+        orient: false
+        orientPitch: true
+        xEquation: 0
+        yEquation: 0.025
+        zEquation: 0
+        x2Equation: 2 * (t2/4 + 1)^sqrt(2) * cos(t2/4 - 3.1415 * t / 60)
+        y2Equation: 0
+        z2Equation: 2 * (t2/4 + 1)^sqrt(2) * sin(t2/4 - 3.1415 * t / 60)
+    eff2:
+      position: caster
+      effect: effectlib
+      effectlib:
+        class: EquationEffect
+        particle: ELECTRIC_SPARK
+        color: 000000
+        particles: 6
+        particles2: 50
+        speed: 0.05
+        duration: 3000
+        iterations: 1
+        cycle: true
+        orient: false
+        orientPitch: true
+        xEquation: 0
+        yEquation: 0.025
+        zEquation: 0
+        x2Equation: 2 * (t2/8 + 1)^sqrt(2) * cos(t2/8 - 3.1415 * t / 120)  
+        y2Equation: 0
+        z2Equation: 2 * (t2/8 + 1)^sqrt(2) * sin(t2/8 - 3.1415 * t / 120) 
 #ideal for making something look fast
       DelayedTracer:
         position: buff
