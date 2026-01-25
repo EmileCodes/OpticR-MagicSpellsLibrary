@@ -2,6 +2,8 @@ Find examples of equation effects below.
 These can be modified to achieve specific results.
 Comments with a hashtag (#)are there to provide context
 
+IMPORTANT: When using the position "effectlib" will play the effect on the starting location,
+effectlibentity will follow the trajectory accordingly (ideal for moving spells like an effect on a projectile or a buff on an individual)
 #Primary Equations (xEquation, yEquation, zEquation)
 #These control the position of “main” particles. The variable t starts at 0 and increases by 1 for each particle (up to particles - 1).
 #X - Left to Right | East to West
